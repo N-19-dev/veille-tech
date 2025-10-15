@@ -1,0 +1,15 @@
+# --- Core crawl & parsing ---
+aiohttp==3.10.5
+aiolimiter==1.1.0
+beautifulsoup4==4.12.3
+feedparser==6.0.11
+html5lib==1.1
+lxml==5.3.0
+lxml_html_clean==0.3.1        # <- nécessaire pour l’erreur lxml.html.clean
+readability-lxml==0.8.1
+python-slugify==8.0.4
+PyYAML==6.0.2
+tqdm==4.66.5
+
+# --- IA (Hugging Face Inference API) ---
+huggingface-hub==0.24.7

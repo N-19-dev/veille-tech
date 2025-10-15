@@ -1,0 +1,200 @@
+# config.yaml
+storage:
+  sqlite_path: "veille.db"
+
+crawl:
+  lookback_days: 7
+  concurrency: 12
+  per_host_rps: 1.5
+  timeout_sec: 25
+  user_agent: "VeilleTechBot/1.0 (+https://example.local/veille)"
+  min_text_length: 300            # ← ignore les pages trop courtes
+  whitelist_domains:
+    - blog.databricks.com
+    - www.snowflake.com
+    - cloud.google.com
+    - aws.amazon.com
+    - azure.microsoft.com
+    - duckdb.org
+    - www.pola.rs
+    - trino.io
+    - dlthub.com
+    - airflow.apache.org
+    - dagster.io
+    - prefect.io
+    - getdbt.com
+    - superset.apache.org
+    - www.metabase.com
+    - www.tableau.com
+    - qlik.com
+    - blog.streamlit.io
+    - linkedin.com
+  blacklist_domains:
+    - reddit.com
+    - twitter.com
+    - x.com
+    - youtube.com
+    - producthunt.com
+    - github.com
+    - glassdoor.com
+    - community.*            # forums
+    - careers.*              # jobs
+  path_allow_regex: "(^|/)(blog|posts|articles|news)(/|$)"
+  path_deny_regex:  "(^|/)(forum|community|jobs|careers|events|release-notes|whats-new)(/|$)"
+
+export:
+  out_dir: "export"
+  make_markdown_digest: true
+  max_items_per_cat: 60
+
+notify:
+  slack_webhook_env: "SLACK_WEBHOOK_URL"  # laisse vide si tu n'utilises pas
+
+categories:
+  - key: "db_sql_olap"
+    title: "🔢 Bases de données & OLAP"
+    keywords:
+      # classement par mots-clés (titres + résumés)
+      - "postgres"
+      - "mysql"
+      - "sql server"
+      - "oracle"
+      - "bigquery"
+      - "snowflake"
+      - "databricks"
+      - "trino"
+      - "duckdb"
+      - "olap"
+      - "warehouse"
+      - "fabric"
+      - "azure sql"
+  - key: "dataprep_orchestration_etl"
+    title: "👨‍🔧 Data Prep & Orchestration (ELT/ETL)"
+    keywords:
+      - "airbyte"
+      - "airflow"
+      - "dagster"
+      - "prefect"
+      - "dbt"
+      - "dataform"
+      - "sqlmesh"
+      - "ingestion"
+      - "transformation"
+  - key: "python_polars_duckdb"
+    title: "🐍 Python, Polars, DuckDB"
+    keywords:
+      - "python"
+      - "polars"
+      - "duckdb"
+  - key: "viz_bi"
+    title: "📊 Data Viz & BI"
+    keywords:
+      - "power bi"
+      - "tableau"
+      - "qlik"
+      - "metabase"
+      - "superset"
+      - "looker"
+      - "looker studio"
+      - "excel"
+      - "streamlit"
+      - "omni"
+      - "viz"
+  - key: "ml_ai"
+    title: "🔬 IA / ML"
+    keywords:
+      - "machine learning"
+      - "ml"
+      - "ai"
+      - "mlops"
+      - "rag"
+  - key: "cloud"
+    title: "🏛️ Cloud (AWS/GCP/Azure/OVH)"
+    keywords:
+      - "aws"
+      - "gcp"
+      - "azure"
+      - "ovh"
+      - "bigquery"
+      - "athena"
+      - "redshift"
+      - "synapse"
+      - "fabric"
+
+sources:
+  - name: "Snowflake Blog"
+    url: "https://www.snowflake.com/blog/feed/"
+  - name: "Databricks Blog"
+    url: "https://www.databricks.com/blog/feed"
+  - name: "DuckDB Blog"
+    url: "https://duckdb.org/news/index.xml"
+  - name: "Polars Blog"
+    url: "https://www.pola.rs/feed.xml"
+  - name: "Trino Blog"
+    url: "https://trino.io/feed.xml"
+
+  - name: "Airbyte Blog"
+    url: "https://airbyte.com/blog/rss.xml"
+  - name: "dlt Blog"
+    url: "https://dlthub.com/blog/rss.xml"
+  - name: "Apache Airflow Blog"
+    url: "https://airflow.apache.org/feeds/blog.xml"
+  - name: "Dagster Blog"
+    url: "https://dagster.io/blog/rss.xml"
+  - name: "Prefect Blog"
+    url: "https://www.prefect.io/blog/rss.xml"
+  - name: "dbt Blog"
+    url: "https://www.getdbt.com/rss.xml"
+  - name: "SQLMesh Changelog"         # ← si tu veux exclure changelog, supprime-le
+    url: "https://sqlmesh.readthedocs.io/en/stable/changelog/"
+
+  - name: "Power BI Blog"
+    url: "https://powerbi.microsoft.com/en-us/blog/feed/"
+  - name: "Tableau Blog"
+    url: "https://www.tableau.com/blog/feed"
+  - name: "Qlik Blog"
+    url: "https://www.qlik.com/blog.rss"
+  - name: "Metabase Blog"
+    url: "https://www.metabase.com/blog/atom.xml"
+  - name: "Apache Superset Blog"
+    url: "https://superset.apache.org/atom.xml"
+  - name: "Looker Blog"
+    url: "https://cloud.google.com/looker/rss.xml"
+  - name: "Streamlit Blog"
+    url: "https://blog.streamlit.io/feed.xml"
+
+  - name: "Google AI Blog"
+    url: "https://ai.googleblog.com/feeds/posts/default"
+  - name: "AWS ML Blog"
+    url: "https://aws.amazon.com/blogs/machine-learning/feed/"
+
+  - name: "AWS Blog (global)"
+    url: "https://aws.amazon.com/blogs/aws/feed/"
+  - name: "Google Cloud Blog"
+    url: "https://cloud.google.com/blog/topics/announcements/rss.xml"
+  - name: "Azure Blog"
+    url: "https://azure.microsoft.com/en-us/blog/feed/"
+
+crawl:
+  concurrency: 12
+  per_host_rps: 1.5
+  timeout_sec: 25
+  user_agent: "VeilleTechBot/1.0 (+https://example.local/veille)"
+  lookback_days: 7 
+
+llm:
+  provider: "openai_compat"
+  base_url: "https://api.groq.com/openai/v1"
+  api_key_env: "GROQ_API_KEY"
+  model: "llama-3.1-8b-instant"
+  temperature: 0.2
+  max_tokens: 400
+  concurrent: 1
+  score_threshold: 60
+
+summary:
+  enabled: true
+  lookback_days: 7          # fenêtre du résumé
+  min_score: 60             # ne résumer que les items utiles
+  max_sections: 8           # nb max de thèmes/sections
+  links_per_section: 5      # nb de liens à proposer par thème
