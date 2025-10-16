@@ -6,7 +6,7 @@
 # - retries + logs + option --limit
 #
 # Dépendances: openai==1.50.2, pyyaml
-
+import re
 import asyncio
 import functools
 import json
@@ -121,6 +121,108 @@ def group_filtered(db_path: str, min_ts: int, threshold: int) -> Dict[str, List[
             )
             out.setdefault(item["category_key"], []).append(item)
         return out
+    
+
+def _strip_weird_chars(md: str) -> str:
+    # enlève le caractère ¶ et normalise les espaces
+    md = md.replace("¶", "")
+    # uniformise "A creuser" / "À creuser"
+    md = re.sub(r"(?i)à\s*creuser\s*:?$", "**À creuser :**", md, flags=re.MULTILINE)
+    md = re.sub(r"(?i)à\s*creuser\s*:\s*", "**À creuser :**\n", md)
+    return md.strip()
+
+def _normalize_creuser_lists(block: str) -> str:
+    """
+    Transforme 'À creuser : * url * url' en:
+    **À creuser :**
+    - url
+    - url
+    """
+    lines = []
+    for raw in block.splitlines():
+      if "**À creuser :**" in raw:
+          # récupère tout ce qui suit sur la même ligne (liens séparés par * ou •)
+          after = raw.split("**À creuser :**", 1)[1].strip()
+          links = re.split(r"\s*[\*\u2022]\s*", after) if after else []
+          lines.append("**À creuser :**")
+          for lk in links:
+              lk = lk.strip(" -•*")
+              if not lk:
+                  continue
+              # si c'est un URL brut, préfixe en puce
+              if re.match(r"^https?://", lk):
+                  lines.append(f"- {lk}")
+              else:
+                  # déjà en Markdown ? garde en puce
+                  lines.append(f"- {lk}")
+      else:
+          lines.append(raw)
+    return "\n".join(lines)
+
+def ensure_all_sections_ordered(md: str, expected_titles: list[str], placeholder: str) -> str:
+    """
+    - Garde '## 🟦 Aperçu général de la semaine' en tête (si présent, sinon on ne force pas).
+    - Réordonne / renomme les sections H2 selon expected_titles
+      (si une section manque, on ajoute 'Rien d’important cette semaine.').
+    - Nettoie les 'À creuser' mal formatés.
+    """
+    md = _strip_weird_chars(md)
+
+    # Sépare par sections H2
+    sections = re.split(r"(?m)^\s*##\s+", md)
+    heads = re.findall(r"(?m)^\s*##\s+(.+)$", md)
+
+    # Reconstruit un dict {title: content}
+    content_by_title = {}
+    if sections:
+        # si le doc commence par un contenu avant la 1re H2, on le garde comme 'prelude'
+        prelude = sections[0].strip()
+        for h, body in zip(heads, sections[1:]):
+            # nettoie le corps + normalise les listes "À creuser"
+            body = _normalize_creuser_lists(body.strip())
+            # supprime un éventuel titre redondant en 1ère ligne
+            body = re.sub(r"(?m)^\s*#{1,6}\s+.*$", "", body, count=1).strip()
+            content_by_title[h.strip()] = body
+
+    # Récupère et fixe l'overview
+    overview_key = "🟦 Aperçu général de la semaine"
+    overview_md = content_by_title.get(overview_key, "")
+    # fallback: si l'IA a écrit "Aperçu général..." sans emoji, essaye de le retrouver
+    if not overview_md:
+        for k in list(content_by_title.keys()):
+            if "aperçu" in k.lower() and "semaine" in k.lower():
+                overview_md = content_by_title.pop(k, "")
+                break
+
+    # Construit le document final
+    final = []
+    if overview_md:
+        final.append(f"## {overview_key}\n\n{overview_md}")
+    else:
+        # si tu veux forcer un bloc overview vide :
+        final.append(f"## {overview_key}\n\n_Résumé indisponible cette semaine._")
+
+    # Ajoute les sections dans l'ordre exact des titres attendus
+    for title in expected_titles:
+        body = None
+        # essaie match exact
+        if title in content_by_title:
+            body = content_by_title[title]
+        else:
+            # essaie match approx: retire emojis/accents pour comparer
+            def simpl(s): return re.sub(r"[\W_]+", " ", s, flags=re.UNICODE).lower().strip()
+            stitle = simpl(title)
+            for k, v in list(content_by_title.items()):
+                if simpl(k) == stitle or stitle in simpl(k):
+                    body = v
+                    break
+
+        if body and body.strip():
+            final.append(f"## {title}\n\n{body.strip()}")
+        else:
+            final.append(f"## {title}\n\n_{placeholder}_")
+
+    return "\n\n".join(final).strip() + "\n"
 
 # ---------- Prompting ----------
 ANALYSIS_SYSTEM_PROMPT = """Tu es un assistant de veille techno pour data/analytics/BI/ML en français.
@@ -134,6 +236,8 @@ Définition de "utile":
 - Sécurité: CVE, patchs critiques
 - Outils cloud/DB/ETL/Orchestration/BI listés dans notre périmètre
 - Évite: marketing fluff, récaps trop génériques, contenu très redondant
+- Garde toutes les sections thématiques listées dans le contexte; si une section n’a rien de notable, écris une ligne “Rien d’important cette semaine.”
+- Utilise exactement ces titres de sections (H2) dans cet ordre. Si une section n’a rien de notable, écris “Rien d’important cette semaine.” :
 
 Réponds au format JSON strict:
 {
@@ -244,6 +348,36 @@ def fetch_items_for_summary(db_path: str, min_ts: int, min_score: int) -> List[D
             ))
         return out
 
+def build_highlights(items: List[Dict[str, Any]], max_items: int = 12) -> str:
+    """
+    Sélectionne les items les plus forts toutes catégories confondues
+    (tri score DESC puis date DESC) pour aider l'IA à rédiger l'aperçu général.
+    """
+    top = sorted(
+        items,
+        key=lambda x: (int(x.get("llm_score") or 0), int(x["published_ts"])),
+        reverse=True
+    )[:max_items]
+    lines = ["# Highlights (toutes catégories)"]
+    for it in top:
+        dt = datetime.fromtimestamp(it["published_ts"], tz=timezone.utc).strftime("%Y-%m-%d")
+        lines.append(f"- [{it['title']}]({it['url']}) — {it['source']} · {dt} · score {it.get('llm_score','?')}")
+    return "\n".join(lines)
+
+def ensure_all_sections(md: str, categories: "list[dict]", placeholder: str = "Rien d’important cette semaine.") -> str:
+    """
+    Vérifie que chaque catégorie du config a une section H2.
+    Si absente, on ajoute la section avec un message par défaut.
+    """
+    out = md.rstrip() + "\n"
+    for cat in categories:
+        title = cat.get("title") or cat.get("key")
+        # On cherche une ligne '## <Titre>'
+        pattern = rf"(?mi)^\s*##\s+{re.escape(title)}\s*$"
+        if not re.search(pattern, out):
+            out += f"\n\n## {title}\n\n_{placeholder}_\n"
+    return out
+
 def build_summary_context(items: List[Dict[str, Any]], links_per_section: int) -> str:
     """
     Construit un contexte compact: pour chaque catégorie, garde les meilleurs items (score/date).
@@ -266,51 +400,74 @@ def build_summary_context(items: List[Dict[str, Any]], links_per_section: int) -
 SUMMARY_SYSTEM_PROMPT = """Tu es un assistant de veille techno (data/analytics/BI/ML) en français.
 Objectif: produire un résumé hebdomadaire clair, actionnable, et concis pour un public data engineer/analyst/architect.
 
+Structure impérative de la réponse (Markdown):
+1) "## 🟦 Aperçu général de la semaine"
+   - 1 à 2 paragraphes courts OU 5–8 puces max
+   - Synthétise les tendances transversales (GA/Preview, breaking changes, perfs, sécurité, guides marquants)
+2) Sections par thèmes (ex: Bases de données, Orchestration, Transformation SQL, Data Viz, Cloud, IA/ML…)
+   - 3–6 puces max par thème, phrases courtes, impacts concrets
+   - Termine CHAQUE section par une ligne "**À creuser :**" listant jusqu'à N liens fournis (liste Markdown)
 Règles:
-- Organise par thèmes (ex: Bases de données, Orchestration, Transformation SQL, Data Viz, Cloud, IA/ML…).
-- Pour chaque thème: 3–6 puces max, phrases courtes, focus sur les impacts concrets (GA/Preview, breaking changes, perfs, sécurité, guides utiles).
-- Évite le marketing/fluff. Pas de redondances.
-- Termine chaque thème par une ligne **“À creuser”** listant les liens fournis (jusqu'à N) sous forme de liste markdown.
-- Français clair et professionnel.
-
-Réponds en **Markdown** uniquement, sans préambule inutile ni code fences.
+- Français clair et professionnel, sans fluff ni redondance.
+- Ne pas inventer de faits ni de liens: s'appuyer uniquement sur le contexte fourni.
+- Ne pas encapsuler la réponse dans des blocs de code.
 """
 
-async def generate_weekly_summary_openai(base_url: str, api_key_env: str, model: str,
-                                         context_md: str, max_sections: int) -> str:
+async def generate_weekly_summary_openai(
+    base_url: str,
+    api_key_env: str,
+    model: str,
+    context_md: str,
+    max_sections: int,
+    expected_titles: List[str],
+    highlights_md: Optional[str] = None,
+) -> str:
     """
-    Utilise l'API OpenAI-compatible (Groq) pour produire un résumé Markdown.
+    Utilise l'API OpenAI-compatible (Groq) pour produire un résumé Markdown
+    avec un bloc 'Aperçu général' puis les sections thématiques EXACTEMENT
+    dans l'ordre 'expected_titles'. Les sections vides seront gérées ensuite
+    par le post-traitement ensure_all_sections_ordered(...).
     """
     api_key = os.getenv(api_key_env)
     if not api_key:
         raise RuntimeError(f"Variable d'environnement {api_key_env} manquante.")
     client = OpenAI(base_url=base_url, api_key=api_key)
 
-    user_prompt = f"""Voici une sélection d'articles de la semaine passée, déjà filtrés (utiles) et groupés par thème avec liens.
-Ne crée pas plus de {max_sections} sections. Produis directement le résumé final.
+    high_block = f"[HIGHLIGHTS]\n{highlights_md}\n\n" if highlights_md else ""
+    section_list = "\n".join(f"- {t}" for t in expected_titles)
 
-Contexte:
+    user_prompt = f"""Voici une sélection d'articles de la semaine passée (déjà filtrés et scorés).
+Commence par un **Aperçu général de la semaine** à partir des *Highlights*, puis détaille par thèmes.
+Ne crée pas plus de {max_sections} sections thématiques.
+
+Tu DOIS utiliser exactement les titres H2 suivants, dans cet ordre, et les conserver même s'il n'y a rien à dire :
+{section_list}
+
+{high_block}[CONTEXTE PAR THÈMES]
 {context_md}
 """
 
-    # Appel synchrone exécuté dans un thread (compat Py3.8)
     resp = await _to_thread(
         client.chat.completions.create,
         model=model,
         messages=[
             {"role": "system", "content": SUMMARY_SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt}
+            {"role": "user", "content": user_prompt},
         ],
         temperature=0.2,
-        max_tokens=900  # ajustable
+        max_tokens=1200,
     )
     return resp.choices[0].message.content or ""
 
 # ---------- Main ----------
 async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
+    # --- charge config & prépare ---
     cfg = yaml.safe_load(Path(config_path).read_text(encoding="utf-8"))
+    expected_titles = [c.get("title", c.get("key")) for c in cfg.get("categories", [])]
+
     db_path = cfg["storage"]["sqlite_path"]
     lookback_days = cfg.get("crawl", {}).get("lookback_days", 7)
+
     llm_cfg = cfg.get("llm", {})
     provider = llm_cfg.get("provider")
     temperature = float(llm_cfg.get("temperature", 0.2))
@@ -320,23 +477,31 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
 
     ensure_llm_columns(db_path)
 
+    # --- fenêtre temporelle ---
     window_start_ts = int((datetime.now(tz=timezone.utc) - timedelta(days=lookback_days)).timestamp())
+
+    # --- items à scorer ---
     items = fetch_items_to_score(db_path, window_start_ts, limit=limit)
     print(f"[diag] items récents: {len(items)}")
     items_to_score = [it for it in items if it["llm_score"] is None]
     print(f"[diag] à scorer (llm_score IS NULL): {len(items_to_score)}")
     print(f"[diag] provider: {provider}")
 
+    # --- scoring via LLM ---
     if items_to_score:
         if provider == "openai_compat":
             base_url = llm_cfg.get("base_url", "https://api.groq.com/openai/v1")
             api_key_env = llm_cfg.get("api_key_env", "GROQ_API_KEY")
-            model = llm_cfg.get("model", "mixtral-8x7b-32768")
-            await score_items_openai(items_to_score, base_url, api_key_env, model, temperature, max_tokens, concurrent, db_path)
+            # Mixtral est décommissionné chez Groq -> par défaut on prend Llama 3.1 8B instant
+            model = llm_cfg.get("model", "llama-3.1-8b-instant")
+            await score_items_openai(
+                items_to_score, base_url, api_key_env, model,
+                temperature, max_tokens, concurrent, db_path
+            )
         else:
             raise RuntimeError(f"Provider LLM inconnu: {provider} (attendu: 'openai_compat')")
 
-    # Stats post-scoring
+    # --- stats post-scoring ---
     with db_conn(db_path) as conn:
         total_scored = conn.execute("SELECT COUNT(*) FROM items WHERE llm_score IS NOT NULL").fetchone()[0]
         recent_scored = conn.execute(
@@ -346,7 +511,7 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
         errors = conn.execute("SELECT COUNT(*) FROM items WHERE llm_notes LIKE 'LLM error:%'").fetchone()[0]
     print(f"[diag] items scorés (total): {total_scored}, scorés (fenêtre): {recent_scored}, erreurs: {errors}")
 
-    # Export filtré
+    # --- export sélection IA ---
     groups = group_filtered(db_path, window_start_ts, threshold)
     out_dir = Path(cfg.get("export", {}).get("out_dir", "export"))
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -358,7 +523,8 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
     kept = sum(len(v) for v in groups.values())
     print(f"[done] Export IA: {kept} items retenus ≥ {threshold}")
     print(f" - {json_path}\n - {md_path}")
-        # ----- Résumé hebdomadaire (optionnel via config) -----
+
+    # --- résumé hebdomadaire IA (optionnel) ---
     sum_cfg = cfg.get("summary", {})
     if sum_cfg.get("enabled", True) and kept > 0:
         sum_lookback_days = int(sum_cfg.get("lookback_days", lookback_days))
@@ -370,20 +536,34 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
         sum_items = fetch_items_for_summary(db_path, sum_window_start_ts, sum_min_score)
 
         if sum_items:
+            # Contexte par thèmes + highlights cross-thèmes
             context_md = build_summary_context(sum_items, links_per)
-            # reprend le provider déjà vérifié plus haut
+            highlights_md = build_highlights(sum_items, max_items=12)
+
             if provider == "openai_compat":
                 base_url = llm_cfg.get("base_url", "https://api.groq.com/openai/v1")
                 api_key_env = llm_cfg.get("api_key_env", "GROQ_API_KEY")
                 model = llm_cfg.get("model", "llama-3.1-8b-instant")
 
+                # Génération du résumé IA avec sections attendues
                 weekly_md = await generate_weekly_summary_openai(
                     base_url=base_url,
                     api_key_env=api_key_env,
                     model=model,
                     context_md=context_md,
-                    max_sections=max_sections
+                    max_sections=max_sections,
+                    expected_titles=expected_titles,
+                    highlights_md=highlights_md,
                 )
+
+                # Post-traitement : titres fixes, ordre imposé, sections vides
+                placeholder = "Rien d’important cette semaine."
+                weekly_md = ensure_all_sections_ordered(
+                    weekly_md,
+                    expected_titles=expected_titles,
+                    placeholder=placeholder
+                )
+
                 summary_path = out_dir / f"ai_summary_{datetime.now().strftime('%Y%m%d')}.md"
                 summary_path.write_text(weekly_md, encoding="utf-8")
                 print(f"[done] Résumé hebdo IA: {summary_path}")
