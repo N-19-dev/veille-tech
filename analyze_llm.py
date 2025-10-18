@@ -75,7 +75,8 @@ def fetch_items_for_summary(db_path: str, min_ts: int, max_ts: int, min_score: i
 def to_markdown(groups: Dict[str, List[Dict[str, Any]]]) -> str:
     lines = ["# Sélection IA — Semaine\n"]
     for key, items in groups.items():
-        if not items: continue
+        if not items: 
+            continue
         lines.append(f"## {key}\n")
         for it in items:
             dt = datetime.fromtimestamp(it["published_ts"], tz=timezone.utc).strftime("%Y-%m-%d")
@@ -204,7 +205,8 @@ def _normalize_creuser_lists(block: str) -> str:
             lines.append("**À creuser :**")
             for lk in links:
                 lk = lk.strip(" -•*")
-                if not lk: continue
+                if not lk: 
+                    continue
                 lines.append(f"- {lk}")
         else:
             lines.append(raw)
@@ -331,7 +333,6 @@ Tu DOIS utiliser exactement ces titres H2, dans cet ordre, et les conserver mêm
 # -----------------------
 
 async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
-    # --- charge config & prépare ---
     cfg = yaml.safe_load(Path(config_path).read_text(encoding="utf-8"))
     expected_titles = [c.get("title", c.get("key")) for c in cfg.get("categories", [])]
 
@@ -357,7 +358,6 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
     print(f"[diag] à scorer (llm_score IS NULL): {len(items_to_score)}")
     print(f"[diag] provider: {provider}")
 
-    # --- scoring via LLM ---
     if items_to_score:
         if provider == "openai_compat":
             base_url = llm_cfg.get("base_url", "https://api.groq.com/openai/v1")
