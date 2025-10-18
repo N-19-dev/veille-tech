@@ -13,3 +13,10 @@ tqdm==4.66.5
 
 # --- IA (Hugging Face Inference API) ---
 huggingface-hub==0.24.7
+
+# --- dashboard
+streamlit==1.24.1
+pandas==2.1.4
+mkdocs 
+mkdocs-material 
+mkdocs-include-dir-to-nav

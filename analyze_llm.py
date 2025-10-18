@@ -331,6 +331,7 @@ Tu DOIS utiliser exactement ces titres H2, dans cet ordre, et les conserver mêm
 # -----------------------
 
 async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
+    # --- charge config & prépare ---
     cfg = yaml.safe_load(Path(config_path).read_text(encoding="utf-8"))
     expected_titles = [c.get("title", c.get("key")) for c in cfg.get("categories", [])]
 
@@ -356,6 +357,7 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
     print(f"[diag] à scorer (llm_score IS NULL): {len(items_to_score)}")
     print(f"[diag] provider: {provider}")
 
+    # --- scoring via LLM ---
     if items_to_score:
         if provider == "openai_compat":
             base_url = llm_cfg.get("base_url", "https://api.groq.com/openai/v1")
@@ -398,6 +400,7 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
 
         sum_items = fetch_items_for_summary(db_path, week_start_ts, week_end_ts, sum_min_score)
         if sum_items:
+            # Contexte par thèmes + highlights cross-thèmes
             context_md = build_summary_context(sum_items, links_per)
             highlights_md = build_highlights(sum_items, max_items=12)
 
@@ -406,6 +409,7 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
                 api_key_env = llm_cfg.get("api_key_env", "GROQ_API_KEY")
                 model = llm_cfg.get("model", "llama-3.1-8b-instant")
 
+                # Génération du résumé IA avec sections attendues
                 weekly_md = await generate_weekly_summary_openai(
                     base_url=base_url,
                     api_key_env=api_key_env,

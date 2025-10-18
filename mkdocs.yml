@@ -1,0 +1,31 @@
+site_name: Veille Tech — IA Summaries
+site_url: https://N-19-dev.github.io/veille-tech/
+theme:
+  name: material
+  palette:
+    primary: teal
+    accent: cyan
+  features:
+    - navigation.sections
+    - navigation.instant
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+nav:
+  - Accueil: index.md
+  - Résumés:
+      - posts/               # les fichiers générés iront ici
+plugins:
+  - search
+  - include_dir_to_nav:
+      nav_dir: docs/posts
+      sort_file: true
+extra_css:
+  - styles/overrides.css
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - footnotes
+  - attr_list
+  - md_in_html
