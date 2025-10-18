@@ -75,7 +75,8 @@ def fetch_items_for_summary(db_path: str, min_ts: int, max_ts: int, min_score: i
 def to_markdown(groups: Dict[str, List[Dict[str, Any]]]) -> str:
     lines = ["# Sélection IA — Semaine\n"]
     for key, items in groups.items():
-        if not items: continue
+        if not items: 
+            continue
         lines.append(f"## {key}\n")
         for it in items:
             dt = datetime.fromtimestamp(it["published_ts"], tz=timezone.utc).strftime("%Y-%m-%d")
@@ -153,27 +154,6 @@ async def score_items_openai(items: List[Dict[str, Any]], base_url: str, api_key
 # Summary helpers
 # -----------------------
 
-def build_highlights(items: List[Dict[str, Any]], max_items: int = 12) -> str:
-    top = sorted(
-        items,
-        key=lambda x: (int(x.get("llm_score") or 0), int(x["published_ts"])),
-        reverse=True
-    )[:max_items]
-    lines = ["# Highlights (toutes catégories)"]
-    for it in top:
-        dt = datetime.fromtimestamp(it["published_ts"], tz=timezone.utc).strftime("%Y-%m-%d")
-        lines.append(f"- [{it['title']}]({it['url']}) — {it['source']} · {dt} · score {it.get('llm_score','?')}")
-    return "\n".join(lines)
-
-def ensure_all_sections(md: str, categories: "list[dict]", placeholder: str = "Rien d’important cette semaine.") -> str:
-    out = md.rstrip() + "\n"
-    for cat in categories:
-        title = cat.get("title") or cat.get("key")
-        pattern = rf"(?mi)^\s*##\s+{re.escape(title)}\s*$"
-        if not re.search(pattern, out):
-            out += f"\n\n## {title}\n\n_{placeholder}_\n"
-    return out
-
 def build_summary_context(items: List[Dict[str, Any]], links_per_section: int) -> str:
     by_cat: Dict[str, List[Dict[str, Any]]] = {}
     for it in items:
@@ -187,6 +167,14 @@ def build_summary_context(items: List[Dict[str, Any]], links_per_section: int) -
             lines.append(f"- [{it['title']}]({it['url']}) — {it['source']} · {dt} · **{sc}/100**")
         lines.append("")
     return "\n".join(lines).strip()
+
+def build_highlights(items: List[Dict[str, Any]], max_items: int = 12) -> str:
+    top = sorted(items, key=lambda x: (int(x.get("llm_score") or 0), int(x["published_ts"])), reverse=True)[:max_items]
+    lines = ["# Highlights (toutes catégories)"]
+    for it in top:
+        dt = datetime.fromtimestamp(it["published_ts"], tz=timezone.utc).strftime("%Y-%m-%d")
+        lines.append(f"- [{it['title']}]({it['url']}) — {it['source']} · {dt} · score {it.get('llm_score','?')}")
+    return "\n".join(lines)
 
 SUMMARY_SYSTEM_PROMPT = """Tu es un assistant de veille techno (data/analytics/BI/ML) en français.
 Objectif: produire un résumé hebdomadaire clair, actionnable, concis.
@@ -217,7 +205,8 @@ def _normalize_creuser_lists(block: str) -> str:
             lines.append("**À creuser :**")
             for lk in links:
                 lk = lk.strip(" -•*")
-                if not lk: continue
+                if not lk: 
+                    continue
                 lines.append(f"- {lk}")
         else:
             lines.append(raw)
@@ -271,6 +260,10 @@ def ensure_all_sections_ordered(md: str, expected_titles: List[str], placeholder
 # -----------------------
 
 def build_top_k_md(items: List[Dict[str, Any]], k: int = 3) -> str:
+    """
+    Construit une section Markdown 'Top k' à partir d'une liste d'items scorés.
+    Tri: score desc puis date desc.
+    """
     if not items:
         return "## 🏆 Top 3 de la semaine\n\n_Aucun article cette semaine._\n"
 
@@ -374,10 +367,98 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
         else:
             raise RuntimeError(f"Provider LLM inconnu: {provider} (attendu: 'openai_compat')")
 
+    # Stats
     with db_conn(db_path) as conn:
         recent_scored = conn.execute(
             "SELECT COUNT(*) FROM items WHERE published_ts >= ? AND published_ts < ? AND llm_score IS NOT NULL",
             (week_start_ts, week_end_ts)
         ).fetchone()[0]
         errors = conn.execute("SELECT COUNT(*) FROM items WHERE llm_notes LIKE 'LLM error:%'").fetchone()[0]
-    print(f"[diag] items scorés (semaine): {recent_scored}, erreurs cumulées:
+    print(f"[diag] items scorés (semaine): {recent_scored}, erreurs cumulées: {errors}")
+
+    # --- Dossier hebdo ---
+    out_root = Path(cfg.get("export", {}).get("out_dir", "export"))
+    week_dir = out_root / week_label
+    week_dir.mkdir(parents=True, exist_ok=True)
+
+    # Export sélection IA
+    groups = group_filtered(db_path, week_start_ts, week_end_ts, threshold)
+    json_path = week_dir / "ai_selection.json"
+    md_path = week_dir / "ai_selection.md"
+    json_path.write_text(json.dumps(groups, indent=2, ensure_ascii=False), encoding="utf-8")
+    md_path.write_text(to_markdown(groups), encoding="utf-8")
+    kept = sum(len(v) for v in groups.values())
+    print(f"[done] Export IA (semaine {week_label}): {kept} items ≥ {threshold}")
+    print(f" - {json_path}\n - {md_path}")
+
+    # Résumé hebdo IA
+    sum_cfg = cfg.get("summary", {})
+    if sum_cfg.get("enabled", True) and kept > 0:
+        sum_min_score = int(sum_cfg.get("min_score", threshold))
+        max_sections = int(sum_cfg.get("max_sections", 8))
+        links_per = int(sum_cfg.get("links_per_section", 5))
+
+        sum_items = fetch_items_for_summary(db_path, week_start_ts, week_end_ts, sum_min_score)
+        if sum_items:
+            # Contexte par thèmes + highlights cross-thèmes
+            context_md = build_summary_context(sum_items, links_per)
+            highlights_md = build_highlights(sum_items, max_items=12)
+
+            if provider == "openai_compat":
+                base_url = llm_cfg.get("base_url", "https://api.groq.com/openai/v1")
+                api_key_env = llm_cfg.get("api_key_env", "GROQ_API_KEY")
+                model = llm_cfg.get("model", "llama-3.1-8b-instant")
+
+                # Génération du résumé IA avec sections attendues
+                weekly_md = await generate_weekly_summary_openai(
+                    base_url=base_url,
+                    api_key_env=api_key_env,
+                    model=model,
+                    context_md=context_md,
+                    max_sections=max_sections,
+                    expected_titles=expected_titles,
+                    highlights_md=highlights_md,
+                )
+                weekly_md = ensure_all_sections_ordered(
+                    weekly_md,
+                    expected_titles=expected_titles,
+                    placeholder="Rien d’important cette semaine."
+                )
+
+                # --- Top 3 : fichier dédié + injection dans le rapport final
+                top_md = build_top_k_md(sum_items, k=3)
+                top3_path = week_dir / "top3.md"
+                top3_path.write_text(top_md, encoding="utf-8")
+                print(f"[done] Top 3: {top3_path}")
+
+                weekly_md = top_md + "\n" + weekly_md
+
+                summary_path = week_dir / "ai_summary.md"
+                summary_path.write_text(weekly_md, encoding="utf-8")
+                print(f"[done] Résumé hebdo IA: {summary_path}")
+        else:
+            print("[info] Aucun item éligible pour le résumé hebdo (fenêtre/score).")
+
+    # lien symbolique "latest" → cette semaine (best effort)
+    latest = out_root / "latest"
+    try:
+        if latest.is_symlink() or latest.exists():
+            latest.unlink()
+        latest.symlink_to(week_dir, target_is_directory=True)
+    except Exception:
+        pass
+
+# -----------------------
+# CLI
+# -----------------------
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Analyse LLM (hebdomadaire)")
+    parser.add_argument("--config", default="config.yaml")
+    parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--week-offset", type=int, default=None)
+    args = parser.parse_args()
+    if args.week_offset is not None:
+        os.environ["WEEK_OFFSET"] = str(args.week_offset)
+    asyncio.run(main(args.config, limit=args.limit))
