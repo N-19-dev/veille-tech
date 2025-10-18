@@ -4,9 +4,9 @@ on:
   push:
     branches: [ main ]
   schedule:
-    # Tous les lundis 06:00 UTC (08:00 Paris en hiver)
+    # Tous les lundis à 06:00 UTC (08:00 Paris en hiver)
     - cron: "0 6 * * 1"
-  workflow_dispatch:
+  workflow_dispatch: # Permet un déclenchement manuel
 
 permissions:
   contents: write
@@ -16,36 +16,54 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      # --- 1. Récupère le code ---
+      - name: Checkout repository
         uses: actions/checkout@v4
 
+      # --- 2. Installe Python ---
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install deps
+      # --- 3. Cache pip pour accélérer les builds ---
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      # --- 4. Installe les dépendances ---
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install mkdocs-material
 
+      # --- 5. Génère les exports et le site ---
       - name: Build weekly exports (crawl + IA + site content)
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          # SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}   # si tu utilises la notif
+          WEEK_OFFSET: "-1"   # analyse la semaine précédente complète
+          # SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}  # optionnel
         run: |
+          echo "=== Lancement du crawl + analyse LLM + génération du site ==="
           python veille_tech.py --config config.yaml
           python analyze_llm.py --config config.yaml
           python build_site.py
 
-      - name: Setup git identity (gh-deploy push)
+      # --- 6. Configure Git pour le déploiement ---
+      - name: Setup Git identity for deployment
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Deploy to GitHub Pages (gh-pages)
+      # --- 7. Déploie sur GitHub Pages ---
+      - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          echo "=== Déploiement du site sur GitHub Pages ==="
           mkdocs gh-deploy --force --remote-branch gh-pages
