@@ -1,4 +1,4 @@
-name: Build & Deploy Veille
+name: Build & Deploy Veille (React + Exports)
 
 on:
   push:
@@ -6,27 +6,32 @@ on:
   schedule:
     # Tous les lundis à 06:00 UTC (08:00 Paris en hiver)
     - cron: "0 6 * * 1"
-  workflow_dispatch: # Permet un déclenchement manuel
+  workflow_dispatch: # Lancement manuel
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      # --- 1. Récupère le code ---
-      - name: Checkout repository
+      # --- 1) Récupérer le repo ---
+      - name: Checkout
         uses: actions/checkout@v4
 
-      # --- 2. Installe Python ---
+      # --- 2) Python pour générer les exports (DB -> export/) ---
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # --- 3. Cache pip pour accélérer les builds ---
       - name: Cache pip
         uses: actions/cache@v4
         with:
@@ -35,35 +40,65 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      # --- 4. Installe les dépendances ---
-      - name: Install dependencies
+      - name: Install Python deps
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install mkdocs-material
 
-      # --- 5. Génère les exports et le site ---
-      - name: Build weekly exports (crawl + IA + site content)
+      - name: Generate weekly exports (crawl + LLM + files)
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          WEEK_OFFSET: "-1"   # analyse la semaine précédente complète
-          # SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}  # optionnel
+          WEEK_OFFSET: "-1"   # semaine précédente complète
         run: |
-          echo "=== Lancement du crawl + analyse LLM + génération du site ==="
+          echo "=== Crawl + Analyse LLM ==="
           python veille_tech.py --config config.yaml
           python analyze_llm.py --config config.yaml
-          python build_site.py
+          echo "Contenu export/ généré :"
+          find export -maxdepth 2 -type f | sed 's/^/  - /'
 
-      # --- 6. Configure Git pour le déploiement ---
-      - name: Setup Git identity for deployment
+      # --- 3) Préparer le front React ---
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: react-newsletter/package-lock.json
+
+      - name: Install Node deps
+        working-directory: react-newsletter
+        run: npm ci
+
+      - name: Copy exports into public
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          mkdir -p react-newsletter/public/export
+          cp -R export/* react-newsletter/public/export/ || true
+          ls -la react-newsletter/public/export || true
 
-      # --- 7. Déploie sur GitHub Pages ---
+      # Optionnel mais utile : prévenir si base n'est pas réglée
+      - name: Show vite.config.ts base
+        working-directory: react-newsletter
+        run: |
+          echo "----- vite.config.ts -----"
+          cat vite.config.ts || true
+          echo "--------------------------"
+
+      - name: Build React app
+        working-directory: react-newsletter
+        run: npm run build
+
+      # --- 4) Publier le build (dist/) sur Pages ---
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: react-newsletter/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "=== Déploiement du site sur GitHub Pages ==="
-          mkdocs gh-deploy --force --remote-branch gh-pages
+        id: deployment
+        uses: actions/deploy-pages@v4
