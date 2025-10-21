@@ -1,18 +1,28 @@
-# config.yaml
+# =========================
+# Veille Tech — Configuration complète
+# =========================
+
 storage:
   sqlite_path: "veille.db"
 
+# --------- CRAWL / FILTRAGE ---------
 crawl:
-  lookback_days: 7
-  concurrency: 12
-  per_host_rps: 1.5
+  lookback_days: 7                 # fenêtre glissante si tu lances hors mode “semaine ISO”
+  concurrency: 12                  # nb de fetchs en parallèle
+  per_host_rps: 1.5                # requêtes / seconde / host
   timeout_sec: 25
   user_agent: "VeilleTechBot/1.0 (+https://example.local/veille)"
-  min_text_length: 300            # ← ignore les pages trop courtes
+
+  # Filtrage éditorial : viser des articles (blogs, posts, news), éviter forums/jobs/docs/changelogs
+  min_text_length: 300
+
+  # Si non vide, on ne garde que ces domaines (réduit le bruit)
   whitelist_domains:
+    # Data/BI/Cloud (déjà présents)
     - blog.databricks.com
     - www.snowflake.com
     - cloud.google.com
+    - ai.googleblog.com
     - aws.amazon.com
     - azure.microsoft.com
     - duckdb.org
@@ -21,14 +31,49 @@ crawl:
     - dlthub.com
     - airflow.apache.org
     - dagster.io
-    - prefect.io
+    - www.prefect.io
     - getdbt.com
     - superset.apache.org
     - www.metabase.com
     - www.tableau.com
     - qlik.com
     - blog.streamlit.io
-    - linkedin.com
+    # Eng blogs / OSS / outils
+    - www.astronomer.io
+    - meltano.com
+    - www.datafold.com
+    - www.rudderstack.com
+    - huggingface.co
+    - blog.langchain.dev
+    - www.pinecone.io
+    - wandb.ai
+    - lightning.ai
+    - blog.cloudflare.com
+    - grafana.com
+    - www.datadoghq.com
+    - fastapi.tiangolo.com
+    # FR / EU (blogs & éditeurs tech sérieux)
+    - blog.octo.com
+    - blog.ovhcloud.com
+    - www.clever-cloud.com
+    - www.scaleway.com
+    - blog.dataiku.com
+    - blog.artefact.com
+    - blog.zenika.com
+    - blog.theodo.com
+    # Médias FR (actualité tech/data) — catégorie news_general
+    - www.blogdumoderateur.com
+    - siecledigital.fr
+    - www.usine-digitale.fr
+    - www.zdnet.fr
+    - www.numerama.com
+    - www.lebigdata.fr
+    - www.actuia.com
+    - www.journaldunet.com
+    - www.lemagit.fr
+    - www.programmez.com
+
+  # Toujours ignorés
   blacklist_domains:
     - reddit.com
     - twitter.com
@@ -37,24 +82,28 @@ crawl:
     - producthunt.com
     - github.com
     - glassdoor.com
-    - community.*            # forums
-    - careers.*              # jobs
-  path_allow_regex: "(^|/)(blog|posts|articles|news)(/|$)"
-  path_deny_regex:  "(^|/)(forum|community|jobs|careers|events|release-notes|whats-new)(/|$)"
+    - community.*                  # forums
+    - careers.*                    # jobs
 
+  # Garder “/blog|posts|articles|news”, refuser forums/events/changelogs/docs/api/sdk + un peu de buzz grand public
+  path_allow_regex: "(^|/)(blog|posts|articles|news)(/|$)"
+  path_deny_regex:  "(^|/)(forum|community|jobs|careers|events|release[-_ ]?notes|whats[-_ ]?new|changelog|docs|api|sdk|buzz|people|marketing|podcast|social)(/|$)"
+
+# --------- EXPORT ---------
 export:
-  out_dir: "export"
+  out_dir: "export"                # analyze_llm écrit dans export/<YYYYwWW> + export/latest
   make_markdown_digest: true
   max_items_per_cat: 60
 
+# --------- NOTIF (optionnel) ---------
 notify:
-  slack_webhook_env: "SLACK_WEBHOOK_URL"  # laisse vide si tu n'utilises pas
+  slack_webhook_env: "SLACK_WEBHOOK_URL"   # laisse vide si non utilisé
 
+# --------- CATEGORIES ---------
 categories:
   - key: "db_sql_olap"
     title: "🔢 Bases de données & OLAP"
     keywords:
-      # classement par mots-clés (titres + résumés)
       - "postgres"
       - "mysql"
       - "sql server"
@@ -68,6 +117,7 @@ categories:
       - "warehouse"
       - "fabric"
       - "azure sql"
+
   - key: "dataprep_orchestration_etl"
     title: "👨‍🔧 Data Prep & Orchestration (ELT/ETL)"
     keywords:
@@ -80,12 +130,14 @@ categories:
       - "sqlmesh"
       - "ingestion"
       - "transformation"
+
   - key: "python_polars_duckdb"
     title: "🐍 Python, Polars, DuckDB"
     keywords:
       - "python"
       - "polars"
       - "duckdb"
+
   - key: "viz_bi"
     title: "📊 Data Viz & BI"
     keywords:
@@ -100,6 +152,7 @@ categories:
       - "streamlit"
       - "omni"
       - "viz"
+
   - key: "ml_ai"
     title: "🔬 IA / ML"
     keywords:
@@ -108,6 +161,7 @@ categories:
       - "ai"
       - "mlops"
       - "rag"
+
   - key: "cloud"
     title: "🏛️ Cloud (AWS/GCP/Azure/OVH)"
     keywords:
@@ -121,7 +175,21 @@ categories:
       - "synapse"
       - "fabric"
 
+  # Nouvelle catégorie pour l’actualité FR généraliste (filtrée plus strictement)
+  - key: "news_general"
+    title: "📰 Tendances & Actus Tech (FR)"
+    keywords:
+      - "ia"
+      - "cloud"
+      - "data"
+      - "innovation"
+      - "numérique"
+      - "cybersécurité"
+      - "technologie"
+
+# --------- SOURCES (blogs/articles, FR + international) ---------
 sources:
+  # --- DB/OLAP ---
   - name: "Snowflake Blog"
     url: "https://www.snowflake.com/blog/feed/"
   - name: "Databricks Blog"
@@ -133,6 +201,9 @@ sources:
   - name: "Trino Blog"
     url: "https://trino.io/feed.xml"
 
+  # --- ELT / Orchestration / Transform ---
+  - name: "Astronomer Blog"
+    url: "https://www.astronomer.io/blog/rss.xml"
   - name: "Airbyte Blog"
     url: "https://airbyte.com/blog/rss.xml"
   - name: "dlt Blog"
@@ -145,9 +216,14 @@ sources:
     url: "https://www.prefect.io/blog/rss.xml"
   - name: "dbt Blog"
     url: "https://www.getdbt.com/rss.xml"
-  - name: "SQLMesh Changelog"         # ← si tu veux exclure changelog, supprime-le
-    url: "https://sqlmesh.readthedocs.io/en/stable/changelog/"
+  - name: "Meltano Blog"
+    url: "https://meltano.com/blog/index.xml"
+  - name: "Datafold Blog"
+    url: "https://www.datafold.com/blog/rss.xml"
+  - name: "Rudderstack Blog"
+    url: "https://www.rudderstack.com/blog/rss.xml"
 
+  # --- BI / Viz ---
   - name: "Power BI Blog"
     url: "https://powerbi.microsoft.com/en-us/blog/feed/"
   - name: "Tableau Blog"
@@ -163,25 +239,79 @@ sources:
   - name: "Streamlit Blog"
     url: "https://blog.streamlit.io/feed.xml"
 
+  # --- ML / AI (éditorial) ---
   - name: "Google AI Blog"
     url: "https://ai.googleblog.com/feeds/posts/default"
-  - name: "AWS ML Blog"
-    url: "https://aws.amazon.com/blogs/machine-learning/feed/"
+  - name: "Hugging Face Blog"
+    url: "https://huggingface.co/blog/feed.xml"
+  - name: "LangChain Blog"
+    url: "https://blog.langchain.dev/rss/"
+  - name: "Pinecone Blog"
+    url: "https://www.pinecone.io/learn/feed.xml"
+  - name: "Weights & Biases Blog"
+    url: "https://wandb.ai/site/rss.xml"
+  - name: "Lightning AI Blog"
+    url: "https://lightning.ai/pages/blog/rss/"
 
+  # --- Cloud / Infra / Observability ---
   - name: "AWS Blog (global)"
     url: "https://aws.amazon.com/blogs/aws/feed/"
-  - name: "Google Cloud Blog"
+  - name: "Google Cloud (Announcements)"
     url: "https://cloud.google.com/blog/topics/announcements/rss.xml"
   - name: "Azure Blog"
     url: "https://azure.microsoft.com/en-us/blog/feed/"
+  - name: "Cloudflare Engineering Blog"
+    url: "https://blog.cloudflare.com/rss/"
+  - name: "Grafana Labs Blog"
+    url: "https://grafana.com/blog/rss/"
+  - name: "DataDog Engineering"
+    url: "https://www.datadoghq.com/blog/engineering/rss/"
 
-crawl:
-  concurrency: 12
-  per_host_rps: 1.5
-  timeout_sec: 25
-  user_agent: "VeilleTechBot/1.0 (+https://example.local/veille)"
-  lookback_days: 7 
+  # --- Python / Analytics ---
+  - name: "FastAPI Blog"
+    url: "https://fastapi.tiangolo.com/feed.xml"
 
+  # --- 🇫🇷 FR / EU (blogs & éditeurs) ---
+  - name: "OCTO Talks!"
+    url: "https://blog.octo.com/feed/"
+  - name: "OVHcloud Blog"
+    url: "https://blog.ovhcloud.com/feed/"
+  - name: "Clever Cloud Blog"
+    url: "https://www.clever-cloud.com/blog/feed.xml"
+  - name: "Scaleway Blog"
+    url: "https://www.scaleway.com/en/blog/rss/"
+  - name: "Dataiku Blog"
+    url: "https://blog.dataiku.com/rss.xml"
+  - name: "Artefact Blog"
+    url: "https://blog.artefact.com/feed/"
+  - name: "Zenika Tech Blog"
+    url: "https://blog.zenika.com/feed/"
+  - name: "Theodo Tech Blog"
+    url: "https://blog.theodo.com/feed/"
+
+  # --- 📰 Médias FR (actualité tech — catégorie news_general) ---
+  - name: "BDM (Blog du Modérateur)"
+    url: "https://www.blogdumoderateur.com/feed/"
+  - name: "Siècle Digital"
+    url: "https://siecledigital.fr/feed/"
+  - name: "L’Usine Digitale"
+    url: "https://www.usine-digitale.fr/rss"
+  - name: "ZDNet France"
+    url: "https://www.zdnet.fr/feeds/rss/actualites/"
+  - name: "Numerama"
+    url: "https://www.numerama.com/feed/"
+  - name: "Le Big Data"
+    url: "https://www.lebigdata.fr/feed/"
+  - name: "ActuIA"
+    url: "https://www.actuia.com/feed/"
+  - name: "Journal du Net"
+    url: "https://www.journaldunet.com/rss/"
+  - name: "LeMagIT"
+    url: "https://www.lemagit.fr/rss"
+  - name: "Programmez!"
+    url: "https://www.programmez.com/rss"
+
+# --------- LLM (Groq via API OpenAI-compatible) ---------
 llm:
   provider: "openai_compat"
   base_url: "https://api.groq.com/openai/v1"
@@ -190,11 +320,59 @@ llm:
   temperature: 0.2
   max_tokens: 400
   concurrent: 1
-  score_threshold: 60
+  score_threshold: 60            # seuil par défaut (fallback)
 
+# Seuils par catégorie (clé = key ci-dessus)
+category_thresholds:
+  db_sql_olap: 58
+  dataprep_orchestration_etl: 62
+  python_polars_duckdb: 55
+  viz_bi: 65
+  ml_ai: 62
+  cloud: 70
+  news_general: 70               # plus strict pour l’actualité généraliste
+
+# Heuristiques pour le "final_score" (bonus/malus)
+heuristics:
+  trusted_sources:               # +bonus si source connue/fiable
+    - "Dagster Blog"
+    - "Prefect Blog"
+    - "DuckDB Blog"
+    - "Polars Blog"
+    - "AWS ML Blog"
+    - "Google Cloud Blog"
+    - "Power BI Blog"
+    - "Databricks Blog"
+    - "Snowflake Blog"
+    - "OCTO Talks!"
+    - "OVHcloud Blog"
+    - "Clever Cloud Blog"
+    - "Scaleway Blog"
+    - "Dataiku Blog"
+
+  bonuses:
+    trusted_source: 8            # +8 si source ∈ trusted_sources
+    deep_content_min_len: 2500
+    deep_content_bonus: 5        # +5 si len(content) > min_len
+    editorial_url_bonus: 5       # +5 si URL matche allow_path
+
+  penalties:
+    deny_paths_penalty: 15       # -15 si URL matche deny_path
+
+  regex:
+    allow_path: "(?i)(/blog|/posts|/article)"
+    deny_path:  "(?i)(release[-_]?notes|whats[-_]?new|changelog|/docs/|/api/|/sdk/)"
+
+  # Optionnel : booster/pénaliser selon mots-clés dans le contenu
+  boost_keywords: ["vector search","columnar","DAG","late materialization"]
+  boost_points: 4
+  down_keywords: ["release notes","GA","monthly updates","changelog"]
+  down_points: 5
+
+# --------- RÉSUMÉ IA ---------
 summary:
   enabled: true
-  lookback_days: 7          # fenêtre du résumé
-  min_score: 60             # ne résumer que les items utiles
-  max_sections: 8           # nb max de thèmes/sections
-  links_per_section: 5      # nb de liens à proposer par thème
+  lookback_days: 7
+  min_score: 60
+  max_sections: 8
+  links_per_section: 5

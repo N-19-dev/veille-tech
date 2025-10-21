@@ -17,7 +17,7 @@ from typing import Optional, List, Dict, Any
 import yaml
 from openai import OpenAI
 
-from veille_tech import db_conn, week_bounds  # même fenêtre semaine
+from veille_tech import db_conn, week_bounds  # mêmes bornes de semaine que le crawler
 
 # -----------------------
 # DB helpers
@@ -30,6 +30,8 @@ def ensure_llm_columns(db_path: str):
             conn.execute("ALTER TABLE items ADD COLUMN llm_score INTEGER")
         if "llm_notes" not in cols:
             conn.execute("ALTER TABLE items ADD COLUMN llm_notes TEXT")
+        if "final_score" not in cols:
+            conn.execute("ALTER TABLE items ADD COLUMN final_score INTEGER")
 
 def fetch_items_to_score(db_path: str, min_ts: int, max_ts: int, limit: Optional[int] = None):
     with db_conn(db_path) as conn:
@@ -47,27 +49,43 @@ def fetch_items_to_score(db_path: str, min_ts: int, max_ts: int, limit: Optional
     keys = ["id","url","title","summary","content","published_ts","source_name","category_key","llm_score"]
     return [dict(zip(keys, r)) for r in rows]
 
-def group_filtered(db_path: str, min_ts: int, max_ts: int, min_score: int):
+def group_filtered_with_thresholds(db_path: str, min_ts: int, max_ts: int,
+                                   thresholds: Dict[str, int],
+                                   default_threshold: int) -> Dict[str, List[Dict[str, Any]]]:
+    """
+    Regroupe par catégorie en appliquant un seuil par catégorie sur COALESCE(final_score, llm_score).
+    Trie par score (final d'abord) puis date.
+    """
+    out: Dict[str, List[Dict[str, Any]]] = {}
     with db_conn(db_path) as conn:
         cats = [r[0] for r in conn.execute("SELECT DISTINCT category_key FROM items")]
-        groups: Dict[str, List[Dict[str, Any]]] = {}
         for c in cats:
+            thr = int(thresholds.get(c, default_threshold))
             rows = conn.execute("""
-                SELECT url, title, summary, published_ts, source_name, llm_score
+                SELECT url, title, summary, published_ts, source_name,
+                       COALESCE(final_score, llm_score) AS score
                 FROM items
-                WHERE category_key=? AND published_ts>=? AND published_ts<? AND COALESCE(llm_score,0) >= ?
-                ORDER BY llm_score DESC, published_ts DESC
-            """, (c, min_ts, max_ts, min_score)).fetchall()
-            groups[c] = [dict(url=r[0], title=r[1], summary=r[2], published_ts=r[3], source_name=r[4], llm_score=r[5]) for r in rows]
-        return groups
+                WHERE category_key=? AND published_ts>=? AND published_ts<? 
+                      AND COALESCE(final_score, llm_score) >= ?
+                ORDER BY COALESCE(final_score, llm_score) DESC, published_ts DESC
+            """, (c, min_ts, max_ts, thr)).fetchall()
+            out[c] = [
+                dict(url=r[0], title=r[1], summary=r[2], published_ts=r[3],
+                     source_name=r[4], score=r[5])
+                for r in rows
+            ]
+    return out
 
 def fetch_items_for_summary(db_path: str, min_ts: int, max_ts: int, min_score: int):
     with db_conn(db_path) as conn:
         rows = conn.execute("""
-            SELECT title, url, source_name, category_key, llm_score, published_ts
+            SELECT title, url, source_name, category_key,
+                   COALESCE(final_score, llm_score) AS score,
+                   published_ts
             FROM items
-            WHERE published_ts >= ? AND published_ts < ? AND COALESCE(llm_score,0) >= ?
-            ORDER BY llm_score DESC, published_ts DESC
+            WHERE published_ts >= ? AND published_ts < ?
+              AND COALESCE(final_score, llm_score, 0) >= ?
+            ORDER BY COALESCE(final_score, llm_score) DESC, published_ts DESC
         """, (min_ts, max_ts, min_score)).fetchall()
     keys = ["title","url","source","category","llm_score","published_ts"]
     return [dict(zip(keys, r)) for r in rows]
@@ -75,15 +93,36 @@ def fetch_items_for_summary(db_path: str, min_ts: int, max_ts: int, min_score: i
 def to_markdown(groups: Dict[str, List[Dict[str, Any]]]) -> str:
     lines = ["# Sélection IA — Semaine\n"]
     for key, items in groups.items():
-        if not items: 
+        if not items:
             continue
         lines.append(f"## {key}\n")
         for it in items:
             dt = datetime.fromtimestamp(it["published_ts"], tz=timezone.utc).strftime("%Y-%m-%d")
-            score = it.get("llm_score", "?")
+            score = it.get("score", it.get("llm_score", "?"))
             lines.append(f"- [{it['title']}]({it['url']}) — {it['source_name']} · {dt} · **{score}/100**")
         lines.append("")
     return "\n".join(lines)
+
+# -----------------------
+# ---- CONFIG HELPERS ----
+# -----------------------
+
+def load_scoring_config(config_path: str):
+    """
+    Lit les sections utiles pour la pertinence.
+    Renvoie: (thresholds: dict, heuristics: dict)
+    """
+    cfg = yaml.safe_load(Path(config_path).read_text(encoding="utf-8"))
+    thresholds = cfg.get("category_thresholds", {}) or {}
+    heuristics = cfg.get("heuristics", {}) or {}
+
+    # Pré-compile les regex pour perf/simplicité
+    rx = heuristics.get("regex", {}) or {}
+    allow_path = rx.get("allow_path")
+    deny_path  = rx.get("deny_path")
+    heuristics["_rx_allow"] = re.compile(allow_path) if allow_path else None
+    heuristics["_rx_deny"]  = re.compile(deny_path) if deny_path else None
+    return thresholds, heuristics
 
 # -----------------------
 # Scoring (Groq OpenAI-compat)
@@ -97,8 +136,11 @@ except AttributeError:
         return await loop.run_in_executor(None, lambda: fn(*a, **k))
 
 SCORE_SYSTEM_PROMPT = (
-    "Tu es un assistant de veille. Donne un score d'utilité (0-100) pour un public data/analytics/BI/ML. "
-    "Réponds UNIQUEMENT par un entier, sans texte."
+    "Tu évalues la pertinence d'un article pour des pros data/analytics/BI/ML. "
+    "Critères (pondérés) : 1) Nouveauté/impact (40), 2) Profondeur technique (30), "
+    "3) Applicabilité pratique (20), 4) Signal éditorial (10). "
+    "Pénalités : notes de version, annonces marketing superficielles, docs API, contenu daté. "
+    "Réponds UNIQUEMENT par un entier 0–100."
 )
 
 def build_scoring_prompt(it: Dict[str, Any]) -> str:
@@ -149,6 +191,58 @@ async def score_items_openai(items: List[Dict[str, Any]], base_url: str, api_key
                 )
 
     await asyncio.gather(*[one(it) for it in items])
+
+# -----------------------
+# Score combiné (LLM + heuristiques config)
+# -----------------------
+
+def compute_final_score(row: Dict[str, Any], heuristics: Dict[str, Any]) -> int:
+    """
+    Score combiné = llm_score + bonus/malus basés sur heuristiques.
+    On clamp dans [0, 100].
+    row: {url, source_name, title, content, llm_score, ...}
+    """
+    base = int(row.get("llm_score") or 0)
+    url = row.get("url") or ""
+    src = (row.get("source_name") or row.get("source") or "").strip()
+    content = (row.get("content") or "").lower()
+    title = (row.get("title") or "").lower()
+
+    # Raccourcis heuristiques
+    trusted = set((heuristics.get("trusted_sources") or []))
+    bonuses = heuristics.get("bonuses", {}) or {}
+    penalties = heuristics.get("penalties", {}) or {}
+    rx_allow = heuristics.get("_rx_allow")
+    rx_deny  = heuristics.get("_rx_deny")
+
+    # -------------- BONUS --------------
+    if src in trusted:
+        base += int(bonuses.get("trusted_source", 0))
+
+    deep_min = int(bonuses.get("deep_content_min_len", 0) or 0)
+    if deep_min and len(content) > deep_min:
+        base += int(bonuses.get("deep_content_bonus", 0))
+
+    if rx_allow and rx_allow.search(url):
+        base += int(bonuses.get("editorial_url_bonus", 0))
+
+    # -------------- MALUS --------------
+    if rx_deny and rx_deny.search(url):
+        base -= int(penalties.get("deny_paths_penalty", 0))
+
+    # -------------- BOOST/DOWN par mots-clés --------------
+    boost_kw = [k.lower() for k in heuristics.get("boost_keywords", [])]
+    down_kw  = [k.lower() for k in heuristics.get("down_keywords", [])]
+    boost_pts = int(heuristics.get("boost_points", 0) or 0)
+    down_pts  = int(heuristics.get("down_points", 0) or 0)
+
+    text = f"{title}\n{content}"
+    if boost_kw and any(k in text for k in boost_kw):
+        base += boost_pts
+    if down_kw and any(k in text for k in down_kw):
+        base -= down_pts
+
+    return max(0, min(100, base))
 
 # -----------------------
 # Summary helpers
@@ -205,7 +299,7 @@ def _normalize_creuser_lists(block: str) -> str:
             lines.append("**À creuser :**")
             for lk in links:
                 lk = lk.strip(" -•*")
-                if not lk: 
+                if not lk:
                     continue
                 lines.append(f"- {lk}")
         else:
@@ -245,7 +339,7 @@ def ensure_all_sections_ordered(md: str, expected_titles: List[str], placeholder
             body = content_by_title[title]
         else:
             stitle = simpl(title)
-            for k,v in list(content_by_title.items()):
+            for k, v in list(content_by_title.items()):
                 if simpl(k) == stitle or stitle in simpl(k):
                     body = v; break
         if body and body.strip():
@@ -343,7 +437,7 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
     temperature = float(llm_cfg.get("temperature", 0.2))
     max_tokens = int(llm_cfg.get("max_tokens", 400))
     concurrent = int(llm_cfg.get("concurrent", 1))
-    threshold = int(llm_cfg.get("score_threshold", 60))
+    default_threshold = int(llm_cfg.get("score_threshold", 60))
 
     ensure_llm_columns(db_path)
 
@@ -367,6 +461,22 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
         else:
             raise RuntimeError(f"Provider LLM inconnu: {provider} (attendu: 'openai_compat')")
 
+    # === Recalcul/stocker final_score pour la fenêtre de la semaine (TOUJOURS) ===
+    thresholds, heuristics = load_scoring_config(config_path)
+    with db_conn(db_path) as conn:
+        rows = conn.execute("""
+            SELECT id, url, source_name, title, content, llm_score, published_ts
+            FROM items
+            WHERE published_ts >= ? AND published_ts < ? AND llm_score IS NOT NULL
+        """, (week_start_ts, week_end_ts)).fetchall()
+
+        for id_, url, src, title, content, llm, ts in rows:
+            fs = compute_final_score(
+                {"url": url, "source_name": src, "title": title, "content": content, "llm_score": llm},
+                heuristics
+            )
+            conn.execute("UPDATE items SET final_score=? WHERE id=?", (fs, id_))
+
     # Stats
     with db_conn(db_path) as conn:
         recent_scored = conn.execute(
@@ -381,20 +491,26 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
     week_dir = out_root / week_label
     week_dir.mkdir(parents=True, exist_ok=True)
 
-    # Export sélection IA
-    groups = group_filtered(db_path, week_start_ts, week_end_ts, threshold)
+    # Export sélection IA (seuils par catégorie)
+    groups = group_filtered_with_thresholds(
+        db_path=db_path,
+        min_ts=week_start_ts,
+        max_ts=week_end_ts,
+        thresholds=thresholds,
+        default_threshold=default_threshold
+    )
     json_path = week_dir / "ai_selection.json"
     md_path = week_dir / "ai_selection.md"
     json_path.write_text(json.dumps(groups, indent=2, ensure_ascii=False), encoding="utf-8")
     md_path.write_text(to_markdown(groups), encoding="utf-8")
     kept = sum(len(v) for v in groups.values())
-    print(f"[done] Export IA (semaine {week_label}): {kept} items ≥ {threshold}")
+    print(f"[done] Export IA (semaine {week_label}): {kept} items ≥ seuils")
     print(f" - {json_path}\n - {md_path}")
 
     # Résumé hebdo IA
     sum_cfg = cfg.get("summary", {})
     if sum_cfg.get("enabled", True) and kept > 0:
-        sum_min_score = int(sum_cfg.get("min_score", threshold))
+        sum_min_score = int(sum_cfg.get("min_score", default_threshold))
         max_sections = int(sum_cfg.get("max_sections", 8))
         links_per = int(sum_cfg.get("links_per_section", 5))
 
