@@ -1,0 +1,174 @@
+{
+  "cloud": [
+    {
+      "url": "https://azure.microsoft.com/en-us/blog/how-azure-cobalt-100-vms-are-powering-real-world-solutions-delivering-performance-and-efficiency-results/",
+      "title": "How Azure Cobalt 100 VMs are powering real-world solutions, delivering performance and efficiency results",
+      "summary": "Cobalt 100 systems are designed to deliver high performance, energy efficiency, and cost effectiveness for a wide range of workloads. The post How Azure Cobalt 100 VMs are powering real-world solutions, delivering performance and efficiency results appeared first on Microsoft Azure Blog .",
+      "published_ts": 1758639600,
+      "source_name": "Azure Blog"
+    }
+  ],
+  "dataprep_orchestration_etl": [
+    {
+      "url": "https://blogs.microsoft.com/blog/2025/09/25/introducing-microsoft-marketplace-thousands-of-solutions-millions-of-customers-one-marketplace/",
+      "title": "Introducing Microsoft Marketplace — Thousands of solutions. Millions of customers. One Marketplace.",
+      "summary": "A new breed of industry-leading company is taking shape — Frontier Firms. These organizations blend human ambition with AI-powered technology to reshape how innovation is scaled, work is orchestrated and value is created. They’re accelerating AI transformation to enrich employee experiences, reinvent customer engagement, reshape business processes and unlock creativity and innovation. The post Introducing Microsoft Marketplace — Thousands of solutions. Millions of customers. One Marketplace. appeared first on Microsoft Azure Blog .",
+      "published_ts": 1758816199,
+      "source_name": "Azure Blog"
+    },
+    {
+      "url": "https://airbyte.com/blog/airbyte-2-0",
+      "title": "Airbyte 2.0: The Data Platform Built for the AI Era | Airbyte",
+      "summary": "Airbyte 2.0 is the modern data platform built for the AI era—unifying data movement, transformation, and orchestration to power analytics, machine learning, and AI at scale.",
+      "published_ts": 1758672000,
+      "source_name": "Airbyte Blog"
+    },
+    {
+      "url": "https://airbyte.com/blog/speed-improvements",
+      "title": "Speed: Engineering Airbyte's 4-10x Performance Breakthrough | Airbyte",
+      "summary": "Learn how Airbyte engineered a 4–10x performance boost in data movement. Discover the innovations behind this speed breakthrough and what it means for faster, more reliable data integration at scale.",
+      "published_ts": 1758672000,
+      "source_name": "Airbyte Blog"
+    },
+    {
+      "url": "https://airbyte.com/blog/data-activation",
+      "title": "Data Activation: Sending Insights Back to the Source | Airbyte",
+      "summary": "Unlock the power of data activation by sending insights directly back to your source systems. Empower teams with actionable intelligence where they work, drive faster decisions, and maximize business impact.",
+      "published_ts": 1758672000,
+      "source_name": "Airbyte Blog"
+    },
+    {
+      "url": "https://azure.microsoft.com/en-us/blog/accelerate-migration-and-modernization-with-agentic-ai/",
+      "title": "Accelerate migration and modernization with agentic AI",
+      "summary": "At the Migrate and Modernize Summit, we’re announcing a comprehensive set of agentic AI solutions and offerings to accelerate transformation and reduce friction. The post Accelerate migration and modernization with agentic AI appeared first on Microsoft Azure Blog .",
+      "published_ts": 1758632400,
+      "source_name": "Azure Blog"
+    },
+    {
+      "url": "https://dlthub.com/blog/sap-data-ingestion-with-python-rfc",
+      "title": "SAP Data Ingestion with Python: SAP RFC Explained",
+      "summary": "SAP data is hard to extract. Dominik’s new Python connector replaces pyRFC, enabling faster, chunked ingestion into modern pipelines.",
+      "published_ts": 1758499200,
+      "source_name": "dlt Blog"
+    }
+  ],
+  "db_sql_olap": [
+    {
+      "url": "https://cloud.google.com/bigquery/docs/release-notes#September_25_2025",
+      "title": "September 25, 2025",
+      "summary": "Feature The ARRAY_FIRST , ARRAY_LAST ,\nand ARRAY_SLICE GoogleSQL functions are now generally available (GA). Feature BigQuery data\ncanvas now\nsupports destination table nodes. Destination table nodes let you persist query\nresults to a new or existing table. This feature is generally\navailable (GA).",
+      "published_ts": 1758783600,
+      "source_name": "BigQuery Release Notes"
+    },
+    {
+      "url": "https://duckdb.org/2025/09/24/sorting-again.html",
+      "title": "Redesigning DuckDB's Sort, Again",
+      "summary": "After four years, we've decided to redesign DuckDB's sort implementation, again. In this post, we present and evaluate the new design.",
+      "published_ts": 1758672000,
+      "source_name": "DuckDB Blog"
+    },
+    {
+      "url": "https://cloud.google.com/bigquery/docs/release-notes#September_22_2025",
+      "title": "September 22, 2025",
+      "summary": "Feature You can now run federated queries against PostgreSQL dialect databases in Spanner using BigQuery external datasets with GoogleSQL; this includes cross-region federated queries . This feature is generally available (GA). Libraries Python 3.38.0 (2025-09-15) Features Add additional query stats ( #2270 ) ( 7b1b718 )",
+      "published_ts": 1758524400,
+      "source_name": "BigQuery Release Notes"
+    }
+  ],
+  "ml_ai": [
+    {
+      "url": "/blog/airflow-3.1.0/",
+      "title": "Blog: Apache Airflow 3.1.0: Human-Centered Workflows",
+      "summary": "We are thrilled to announce the release of Apache Airflow 3.1.0 , an update that puts humans at the center of data\nworkflows. This release introduces powerful new capabilities for human decision-making in automated\nprocesses, comprehensive internationalization support, and significant developer experience improvements. Details : 📦 PyPI: https://pypi.org/project/apache-airflow/3.1.0/ 📚 Core Airflow Docs: https://airflow.apache.org/docs/apache-airflow/3.1.0/ 📚 Task SDK Docs: https://airflow.apache.org/docs/task-sdk/1.1.0/ 🛠️ Release Notes: https://airflow.apache.org/docs/apache-airflow/3.1.0/release_notes.html 🪶 Sources: https://airflow.apache.org/docs/apache-airflow/3.1.0/installation/installing-from-sources.html 🚏 Constraints: https://github.com/apache/airflow/tree/constraints-3.1.0 🤝 Human-in-the-Loop (HITL): When Automation Meets Human Judgment This powerful capability bridges the gap between automated processes and human expertise, making Airflow invaluable for: AI/ML Model Validation : Pause inference pipelines for human review of model outputs Content Moderation : Route content through human reviewers before publication Approval Workflows : Require manager approval for sensitive operations Data Quality Gates : Allow data stewards to validate critical datasets HITL tasks pause in a deferred state while presenting intuitive web forms in the Airflow UI. Users with appropriate roles can review context data, DAG parameters, and XCom values before making informed decisions. Example Code: from airflow.sdk import DAG from airflow.providers.standard.operators.hitl import HITLOperator with DAG ( \"content_moderation\" , schedule = \"@daily\" ) as dag : moderate_content = HITLOperator ( task_id = \"review_content\" , message = \"Please review this content for publication\" , data_key = \"content_to_review\" ) 📊 UI Enhancements & Performance Calendar and Gantt Views Make Their Comeback Remember those beloved Calendar and Gantt chart views from Airflow 2.x? They’re back, completely rebuilt for the\nmodern React UI after being omitted from the 3.0 release. The new Calendar view is genuinely interactive with filtering capabilities that make it easy to drill down\ninto specific time periods and dag states. The Gantt chart is now integrated directly into the grid view and renders much faster than the old\nversion, giving you that timeline perspective without the performance headaches. Theme Updates That Actually Matter We’ve refreshed the color palette using modern design principles, making the UI more consistent, professional\nand most of all taken a careful look at contrast ratios so the UI should be more accessible. Other Improvements We’ve added a lot more filtering options across the pages! Plus, you can now pin your favorite DAGs to keep them at the top of your list or to filter for them easily. It’s\none of those small features that makes a huge difference when dealing with 100s of workflows. Credited to Volker Janz. 📊 UI Development Milestone : Airflow 3.1.0 features 5x more UI pull requests than the 2.10 release and 50% more than Airflow 3.0, demonstrating the community’s commitment to user experience excellence. ⏰ Deadline Alerts : Proactive Workflow Monitoring Say goodbye to reactive monitoring. Deadline Alerts provide proactive notifications when DAG runs\nexceed time thresholds, helping ensure SLA compliance and timely completion of critical workflows. Configure monitoring by specifying: Reference point : DAG queued time, logical date, or fixed datetime Interval : Time threshold (positive or negative) Callback : Notifications via Airflow Notifiers or custom functions Example Code: from datetime import timedelta from airflow.sdk.definitions.deadline import DeadlineAlert , DeadlineReference , AsyncCallback from airflow.providers.slack.notifications.slack_webhook import SlackWebhookNotifier with DAG ( \"critical_etl\" , deadline = DeadlineAlert ( reference = DeadlineReference . DAGRUN_QUEUED_AT , interval = timedelta ( hours = 2 ), callback = AsyncCallback ( SlackWebhookNotifier , kwargs = { \"text\" : \"🚨 Critical ETL missed deadline!\" } ) ) ) as dag : # Your tasks here Perfect for monitoring daily ETLs, alerting before critical deadlines, or escalating resource-constrained workflows. 🌍 Going Global with 17 Languages Airflow now speaks your team’s language. Literally. We have added comprehensive internationalization support\nfor 17 languages , including Arabic, Chinese, French, German, Spanish and more. The interface detects your\nbrowser preferences automatically, but you can switch languages on the fly without refreshing the page. For our Arabic and Hebrew users, we’ve built in proper right-to-left (RTL) support The best part? We have made it straightforward for the community to contribute additional languages with clear\ncontribution guidelines, so this is just the beginning of Airflow’s global reach. 🎨 Build your Airflow , your way The new React Plugin System ( AIP-68 ) transforms how you extend Airflow’s interface. We have replaced\nthe old Flask-based approach with a modern toolkit that lets you customize Airflow exactly how your team works. Want to embed your company’s dashboard right in the Airflow UI? Build React applications or iframes that will\nrender inside Airflow’s (nav bar, dashboard, details page, etc). Want to link to your existing tools\nseamlessly? Create custom external links to your resources. Want to extend Airflow’s API server? Register\nFastAPI sub applications and middlewares that fit your specific processes. The system includes: External Views for linking to existing tools (external links or embedded iframes) React Applications support for rendering external react apps FastAPI Sub Applications to extend the API server Root Middlewares for intercepting API requests (even core ones) We’ve already seen teams integrate everything from Wikipedia searches to data lineage\nvisualizations to yes, someone building a snake game to play while waiting on dag runs! Credited to Tamara Fingerlin. 🔧 Enhanced Developer and Authoring Experience Task SDK Evolution Airflow 3.1 advances the decoupling of the Task SDK from Airflow Core through improved DAG serialization. While\ncomplete separation arrives in 3.2.0, the foundation enables: Independent Upgrades : Reduced coordination need between Dag authors and Airflow Ops teams Forward Compatibility : Dag authors should now write Dags by importing from the airflow.sdk namespace for future-proofing. (Naturally, the old imports still work but issue a warning.) Deployment Flexibility : Better support for separated component deployment Python 3.13 Support Airflow 3.1.0 adds Python 3.13 support while removing Python 3.9 (end-of-life). The platform now supports Python 3.10, 3.11, 3.12, and 3.13. Inference Execution A new streaming API endpoint ( /dags/{dag_id}/dagRuns/{dag_run_id}/wait ) allows applications to watch DAG runs\nuntil completion, enabling responsive integration patterns for real-time workflows. The below example use httpx to trigger a dag run, and emits the final dag run\nstate after it finishes: import asyncio import json import httpx dag_id = \"my-dag\" async def create_and_wait ( client ): # Create a dag run... r = await client . post ( f \"https://my-airflow.example.com/api/v2/dags/ { dag_id } /dagRuns\" ) run_id = r . json ()[ \"dag_run_id\" ] async with client . stream ( \"GET\" , f \"https://my-airflow.example.com/api/v2/dags/ { dag_id } /dagRuns/ { run_id } /wait\" , ) as r : async for line in r . aiter_lines (): pass # You can do progress report here instead. print ( \"Dag run state:\" , json . loads ( line . strip ())[ \"state\" ]) async def main (): async with httpx . AsyncClient () as client : await create_and_wait ( client ) asyncio . run ( main ()) 🙏 Amazing Community Apache Airflow 3.1.0 represents an extraordinary community effort, showcasing the vibrant ecosystem that drives this project forward with 163 contributors making this release possible across 1,400+ commits . Leading Contributors Special thanks to our top 20 contributors who drove this release forward: Amogh Desai , Ash Berlin-Taylor , Brent Bovenzi , Bugra Ozturk , Daniel Standish , Elad Kalif , Ephraim Anierobi , GPK , Guan Ming (Wesley) Chiu , Jarek Potiuk , Jens Scheffler , Karthikeyan Singaravelan , Kaxil Naik , LI,JHE-CHEN , Pierre Jeambrun , Shahar Epstein , Tzu-ping Chung , Vincent , Wei Lee , and Yeonguk Choo . View all 143 additional contributors 1in3x, Aaron Chen, Aayush Bisen, Abhishek, Achim Gädke, Aldo, Alex Neal Albinda, Alyssa Mhie M. Matila, Anand Raman, Andrei Serdiukov, Ankit Chaurasia, Antony Southworth, Aritra Basu, Aryan Khurana, Atul Singh, Azis, BBQing, Bjorn Olsen, Bowrna, Brunda10, Carl Leake, Chang-Yen (Brian) Li, Christos Bisias, Collin McNulty, Constance Martineau, D. Ferruzzi, DHARMENDRA AHIRWAR, Damian Shaw, Daniel Wolf, David Blain, Denis Krivenko, Dev-iL, Dheeraj Turaga, Diogo Rodrigues, Domadelfin, Dov Benyomin Sohacheski, Duc Nguyen, Evgenii Prusov, Farhan, Fortytwo, Gabriel TOUZALIN, Gajo Petrovic, Gary Hsu, Glenn Schuurman, Guangyang Li, Gwak Beomgyu, Hoyeop Lee, Hussein Awala, Isaiah Iruoha, Ivan, Jake Roach, James Hyphen, Jason, Jason Brownstein, Jed Cunningham, Jeongseok Kang, John Bampton, Josef Šimánek, Josué Velázquez Gen, João Ramiro, Kacper Muda, Kalyan R, Karan Anand, Karen Braganza, Karthik S, Kavya Katal, Ken Lewerentz, Kevin Liu, Kevin Yang, Kiran R, Kiruban Kamaraj, Kosteev Eugene, Kumbha Lakshmi Narayana, Kyungjun Lee, LIU ZHE YOU, Lipu Fei, Maciej Obuchowski, Maksim, Mike Lay, Mikhail Dengin, Minkyu Kim, N R Navaneet, NOEUN KIM, Naseem Shah, Nataneljpwd, Niko Oliveira, Nithin U, Nitochkin, Olivier, Owen Leung, Paolo Facchinetti, Pedro Leal, Pratiksha, Przemysław Mirowski, Qiang-Liu, Rahul Vats, Ramit Kataria, Sam Wheating, Sean Ghaeli, Sean Rose, Sebastián Ortega, Seongho Kim, SeungMin, Shlomit-B, Shubham Raj, Sneha Prabhu, Stanley Law, Stephan, Steve Ahn, Valentyn, Vic Wen, Vincent Kling, VladaZakharova, Wei-Yu Chen, Wonseok Yang, Xch1, Xiaodong DENG, Y. SOMDA, Yann Lambret, Yannick Suter, Yeonguk, Yiming Peng, Yusin, Zach, Zach Liu, Zhen-Lun (Kevin) Hong, anasatzemoso, ayush3singh, codecae, davidfgcorreia, dominikhei, ecodina, fuatcakici, humit, magic_frog, majorosdonat, mandeepzemo, oboki, olegkachur-e, pawelgrochowicz, roach231428, shreyaskj-0710, sujitha-saranam, suman-himanshu, vikrantkumar-max, yangyulely, 코딩하는펭귄. UI Excellence & Community Growth The exceptional growth in UI contributions - 5x more pull requests than Airflow 2.10 and 50% more than Airflow 3.0 - reflects the dedicated efforts of our UI maintainers and an expanding community of 70 frontend contributors who have made user experience a cornerstone of this release. Global Collaboration The internationalization effort represents contributors from around the world, making Airflow truly accessible across 17 languages and diverse technical communities, demonstrating the truly global nature of the Airflow project. Apache Airflow is a community-driven project. Special thanks to all contributors who made this release possible through code, documentation, testing, and feedback. The future of workflow orchestration is built together. 📝 Migration & Upgrade Notes Python Support : Ensure you’re running Python 3.10+ before upgrading. We recommend at least Python 3.12 for performance improvements from the Python core team – 3.13 if you can manage it is even better! Provider Updates : Update to the latest provider packages to take advantage of new features. Breaking Changes : Review the migration guide for configuration changes and removed features if you are upgrading directly from Airflow 2.x. 🔗 Get Involved Try the Release : Upgrade your development environment and explore the new features Join the Conversation : Connect with us on ( Airflow Slack ) and the ( dev mailing list ) Contribute : Check out our contribution guide . Provide Feedback : Share your experiences and suggestions on GitHub ( https://github.com/apache/airflow ) Apache Airflow 3.1.0 marks a new chapter in making data orchestration more inclusive, intelligent, and\nhuman-centered. We can’t wait to see what you build with it!",
+      "published_ts": 1758758400,
+      "source_name": "Apache Airflow Blog"
+    },
+    {
+      "url": "https://www.getdbt.com/blog/ai-ready-platform-generative-ai",
+      "title": "Building an AI-ready data platform that supports generative AI",
+      "summary": "Here’s how to build a data architecture that scales to meet the needs of modern AI-powered applications.",
+      "published_ts": 1758749160,
+      "source_name": "dbt Blog"
+    },
+    {
+      "url": "https://azure.microsoft.com/en-us/blog/agent-factory-designing-the-open-agentic-web-stack/",
+      "title": "Agent Factory: Designing the open agentic web stack",
+      "summary": "Unlock enterprise value with an open, secure, and interoperable AI agent ecosystem. The post Agent Factory: Designing the open agentic web stack appeared first on Microsoft Azure Blog .",
+      "published_ts": 1758726000,
+      "source_name": "Azure Blog"
+    },
+    {
+      "url": "https://blog.streamlit.io/fast-prototyping-of-genai-apps-with-streamlit/",
+      "title": "Fast Prototyping of GenAI Apps with Streamlit",
+      "summary": "A course to help you learn to build and ship GenAI apps fast",
+      "published_ts": 1758722417,
+      "source_name": "Streamlit Blog"
+    },
+    {
+      "url": "https://cloud.google.com/bigquery/docs/release-notes#September_24_2025",
+      "title": "September 24, 2025",
+      "summary": "Feature BigQuery ML now supports visualization of model monitoring metrics .\nThis feature lets you use charts and graphs to analyze model monitoring function output .\nYou can use metric visualization with the ML.VALIDATE_DATA_SKEW and ML.VALIDATE_DATA_DRIFT functions. This feature is generally available (GA). Feature For command-line users, BigQuery is now integrated with the Gemini CLI to provide an agentic CLI experience. Using the dedicated Gemini CLI extensions for BigQuery , you can search, explore, analyze, and gain insights from your data by asking natural language questions, generating forecasts, and running contribution analysis directly from the command line. This feature is available in beta.",
+      "published_ts": 1758697200,
+      "source_name": "BigQuery Release Notes"
+    },
+    {
+      "url": "https://airbyte.com/blog/enterprise-flex",
+      "title": "Introducing Airbyte Enterprise Flex | Airbyte",
+      "summary": "Discover Airbyte Enterprise Flex, the new solution built for enterprises that need flexibility, scalability, and control in their data integration. Unlock seamless data movement, enhanced security, and tailored deployment options.",
+      "published_ts": 1758672000,
+      "source_name": "Airbyte Blog"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/aws/accelerate-ai-agent-development-with-the-nova-act-ide-extension/",
+      "title": "Accelerate AI agent development with the Nova Act IDE extension",
+      "summary": "The Nova Act extension is a new IDE-integrated tool that enables developers to create browser automation agents using natural language through the Nova Act model, offering features like Builder Mode, chat capabilities, and predefined templates while streamlining the development process without leaving their preferred development environment.",
+      "published_ts": 1758643264,
+      "source_name": "AWS Blog (global)"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-amazon-q-developer-aws-step-functions-aws-cloud-club-captain-deadline-and-more-september-22-2025/",
+      "title": "AWS Weekly Roundup: Amazon Q Developer, AWS Step Functions, AWS Cloud Club Captain deadline, and more (September 22, 2025)",
+      "summary": "Three weeks ago, I published a post about the new AWS Region in New Zealand (ap-southeast-6). This led to an incredible opportunity to visit New Zealand, where I met passionate builders and presented at several events including Serverless and Platform Engineering meetup, AWS Tools and Programming meetup, AWS Cloud Clubs in Auckland, and AWS Community […]",
+      "published_ts": 1758558104,
+      "source_name": "AWS Blog (global)"
+    }
+  ],
+  "python_polars_duckdb": [],
+  "viz_bi": [
+    {
+      "url": "https://powerbi.microsoft.com/en-us/blog/tmdl-view-generally-available/",
+      "title": "TMDL view (Generally Available)",
+      "summary": "TMDL view is now generally available in Power BI Desktop!",
+      "published_ts": 1758704400,
+      "source_name": "Power BI Blog"
+    },
+    {
+      "url": "https://powerbi.microsoft.com/en-us/blog/power-bi-in-teams-content-shared-in-teams-chats-now-opens-a-dedicated-separate-window-within-teams/",
+      "title": "Power BI in Teams – Content Shared in Teams Chats Now Opens a Dedicated Separate Window Within Teams",
+      "summary": "Power BI in Teams – Content Shared in Teams Chats Now Opens a Dedicated Separate Window Within Teams",
+      "published_ts": 1758636000,
+      "source_name": "Power BI Blog"
+    },
+    {
+      "url": "https://powerbi.microsoft.com/en-us/blog/dax-udfs-code-once-reuse-everywhere-preview/",
+      "title": "DAX UDFs: Code once, reuse everywhere (Preview)",
+      "summary": "Discover the power of DAX User Defined Functions (UDFs) in Power BI! Now in public preview, DAX UDFs let you define reusable logic with parameters—making your models cleaner, more maintainable, and easier to debug. Whether you’re building simple measures or advanced calculations like currency conversion, UDFs unlock a new level of flexibility. Learn how to get started and explore real-world examples in this post.",
+      "published_ts": 1758621600,
+      "source_name": "Power BI Blog"
+    },
+    {
+      "url": "https://powerbi.microsoft.com/en-us/blog/deep-dive-into-editing-semantic-models-in-the-power-bi-service-now-generally-available/",
+      "title": "Deep Dive into Editing Semantic Models in the Power BI Service (Generally Available)",
+      "summary": "We are thrilled to announce that editing semantic models in the Power BI service is now generally available! This milestone unlocks end-to-end Power BI authoring directly in the browser, bringing core modeling parity between the web and Desktop experiences. Yes, that means Mac users can now model in Power BI, no Desktop required!",
+      "published_ts": 1758547800,
+      "source_name": "Power BI Blog"
+    },
+    {
+      "url": "https://powerbi.microsoft.com/en-us/blog/calendar-based-time-intelligence-time-intelligence-tailored-preview/",
+      "title": "Calendar-based time intelligence: time intelligence, tailored (Preview)",
+      "summary": "Time-based analysis just got a major upgrade. Power BI now supports calendar-based time intelligence, giving you the flexibility to work with any calendar structure—fiscal, retail, lunar, or custom. Say goodbye to limitations like continuous date table requirements and lack of week-based calculations. With this new feature, you can define multiple calendars, map time attributes, and unlock powerful new DAX functions like TOTALWTD.\nEnable the preview today and explore a smarter way to analyze time in Power BI.",
+      "published_ts": 1758531600,
+      "source_name": "Power BI Blog"
+    }
+  ]
+}

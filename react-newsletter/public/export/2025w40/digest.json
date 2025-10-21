@@ -1,0 +1,109 @@
+{
+  "cloud": [
+    {
+      "url": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-amazon-s3-amazon-bedrock-agentcore-aws-x-ray-and-more-september-29-2025/",
+      "title": "AWS Weekly Roundup: Amazon S3, Amazon Bedrock AgentCore, AWS X-Ray and more (September 29, 2025)",
+      "summary": "Wow, can you all believe it? We’re nearing the end of the year already. Next thing you know, AWS re:Invent will be here! This is our biggest event that takes place every year in Las Vegas from December 1st to December 5th where we reveal and release many of the things that we’ve been working […]",
+      "published_ts": 1759164124,
+      "source_name": "AWS Blog (global)"
+    }
+  ],
+  "dataprep_orchestration_etl": [],
+  "db_sql_olap": [
+    {
+      "url": "https://cloud.google.com/bigquery/docs/release-notes#October_02_2025",
+      "title": "October 02, 2025",
+      "summary": "Feature You can now use the notebook gallery in the BigQuery web UI as your central hub for discovering and using prebuilt notebook\ntemplates. This feature is in preview .",
+      "published_ts": 1759388400,
+      "source_name": "BigQuery Release Notes"
+    }
+  ],
+  "ml_ai": [
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/unlock-global-ai-inference-scalability-using-new-global-cross-region-inference-on-amazon-bedrock-with-anthropics-claude-sonnet-4-5/",
+      "title": "Unlock global AI inference scalability using new global cross-Region inference on Amazon Bedrock  with Anthropic’s Claude Sonnet 4.5",
+      "summary": "Organizations are increasingly integrating generative AI capabilities into their applications to enhance customer experiences, streamline operations, and drive innovation. As generative AI workloads continue to grow in scale and importance, organizations face new challenges in maintaining consistent performance, reliability, and availability of their AI-powered applications. Customers are looking to scale their AI inference workloads across […]",
+      "published_ts": 1759527446,
+      "source_name": "AWS ML Blog"
+    },
+    {
+      "url": "https://www.getdbt.com/blog/the-hidden-tax-on-analysts",
+      "title": "The hidden tax on analysts",
+      "summary": "A new report with the Harris Poll shows analysts lose $21K/year to inefficiencies. Learn how AI workflows reverse the trend.",
+      "published_ts": 1759522860,
+      "source_name": "dbt Blog"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/secure-ingress-connectivity-to-amazon-bedrock-agentcore-gateway-using-interface-vpc-endpoints/",
+      "title": "Secure ingress connectivity to Amazon Bedrock AgentCore Gateway using interface VPC endpoints",
+      "summary": "In this post, we demonstrate how to access AgentCore Gateway through a VPC interface endpoint from an Amazon Elastic Compute Cloud (Amazon EC2) instance in a VPC. We also show how to configure your VPC endpoint policy to provide secure access to the AgentCore Gateway while maintaining the principle of least privilege access.",
+      "published_ts": 1759522126,
+      "source_name": "AWS ML Blog"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/enhance-agentic-workflows-with-enterprise-search-using-kore-ai-and-amazon-q-business/",
+      "title": "Enhance agentic workflows with enterprise search using Kore.ai and Amazon Q Business",
+      "summary": "In this post, we demonstrate how organizations can enhance their employee productivity by integrating Kore.ai’s AI for Work platform with Amazon Q Business. We show how to configure AI for Work as a data accessor for Amazon Q index for independent software vendors (ISVs), so employees can search enterprise knowledge and execute end-to-end agentic workflows involving search, reasoning, actions, and content generation.",
+      "published_ts": 1759443263,
+      "source_name": "AWS ML Blog"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/accelerate-development-with-the-amazon-bedrock-agentcore-mcpserver/",
+      "title": "Accelerate development with the Amazon Bedrock AgentCore MCP server",
+      "summary": "Today, we’re excited to announce the Amazon Bedrock AgentCore Model Context Protocol (MCP) Server. With built-in support for runtime, gateway integration, identity management, and agent memory, the AgentCore MCP Server is purpose-built to speed up creation of components compatible with Bedrock AgentCore. You can use the AgentCore MCP server for rapid prototyping, production AI solutions, […]",
+      "published_ts": 1759439554,
+      "source_name": "AWS ML Blog"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/rox-accelerates-sales-productivity-with-ai-agents-powered-by-amazon-bedrock/",
+      "title": "Rox accelerates sales productivity with AI agents powered by Amazon Bedrock",
+      "summary": "We’re excited to announce that Rox is generally available, with Rox infrastructure built on AWS and delivered across web, Slack, macOS, and iOS. In this post, we share how Rox accelerates sales productivity with AI agents powered by Amazon Bedrock.",
+      "published_ts": 1759342421,
+      "source_name": "AWS ML Blog"
+    },
+    {
+      "url": "https://azure.microsoft.com/en-us/blog/introducing-microsoft-agent-framework/",
+      "title": "Introducing Microsoft Agent Framework",
+      "summary": "Microsoft Agent Framework, now in public preview, and new capabilities in Azure AI Foundry make it easier for developers to build, observe, and govern multi-agent systems. The post Introducing Microsoft Agent Framework appeared first on Microsoft Azure Blog .",
+      "published_ts": 1759327200,
+      "source_name": "Azure Blog"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/modernize-fraud-prevention-graphstorm-v0-5-for-real-time-inference/",
+      "title": "Modernize fraud prevention: GraphStorm v0.5 for real-time inference",
+      "summary": "In this post, we demonstrate how to implement real-time fraud prevention using GraphStorm v0.5's new capabilities for deploying graph neural network (GNN) models through Amazon SageMaker. We show how to transition from model training to production-ready inference endpoints with minimal operational overhead, enabling sub-second fraud detection on transaction graphs with billions of nodes and edges.",
+      "published_ts": 1759264186,
+      "source_name": "AWS ML Blog"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/aws/announcing-amazon-ecs-managed-instances-for-containerized-applications/",
+      "title": "Announcing Amazon ECS Managed Instances for containerized applications",
+      "summary": "Amazon ECS Managed Instances is a new compute option that eliminates infrastructure management overhead while giving you access to the broad suite of EC2 capabilities including the flexibility to select instance types, access reserved capacity, and advanced security and observability configurations.",
+      "published_ts": 1759258007,
+      "source_name": "AWS Blog (global)"
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/aws/announcing-aws-outposts-third-party-storage-integration-with-dell-and-hpe/",
+      "title": "Announcing AWS Outposts third-party storage integration with Dell and HPE",
+      "summary": "AWS Outposts is now integrated with Dell PowerStore and HPE Alletra MP B10000 systems, enabling customers to seamlessly use their on-premises external storage infrastructure with AWS services while maintaining data residency requirements.",
+      "published_ts": 1759250394,
+      "source_name": "AWS Blog (global)"
+    },
+    {
+      "url": "https://azure.microsoft.com/en-us/blog/grok-4-is-now-available-in-azure-ai-foundry-unlock-frontier-intelligence-and-business-ready-capabilities/",
+      "title": "Grok 4 is now available in Azure AI Foundry: Unlock frontier intelligence and business-ready capabilities",
+      "summary": "Microsoft has collaborated closely with xAI to bring Grok 4, their most advanced model, to Azure AI Foundry—delivering powerful reasoning within a platform designed for business-ready safety and control. The post Grok 4 is now available in Azure AI Foundry: Unlock frontier intelligence and business-ready capabilities appeared first on Microsoft Azure Blog .",
+      "published_ts": 1759162500,
+      "source_name": "Azure Blog"
+    },
+    {
+      "url": "https://cloud.google.com/bigquery/docs/release-notes#September_29_2025",
+      "title": "September 29, 2025",
+      "summary": "Feature To simplify access management for your Iceberg tables, you\ncan use credential vending mode with the Apache Iceberg REST catalog in BigLake metastore. Credential vending removes\nthe need for catalog users to have direct access to Cloud Storage buckets. This\nfeature is in Preview . Feature You can now create BigQuery non-incremental materialized views over Spanner data to improve query performance by periodically caching results.\nThis feature is in Preview . Feature BigQuery data preparation supports unnesting arrays, which expands each\narray element into its own row for easier analysis. For more information, see Unnest arrays .\nThis feature is generally\navailable (GA). Announcement History-based query optimizations are now enabled by default. If history-based optimizations have been previously\ndisabled, you can re-enable history-based optimizations for your project or organization.",
+      "published_ts": 1759129200,
+      "source_name": "BigQuery Release Notes"
+    }
+  ],
+  "python_polars_duckdb": [],
+  "viz_bi": []
+}

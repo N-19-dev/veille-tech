@@ -1,0 +1,30 @@
+[
+  {
+    "week": "2025w42",
+    "range": "2025-10-13 → 2025-10-20",
+    "summary_md": "export/2025w42/ai_summary.md",
+    "top3_md": "export/2025w42/top3.md",
+    "selection_json": "export/2025w42/ai_selection.json"
+  },
+  {
+    "week": "2025w41",
+    "range": "",
+    "summary_md": "export/2025w41/ai_summary.md",
+    "top3_md": "export/2025w41/top3.md",
+    "selection_json": "export/2025w41/ai_selection.json"
+  },
+  {
+    "week": "2025w40",
+    "range": "",
+    "summary_md": "export/2025w40/ai_summary.md",
+    "top3_md": "export/2025w40/top3.md",
+    "selection_json": "export/2025w40/ai_selection.json"
+  },
+  {
+    "week": "2025w39",
+    "range": "",
+    "summary_md": "export/2025w39/ai_summary.md",
+    "top3_md": "export/2025w39/top3.md",
+    "selection_json": "export/2025w39/ai_selection.json"
+  }
+]
