@@ -7,7 +7,7 @@ _Dernières semaines — triées du plus récent au plus ancien._
 <div class="post-card">
   <div class="post-meta">Semaine 42 — 13 Oct 2025 → 19 Oct 2025</div>
   <h3><a href="posts/2025w42/">Semaine 42</a></h3>
-  <p>🟦 Aperçu général de la semaine Cette semaine, nous avons vu une multitude d'articles intéressants dans le domaine de la data science et de l'analytique. Les tendances sont claires…</p>
+  <p>🟦 Aperçu général de la semaine Cette semaine, nous avons vu une grande variété d'articles liés à l'intelligence artificielle, à la préparation et à l'orchestration des données, à l…</p>
 </div>
 
 <div class="post-card">
