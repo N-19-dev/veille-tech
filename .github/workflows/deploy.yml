@@ -4,9 +4,8 @@ on:
   push:
     branches: [ main ]
   schedule:
-    # Tous les lundis à 06:00 UTC (08:00 Paris en hiver)
-    - cron: "0 6 * * 1"
-  workflow_dispatch: # Lancement manuel
+    - cron: "0 6 * * 1"   # Lundi 06:00 UTC = 08:00 Paris hiver
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -22,11 +21,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # --- 1) Récupérer le repo ---
       - name: Checkout
         uses: actions/checkout@v4
 
-      # --- 2) Python pour générer les exports (DB -> export/) ---
+      # --- Python: génère export/YYYYwWW + weeks.json ---
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -48,15 +46,15 @@ jobs:
       - name: Generate weekly exports (crawl + LLM + files)
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          WEEK_OFFSET: "-1"   # semaine précédente complète
+          WEEK_OFFSET: "-1"              # semaine précédente
         run: |
           echo "=== Crawl + Analyse LLM ==="
           python veille_tech.py --config config.yaml
           python analyze_llm.py --config config.yaml
-          echo "Contenu export/ généré :"
-          find export -maxdepth 2 -type f | sed 's/^/  - /'
+          echo "=== Export contents ==="
+          find export -maxdepth 2 -type f | sed 's/^/  - /' || true
 
-      # --- 3) Préparer le front React ---
+      # --- Node: build du front ---
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -68,13 +66,14 @@ jobs:
         working-directory: react-newsletter
         run: npm ci
 
+      # Copie export/ dans le public du front (en suivant les symlinks)
       - name: Copy exports into public
         run: |
           mkdir -p react-newsletter/public/export
-          cp -R export/* react-newsletter/public/export/ || true
+          cp -RL export/. react-newsletter/public/export/ || true
           ls -la react-newsletter/public/export || true
 
-      # Optionnel mais utile : prévenir si base n'est pas réglée
+      # (Optionnel) Affiche vite.config.ts pour vérifier la base
       - name: Show vite.config.ts base
         working-directory: react-newsletter
         run: |
@@ -86,7 +85,6 @@ jobs:
         working-directory: react-newsletter
         run: npm run build
 
-      # --- 4) Publier le build (dist/) sur Pages ---
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
