@@ -10,6 +10,7 @@ readability-lxml==0.8.1
 python-slugify==8.0.4
 PyYAML==6.0.2
 tqdm==4.66.5
+pydantic>=2.0
 
 # --- IA (Hugging Face Inference API) ---
 huggingface-hub==0.24.7
