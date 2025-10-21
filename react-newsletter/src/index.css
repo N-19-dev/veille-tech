@@ -1,0 +1,13 @@
+/* src/styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --accent: #f6d43b; }
+
+.bg-accent { background-color: var(--accent); }
+.text-accent { color: var(--accent); }
+
+body { @apply bg-neutral-100 text-neutral-900; }
+
+h1, h2, h3, h4 { @apply font-serif; }

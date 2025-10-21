@@ -1,0 +1,421 @@
+{
+  "cloud": [],
+  "dataprep_orchestration_etl": [
+    {
+      "url": "https://www.getdbt.com/blog/informatica-dbt-data-control-plane-ai",
+      "title": "From Informatica to dbt: A migration path to an AI-ready data control plane",
+      "summary": "How to migrate off the legacy ETL data pipelines that are bogging down your business and stifling your AI initiatives.",
+      "published_ts": 1760028900,
+      "source_name": "dbt Blog",
+      "llm_score": 80
+    }
+  ],
+  "db_sql_olap": [
+    {
+      "url": "https://duckdb.org/2025/10/09/benchmark-results-14-lts.html",
+      "title": "Benchmark Results for DuckDB v1.4 LTS",
+      "summary": "DuckDB v1.4 LTS is both fast and scalable. In in-memory mode, it is the fastest system on ClickBench. In disk-based mode, it can run complex analytical queries on a dataset equivalent to 100 TB CSV files on a single machine.",
+      "published_ts": 1759968000,
+      "source_name": "DuckDB Blog",
+      "llm_score": 95
+    },
+    {
+      "url": "https://duckdb.org/2025/10/07/announcing-duckdb-141.html",
+      "title": "Announcing DuckDB 1.4.1 LTS",
+      "summary": "Today we are releasing DuckDB 1.4.1, the first bugfix release of our LTS edition.",
+      "published_ts": 1759795200,
+      "source_name": "DuckDB Blog",
+      "llm_score": 85
+    },
+    {
+      "url": "https://cloud.google.com/bigquery/docs/release-notes#October_06_2025",
+      "title": "October 06, 2025",
+      "summary": "Feature The BigQuery Data Transfer Service can now transfer data from the\nfollowing data sources: PayPal Stripe Transfers from these data sources are supported in preview . Feature You can now set the priority of BigQuery jobs initiated by\nDataform workflows to run queries as interactive jobs that start\nrunning as quickly as possible or as batch jobs with lower priority. For more\ninformation, see Create a pipeline schedule and InvocationConfig .\nThis feature is generally available (GA). Feature The INFORMATION_SCHEMA.SHARED_DATASET_USAGE view now includes the following schema fields to support usage metrics for\nexternal tables and routines: shared_resource_id : the ID of the queried resource shared_resource_type : the type of the queried resource referenced_tables : Contains project_id , dataset_id , table_id , and processed_bytes fields of the base table. These fields are generally available (GA). Feature The BigQuery Data Transfer Service can now transfer reporting data from Google Analytics 4 into BigQuery. You can also include custom reports from\nGoogle Analytics 4 in your data transfer. This feature is generally available (GA). Announcement Starting March 17, 2026, the BigQuery Data Transfer Service will require the bigquery.datasets.setIamPolicy and the bigquery.datasets.getIamPolicy permissions on the target dataset to create or update a transfer configuration.\nFor more information, see Changes to dataset-level access controls .",
+      "published_ts": 1759734000,
+      "source_name": "BigQuery Release Notes",
+      "llm_score": 85
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-aurora-postgresql-r8g-database-instances-additional-aws-regions/",
+      "title": "Amazon Aurora PostgreSQL now supports R8g database instances in additional AWS regions",
+      "summary": "AWS Graviton4-based R8g database instances are now generally available for Amazon Aurora with PostgreSQL compatibility in the AWS Canada (Central), AWS Asia Pacific (Singapore) and AWS Asia Pacific (Seoul) regions. R8g instances offer larger instance sizes, up to 48xlarge and features an 8:1 ratio of memory to vCPU, and the latest DDR5 memory. Graviton4-based instances provide up to a 40% performance improvement and up to 29% price/performance improvement for on-demand pricing over Graviton3-based instances of equivalent sizes on Amazon Aurora PostgreSQL databases, depending on database engine, version, and workload. AWS Graviton4 processors are the latest generation of custom-designed AWS Graviton processors built on the AWS Nitro System. R8g DB instances are available with new 24xlarge and 48xlarge sizes. With these new sizes, R8g DB instances offer up to 192 vCPU, up to 50Gbps enhanced networking bandwidth, and up to 40Gbps of bandwidth to the Amazon Elastic Block Store (Amazon EBS). You can launch Graviton4 R8g database instances in the Amazon RDS Management Console or using the AWS CLI . Upgrading a database instance to Graviton4 requires a simple instance type modification . For more details, refer to the Aurora documentation . Amazon Aurora is designed for unparalleled high performance and availability at global scale with full PostgreSQL compatibility. It provides built-in security, continuous backups, serverless compute, up to 15 read replicas, automated multi-Region replication, and integrations with other AWS services. To get started with Amazon Aurora, take a look at our getting started page .",
+      "published_ts": 1760112000,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://powerbi.microsoft.com/en-us/blog/empowering-our-customers-to-shape-the-future-of-data-connectivity-in-power-bi-and-microsoft-fabric/",
+      "title": "Empowering our customers to shape the future of data connectivity in Power BI and Microsoft Fabric",
+      "summary": "Discover how Microsoft is transforming data connectivity in Power BI and Microsoft Fabric with a community-driven approach. Learn how you can influence the connector roadmap, submit ideas, vote on priorities, and help shape the future of analytics.",
+      "published_ts": 1760087268,
+      "source_name": "Power BI Blog",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-ebs-io2-block-express-china-regions/",
+      "title": "Amazon EBS io2 Block Express supports China Regions",
+      "summary": "Amazon EBS io2 Block Express volumes are now available in Amazon Web Services China (Beijing) Region, operated by Sinnet and Amazon Web Services China (Ningxia) Region, operated by NWCD. io2 Block Express leverage the latest generation of EBS storage server architecture designed to deliver consistent sub-millisecond latency and 99.999% durability. With a single io2 Block Express volume, you can achieve 256,000 IOPS, 4GiB/s throughput, and 64TiB storage capacity. You can also attach an io2 Block Express volume to multiple instances in the same Availability Zone, supporting shared storage fencing through NVMe reservations for improved application availability and scalability. With the lowest p99.9 I/O latency among major cloud providers, io2 Block Express is the ideal choice for the most I/O-intensive, mission-critical deployments such as SAP HANA, Oracle, SQL Server, and IBM DB2. Customers using io1 volumes can upgrade to io2 Block Express without any downtime using the ModifyVolume API to achieve 100x durability, consistent sub-millisecond latency, and significantly higher performance at the same or lower cost than io1. With io2 Block Express, you can drive up to 4x IOPS and 4x throughput at the same storage price as io1, and up to 50% cheaper IOPS cost for volumes over 32,000 IOPS. io2 Block Express is now available in all the Amazon Web Services regions. You can create and manage io2 Block Express volumes using the Amazon Web Services Management Console, Amazon Command Line Interface (CLI), or Amazon SDKs. For more information on io2 Block Express, see our tech documentation .",
+      "published_ts": 1760079600,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://www.databricks.com/blog/data-lakes-vs-data-warehouses-what-your-organization-needs-know",
+      "title": "Data Lakes vs Data Warehouses: What Your Organization Needs to Know",
+      "summary": "In today’s AI-driven, data-saturated landscape, choosing the right data architecture...",
+      "published_ts": 1760031900,
+      "source_name": "Databricks Blog",
+      "llm_score": 80
+    },
+    {
+      "url": "https://cloud.google.com/bigquery/docs/release-notes#October_09_2025",
+      "title": "October 09, 2025",
+      "summary": "Feature You can allocate idle slots fairly across\nreservations within a single admin project. This ensures each reservation\nreceives an approximately equal share of available capacity. This feature is now generally available (GA). Feature You can set a maximum slot\nlimit for a\nreservation. You can configure the maximum reservation size when creating or\nupdating a reservation. This feature is now generally\navailable (GA). Announcement Security, privacy, and compliance for Gemini in\nBigQuery details how\ncustomer data is protected and processed by Gemini in BigQuery. Changed An updated version of the ODBC driver for BigQuery is now available.",
+      "published_ts": 1759993200,
+      "source_name": "BigQuery Release Notes",
+      "llm_score": 80
+    },
+    {
+      "url": "https://www.databricks.com/blog/dynamic-pricing-airlines-how-ai-can-reshape-revenue-strategy",
+      "title": "Dynamic Pricing in Airlines: How AI Can Reshape Revenue Strategy",
+      "summary": "This is a collaborative post from Databricks and Celebal Technologies. We thank Bala...",
+      "published_ts": 1760117877,
+      "source_name": "Databricks Blog",
+      "llm_score": 60
+    }
+  ],
+  "ml_ai": [
+    {
+      "url": "https://aws.amazon.com/blogs/aws/new-general-purpose-amazon-ec2-m8a-instances-are-now-available/",
+      "title": "New general-purpose Amazon EC2 M8a instances are now available",
+      "summary": "Amazon EC2 has launched new M8a instances powered by 5th Generation AMD EPYC processors, offering up to 30% better performance and 19% better price performance compared to M7a instances, along with improved memory bandwidth, networking, and storage capabilities for various general-purpose workloads.",
+      "published_ts": 1759950207,
+      "source_name": "AWS Blog (global)",
+      "llm_score": 95
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/automate-amazon-quicksight-data-stories-creation-with-agentic-ai-using-amazon-nova-act/",
+      "title": "Automate Amazon QuickSight data stories creation with agentic AI using Amazon Nova Act",
+      "summary": "In this post, we demonstrate how Amazon Nova Act automates QuickSight data story creation, saving time so you can focus on making critical, data-driven business decisions.",
+      "published_ts": 1759859006,
+      "source_name": "AWS ML Blog",
+      "llm_score": 95
+    },
+    {
+      "url": "https://www.databricks.com/blog/examining-versionless-apache-sparktm-ai-powered-upgrades-and-seamless-stability-2-billion",
+      "title": "Examining Versionless Apache Spark™: AI-powered upgrades and seamless stability for 2 billion workloads",
+      "summary": "Upgrading Apache Spark™ has never been easy. Every major version brings performance...",
+      "published_ts": 1759852800,
+      "source_name": "Databricks Blog",
+      "llm_score": 95
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/aws/introducing-new-compute-optimized-amazon-ec2-c8i-and-c8i-flex-instances/",
+      "title": "Introducing new compute-optimized Amazon EC2 C8i and C8i-flex instances",
+      "summary": "AWS launched compute-optimized C8i and C8i-flex EC2 instances powered by custom Intel Xeon 6 processors available only on AWS to offer up to 15% better price performance, 20% higher performance, and 2.5 times more memory throughput compared to previous generations.",
+      "published_ts": 1759782808,
+      "source_name": "AWS Blog (global)",
+      "llm_score": 95
+    },
+    {
+      "url": "https://azure.microsoft.com/en-us/blog/unleash-your-creativity-at-scale-azure-ai-foundrys-multimodal-revolution/",
+      "title": "Unleash your creativity at scale: Azure AI Foundry’s multimodal revolution",
+      "summary": "Imagine a platform where every developer can unlock the full spectrum of AI: text, images, audio, and video. This OpenAI DevDay, Azure AI Foundry is making that vision real. With today’s launch of OpenAI GPT-image-1-mini, GPT-realtime-mini, and GPT-audio-mini, plus major safety upgrades to GPT-5, you now have the ultimate toolkit to create, experiment, and scale multimodal solutions. The post Unleash your creativity at scale: Azure AI Foundry’s multimodal revolution appeared first on Microsoft Azure Blog .",
+      "published_ts": 1759773825,
+      "source_name": "Azure Blog",
+      "llm_score": 95
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-amazon-bedrock-aws-outposts-amazon-ecs-managed-instances-aws-builder-id-and-more-october-6-2025/",
+      "title": "AWS Weekly Roundup:  Amazon Bedrock, AWS Outposts, Amazon ECS Managed Instances, AWS Builder ID, and more (October 6, 2025)",
+      "summary": "Last week, Anthropic’s Claude Sonnet 4.5—the world’s best coding model according to SWE-Bench – became available in Amazon Q command line interface (CLI) and Kiro. I’m excited about this for two reasons: First, a few weeks ago I spent 4 intensive days with a global customer delivering an AI-assisted development workshop, where I experienced firsthand […]",
+      "published_ts": 1759765359,
+      "source_name": "AWS Blog (global)",
+      "llm_score": 95
+    },
+    {
+      "url": "https://www.getdbt.com/blog/why-governed-collaboration-is-the-key-to-modern-analytics-workflows",
+      "title": "Why governed collaboration is the key to modern analytics workflows",
+      "summary": "Unlock faster analytics with governed collaboration. Streamline data workflows without sacrificing trust or governance.",
+      "published_ts": 1759763220,
+      "source_name": "dbt Blog",
+      "llm_score": 95
+    },
+    {
+      "url": "https://powerbi.microsoft.com/en-us/blog/deep-dive-into-composite-semantic-models-with-direct-lake-and-import-tables/",
+      "title": "Deep dive into composite semantic models with Direct Lake and import tables",
+      "summary": "Getting your data job done just got easier with composite semantic models, mixing Direct Lake tables with import tables, now available in public preview.",
+      "published_ts": 1759744800,
+      "source_name": "Power BI Blog",
+      "llm_score": 95
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-ec2-i7i-instances-available-in-aws-europe-spain/",
+      "title": "Amazon EC2 I7i instances now available in AWS Europe (Spain) region",
+      "summary": "Amazon Web Services (AWS) announces the availability of high performance Storage Optimized Amazon EC2 I7i instances in the AWS Europe (Spain) region. Powered by 5th generation Intel Xeon Scalable processors with an all-core turbo frequency of 3.2 GHz, these new instances deliver up to 23% better compute performance and more than 10% better price performance over previous generation I4i instances. Powered by 3rd generation AWS Nitro SSDs, I7i instances offer up to 45TB of NVMe storage with up to 50% better real-time storage performance, up to 50% lower storage I/O latency, and up to 60% lower storage I/O latency variability compared to I4i instances. I7i instances offer the best compute and storage performance for x86-based storage optimized instances in Amazon EC2, ideal for I/O intensive and latency-sensitive workloads that demand very high random IOPS performance with real-time latency to access the small to medium size datasets (multi-TBs). Additionally, torn write prevention feature support up to 16KB block sizes, enabling customers to eliminate database performance bottlenecks. I7i instances are available in eleven sizes - nine virtual sizes up to 48xlarge and two bare metal sizes - delivering up to 100Gbps of network bandwidth and 60Gbps of Amazon Elastic Block Store (EBS) bandwidth. To learn more, visit the I7i instances page .",
+      "published_ts": 1760022000,
+      "source_name": "AWS What’s New",
+      "llm_score": 90
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/use-amazon-sagemaker-hyperpod-and-anyscale-for-next-generation-distributed-computing/",
+      "title": "Use Amazon SageMaker HyperPod and Anyscale for next-generation distributed computing",
+      "summary": "In this post, we demonstrate how to integrate Amazon SageMaker HyperPod with Anyscale platform to address critical infrastructure challenges in building and deploying large-scale AI models. The combined solution provides robust infrastructure for distributed AI workloads with high-performance hardware, continuous monitoring, and seamless integration with Ray, the leading AI compute engine, enabling organizations to reduce time-to-market and lower total cost of ownership.",
+      "published_ts": 1760046744,
+      "source_name": "AWS ML Blog",
+      "llm_score": 85
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/general-purpose-amazon-ec2-m8a-instances/",
+      "title": "New General Purpose Amazon EC2 M8a Instances",
+      "summary": "AWS announces the general availability of new general-purpose Amazon EC2 M8a instances. M8a instances are powered by 5th Gen AMD EPYC processors (formerly code named Turin) with a maximum frequency of 4.5 GHz, deliver up to 30% higher performance, and up to 19% better price-performance compared to M7a instances. M8a instances deliver 45% more memory bandwidth compared to M7a instances, making these instances ideal for even latency sensitive workloads. M8a instances deliver even higher performance gains for specific workloads. M8a instances are 60% faster for GroovyJVM benchmark, and up to 39% faster for Cassandra benchmark compared to Amazon EC2 M7a instances. M8a instances are SAP-certified and offer 12 sizes including 2 bare metal sizes. This range of instance sizes allows customers to precisely match their workload requirements. M8a instances are built on the AWS Nitro System and ideal for applications that benefit from high performance and high throughput such as financial applications, gaming, rendering, application servers, simulation modeling, mid-size data stores, application development environments, and caching fleets. M8a instances are available in the following AWS Regions: US East (Ohio), US West (Oregon), and Europe (Spain). To get started, sign in to the AWS Management Console. Customers can purchase these instances via Savings Plans, On-Demand instances, and Spot instances. For more information visit the Amazon EC2 M8a instance page or the AWS News blog .",
+      "published_ts": 1759935600,
+      "source_name": "AWS What’s New",
+      "llm_score": 85
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/implement-automated-monitoring-for-amazon-bedrock-batch-inference/",
+      "title": "Implement automated monitoring for Amazon Bedrock batch inference",
+      "summary": "In this post, we demonstrated how a financial services company can use an FM to process large volumes of customer records and get specific data-driven product recommendations. We also showed how to implement an automated monitoring solution for Amazon Bedrock batch inference jobs. By using EventBridge, Lambda, and DynamoDB, you can gain real-time visibility into batch processing operations, so you can efficiently generate personalized product recommendations based on customer credit data.",
+      "published_ts": 1759858772,
+      "source_name": "AWS ML Blog",
+      "llm_score": 85
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/aws/aws-iam-identity-center-now-supports-customer-managed-kms-keys-for-encryption-at-rest/",
+      "title": "AWS IAM Identity Center now supports customer-managed KMS keys for encryption at rest",
+      "summary": "Gain control over encryption and comply with regulations using customer-managed keys for AWS IAM Identity Center's user data and passwords.",
+      "published_ts": 1759780326,
+      "source_name": "AWS Blog (global)",
+      "llm_score": 85
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/responsible-ai-how-powerschool-safeguards-millions-of-students-with-ai-powered-content-filtering-using-amazon-sagemaker-ai/",
+      "title": "Responsible AI: How PowerSchool safeguards millions of students with AI-powered content filtering using Amazon SageMaker AI",
+      "summary": "In this post, we demonstrate how PowerSchool built and deployed a custom content filtering solution using Amazon SageMaker AI that achieved better accuracy while maintaining low false positive rates. We walk through our technical approach to fine tuning Llama 3.1 8B, our deployment architecture, and the performance results from internal validations.",
+      "published_ts": 1759778080,
+      "source_name": "AWS ML Blog",
+      "llm_score": 85
+    },
+    {
+      "url": "https://www.databricks.com/blog/supercharge-your-enterprise-bi-how-approach-your-migration-aibi",
+      "title": "Supercharge your Enterprise BI: How to approach your migration to AI/BI",
+      "summary": "The business case for BI modernizationPicture this scenario: On Monday morning, a...",
+      "published_ts": 1760129400,
+      "source_name": "Databricks Blog",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-connect-copy-bulk-edit-agent-scheduling/",
+      "title": "Amazon Connect now supports copy and bulk edit of agent scheduling configuration",
+      "summary": "Amazon Connect now supports copy and bulk edit of agent scheduling configuration, making it easier to set up and maintain agent schedules. You can create new scheduling configurations by copying existing ones — for example, copy a weekday shift profile to create a weekend variant, or, copy scheduling configuration (time-zone, weekly working hours, days off, etc.) from an existing agent to multiple new hires. When bulk editing, you can select specific fields to update, such as update time-zone and start date for new hires without changing their weekly working hours. These updates reduce time spent by managers on configuration management, thus improving productivity and operational efficiency. This feature is available in all AWS Regions where Amazon Connect agent scheduling is available. To learn more about Amazon Connect agent scheduling, click here .",
+      "published_ts": 1760108400,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://www.databricks.com/blog/introducing-variant-new-open-standard-semi-structured-data-apache-parquettm-delta-lake",
+      "title": "Introducing Variant: A New Open Standard for Semi-Structured Data in Apache Parquet™, Delta Lake, and Apache Iceberg™",
+      "summary": "Semi-structured data is everywhere in AI, application logs, and telemetry. This data...",
+      "published_ts": 1760092677,
+      "source_name": "Databricks Blog",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-neptune-analytics-canada-central-australia-sydney/",
+      "title": "Amazon Neptune Analytics is now available in AWS Canada (Central) and Australia (Sydney) Regions",
+      "summary": "Amazon Neptune Analytics is now available in the AWS Canada (Central) and Australia (Sydney) Regions. You can now create and manage Neptune Analytics graphs in the AWS Canada (Central) and Australia (Sydney) Regions and run advanced graph analytics and vector similarity search. Neptune Analytics is a memory-optimized graph database engine for analytics. With Neptune Analytics, you can get insights and find trends by processing large amounts of graph data in seconds. To analyze graph data quickly and easily, Neptune Analytics stores large graph datasets in memory. It supports a library of optimized graph analytic algorithms, low-latency graph queries, and vector search capabilities within graph traversals. Neptune Analytics is an ideal choice for investigatory, exploratory, or data-science workloads that require fast iteration for data, analytical and algorithmic processing, or vector search on graph data. It complements Amazon Neptune Database , a popular managed graph database. To perform intensive analysis, you can load the data from a Neptune Database graph or snapshot into Neptune Analytics. You can also load graph data that's stored in Amazon S3. To get started, you can create a new Neptune Analytics graphs using the AWS Management Console , or AWS CLI . For more information on pricing and region availability, refer to the Neptune pricing page and AWS Region Table .",
+      "published_ts": 1760079600,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/customizing-text-content-moderation-with-amazon-nova/",
+      "title": "Customizing text content moderation with Amazon Nova",
+      "summary": "In this post, we introduce Amazon Nova customization for text content moderation through Amazon SageMaker AI, enabling organizations to fine-tune models for their specific moderation needs. The evaluation across three benchmarks shows that customized Nova models achieve an average improvement of 7.3% in F1 scores compared to the baseline Nova Lite, with individual improvements ranging from 4.2% to 9.2% across different content moderation tasks.",
+      "published_ts": 1760046428,
+      "source_name": "AWS ML Blog",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-quick-suite-agentic-ai-powered-workspace",
+      "title": "Introducing Amazon Quick Suite: your agentic AI-powered workspace",
+      "summary": "Today, we’re announcing the general availability of Amazon Quick Suite —a new set of agentic teammates that helps you get the answers you need using all of your business data and move instantly from insights to action. Quick Suite retrieves insights across the public internet and all your documents, including information in popular third party applications, databases, and other places your company keeps important data. Whether you need a single data point, a PhD-level research project, an entire strategy tailored to your context, or anything in between, Quick Suite quickly gets you all the relevant information. Quick Suite helps you seamlessly transition from getting answers to taking action in popular applications (like creating or updating Jira tickets, or ServiceNow incidents). Quick Suite can also help you automate tasks—from routine, daily tasks like responding to RFPs and preparing for customer meetings to automating the most complex business processes such as invoice processing and account reconciliation. All of your data is safe and private. Your queries and data are never used to train models, and you can tailor the Quick Suite experience to you. Your AWS administrator can turn on Quick Suite in only a few steps, and your new agentic teammate will be ready to go. New Quick Suite customers receive a 30-day free trial for up to 25 users. You can experience the full breadth of Quick Suite capabilities for chat, research, business intelligence, and automation in the following AWS Regions : US East (N. Virginia), US West (Oregon), Asia Pacific (Sydney), and Europe (Ireland)., and we'll expand availability to additional AWS Regions over the coming months. To learn more about Quick Suite and its capabilities, read our deep-dive blog .",
+      "published_ts": 1760027400,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://azure.microsoft.com/en-us/blog/microsoft-azure-delivers-the-first-large-scale-cluster-with-nvidia-gb300-nvl72-for-openai-workloads/",
+      "title": "Microsoft Azure delivers the first large scale cluster with NVIDIA GB300 NVL72 for OpenAI workloads",
+      "summary": "Microsoft delivers the first at-scale production cluster with more than 4,600 NVIDIA GB300 NVL72, featuring NVIDIA Blackwell Ultra GPUs connected through the next-generation NVIDIA InfiniBand network. The post Microsoft Azure delivers the first large scale cluster with NVIDIA GB300 NVL72 for OpenAI workloads appeared first on Microsoft Azure Blog .",
+      "published_ts": 1760025600,
+      "source_name": "Azure Blog",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-ec2-c6in-instances-mexico-central-region",
+      "title": "Amazon EC2 C6in instances are now available in Mexico (Central) Region",
+      "summary": "Starting today, Amazon Elastic Compute Cloud (Amazon EC2) C6in instances are available in AWS Region Mexico (Central). These sixth-generation network optimized instances, powered by 3rd Generation Intel Xeon Scalable processors and built on the AWS Nitro System , deliver up to 200Gbps network bandwidth, for 2x more network bandwidth over comparable fifth-generation instances. Customers can use C6in instances to scale the performance of applications such as network virtual appliances (firewalls, virtual routers, load balancers), Telco 5G User Plane Function (UPF), data analytics, high performance computing (HPC), and CPU based AI/ML workloads. C6in instances are available in 10 different sizes with up to 128 vCPUs, including bare metal size. Amazon EC2 sixth-generation x86-based network optimized EC2 instances deliver up to 100Gbps of Amazon Elastic Block Store (Amazon EBS) bandwidth, and up to 400K IOPS. C6in instances offer Elastic Fabric Adapter (EFA) networking support on 32xlarge and metal sizes. C6in instances are available in these AWS Regions : US East (Ohio, N. Virginia), US West (N. California, Oregon), Europe (Frankfurt, Ireland, London, Milan, Paris, Spain, Stockholm, Zurich), Middle East (Bahrain, UAE), Israel (Tel Aviv), Asia Pacific (Hong Kong, Hyderabad, Jakarta, Malaysia, Melbourne, Mumbai, Osaka, Seoul, Singapore, Sydney, Tokyo, Thailand), Africa (Cape Town), South America (Sao Paulo), Canada (Central), Canada West (Calgary), AWS GovCloud (US-West, US-East), and Mexico (Central). To learn more, see the Amazon EC2 C6in instances. To get started, see the AWS Management Console , AWS Command Line Interface (AWS CLI) , and AWS SDKs .",
+      "published_ts": 1760018400,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-ec2-m6in-m6idn-asia-pacific-seoul/",
+      "title": "Amazon EC2 M6in and M6idn instances are now available in Asia Pacific (Seoul) Region",
+      "summary": "Starting today, Amazon Elastic Compute Cloud (Amazon EC2) M6in and M6idn instances are available in AWS Asia Pacific (Seoul) region. These sixth-generation network optimized instances, powered by 3 rd Generation Intel Xeon Scalable processors and built on the AWS Nitro System , deliver up to 200Gbps network bandwidth, for 2x more network bandwidth over comparable fifth-generation instances. Customers can use M6in and M6idn instances to scale their performance and throughput of network-intensive workloads such as high-performance file systems, distributed web scale in-memory caches, caching fleets, real-time big data analytics, and Telco applications such as 5G User Plane Function. M6in and M6idn instances are available in 10 different instance sizes including metal, offering up to 128 vCPUs and 512 GiB of memory. They deliver up to 100Gbps of Amazon Elastic Block Store (EBS) bandwidth, and up to 400K IOPS. M6in and M6idn instances offer Elastic Fabric Adapter (EFA) networking support on 32xlarge and metal sizes. M6idn instances offer up to 7.6 TB of high-speed, low-latency instance storage. With this regional expansion, M6in and M6idn instances are available in the following AWS Regions: US East (Ohio, N. Virginia), US West (N. California, Oregon), Europe (Ireland, Frankfurt, Spain, Stockholm, Zurich), Asia Pacific (Mumbai, Singapore, Tokyo, Sydney, Seoul), Canada (Central), and AWS GovCloud (US-West). Customers can purchase the new instances through Savings Plans, On-Demand, and Spot instances. To learn more, see M6in and M6idn instances page .",
+      "published_ts": 1760018400,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-dynamodb-ipv6/",
+      "title": "Amazon DynamoDB now supports Internet Protocol version 6 (IPv6)",
+      "summary": "Amazon DynamoDB now offers customers the option to use Internet Protocol version 6 (IPv6) addresses in their Amazon Virtual Private Cloud (VPC) when connecting to DynamoDB tables, streams, and DynamoDB Accelerator (DAX), including with AWS PrivateLink Gateway and Interface endpoints. Customers moving to IPv6 can simplify their network stack and meet compliance requirements by using a network that supports both IPv4 and IPv6. The continued growth of the internet is exhausting available Internet Protocol version 4 (IPv4) addresses. IPv6 increases the number of available addresses by several orders of magnitude and customers no longer need to manage overlapping address spaces in their VPCs. Customers can standardize their applications on the new version of Internet Protocol by moving to IPv6 with a few clicks in the AWS Management Console. Support for IPv6 in Amazon DynamoDB is now available in all commercial AWS Regions in the United States and the AWS GovCloud (US) Regions. It will deploy to the remaining global AWS Regions where Amazon DynamoDB is available over the next few weeks. To connect to DynamoDB using IPv6 addresses and check regional availability, please see the DynamoDB developer guide and the DynamoDB Accelerator user guide .",
+      "published_ts": 1760018280,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/implement-a-secure-mlops-platform-based-on-terraform-and-github/",
+      "title": "Implement a secure MLOps platform based on Terraform and GitHub",
+      "summary": "Machine learning operations (MLOps) is the combination of people, processes, and technology to productionize ML use cases efficiently. To achieve this, enterprise customers must develop MLOps platforms to support reproducibility, robustness, and end-to-end observability of the ML use case’s lifecycle. Those platforms are based on a multi-account setup by adopting strict security constraints, development best […]",
+      "published_ts": 1759937916,
+      "source_name": "AWS ML Blog",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-ec2-i7ie-instances-available-in-aws-sao-paulo/",
+      "title": "Amazon EC2 I7ie instances now available in AWS South America (São Paulo)",
+      "summary": "AWS is announcing Amazon EC2 I7ie instances are now available in AWS South America (São Paulo) region. Designed for large storage I/O intensive workloads, I7ie instances are powered by 5th Gen Intel Xeon Processors with an all-core turbo frequency of 3.2 GHz, offering up to 40% better compute performance and 20% better price performance over existing I3en instances. I7ie instances offer up to 120TB local NVMe storage density (highest in the cloud) for storage optimized instances and offer up to twice as many vCPUs and memory compared to prior generation instances. Powered by 3rd generation AWS Nitro SSDs, I7ie instances deliver up to 65% better real-time storage performance, up to 50% lower storage I/O latency, and 65% lower storage I/O latency variability compared to I3en instances. I7ie are high density storage optimized instances, ideal for workloads requiring fast local storage with high random read/write performance at very low latency consistency to access large data sets. These instances are available in 9 different virtual sizes and deliver up to 100Gbps of network bandwidth and 60Gbps of bandwidth for Amazon Elastic Block Store (EBS). To learn more, visit the I7ie instances page .",
+      "published_ts": 1759935600,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-ec2-m8gd-instances-additional-aws-regions",
+      "title": "Amazon EC2 M8gd instances are now available in additional AWS Regions",
+      "summary": "Amazon Elastic Compute Cloud (Amazon EC2) M8gd instances with up to 11.4 TB of local NVMe-based SSD block-level storage are now available in Europe (London), Asia Pacific (Sydney, Malaysia), and Canada (Central) AWS Regions. These instances are powered by AWS Graviton4 processors, delivering up to 30% better performance over Graviton3-based instances. They have up to 40% higher performance for I/O intensive database workloads, and up to 20% faster query results for I/O intensive real-time data analytics than comparable AWS Graviton3-based instances. These instances are built on the AWS Nitro System and are a great fit for applications that need access to high-speed, low latency local storage. Each instance is available in 12 different sizes. They provide up to 50 Gbps of network bandwidth and up to 40 Gbps of bandwidth to the Amazon Elastic Block Store (Amazon EBS). Additionally, customers can now adjust the network and Amazon EBS bandwidth on these instances by 25% using EC2 instance bandwidth weighting conﬁguration, providing greater ﬂexibility with the allocation of bandwidth resources to better optimize workloads. These instances offer Elastic Fabric Adapter (EFA) networking on 24xlarge, 48xlarge, metal-24xl, and metal-48xl sizes. To learn more, see Amazon M8gd Instances . To explore how to migrate your workloads to Graviton-based instances, see AWS Graviton Fast Start program and Porting Advisor for Graviton . To get started, see the AWS Management Console .",
+      "published_ts": 1759932000,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-ec2-r8g-instances-additional-aws-regions",
+      "title": "Amazon EC2 R8gd instances are now available in additional AWS Regions",
+      "summary": "Amazon Elastic Compute Cloud (Amazon EC2) R8gd instances with up to 11.4 TB of local NVMe-based SSD block-level storage are now available in Europe (Ireland), Asia Pacific (Sydney, Malaysia), South America (São Paulo), and Canada (Central) AWS Regions. These instances are powered by AWS Graviton4 processors, delivering up to 30% better performance over Graviton3-based instances. They have up to 40% higher performance for I/O intensive database workloads, and up to 20% faster query results for I/O intensive real-time data analytics than comparable AWS Graviton3-based instances. These instances are built on the AWS Nitro System and are a great fit for applications that need access to high-speed, low latency local storage. Each instance is available in 12 different sizes. They provide up to 50 Gbps of network bandwidth and up to 40 Gbps of bandwidth to the Amazon Elastic Block Store (Amazon EBS). Additionally, customers can now adjust the network and Amazon EBS bandwidth on these instances by 25% using EC2 instance bandwidth weighting conﬁguration, providing greater ﬂexibility with the allocation of bandwidth resources to better optimize workloads. These instances offer Elastic Fabric Adapter (EFA) networking on 24xlarge, 48xlarge, metal-24xl, and metal-48xl sizes. To learn more, see Amazon R8gd Instances . To explore how to migrate your workloads to Graviton-based instances, see AWS Graviton Fast Start program and Porting Advisor for Graviton . To get started, see the AWS Management Console .",
+      "published_ts": 1759932000,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-q-developer-understand-service-prices-estimate-workload-costs",
+      "title": "Amazon Q Developer now help customers understand service prices and estimate workload costs",
+      "summary": "Today, AWS announces a new pricing and cost estimation capability in Amazon Q Developer. Amazon Q Developer is the most capable generative AI-powered assistant for software development. With this launch, customers can now use Amazon Q Developer to get information about AWS product and service pricing, availability, and attributes, helping them select the right resources and estimate workload costs using natural language. When architecting new workloads on AWS, customers need to estimate costs so they can evaluate cost/performance tradeoffs, set budgets, and plan future spending. Customers can now use Amazon Q Developer to retrieve detailed product attribute and pricing information using natural language, making it easier to estimate the cost of new workloads without having to review multiple pricing pages or specify detailed API request parameters. Customers can now ask questions about service pricing (e.g., “How much does RDS extended support cost?”), the cost of a planned workload (e.g., “I need to send 1 million notifications per month to email, and 1 million to HTTP/S endpoints. Estimate the monthly cost using SNS.”), or the relative costs of different resources (e.g., “What is the cost difference between an Application Load Balancer and a Network Load Balancer?”). To answer these questions, Amazon Q Developer retrieves information from the AWS Price List APIs. To learn more, see Managing your costs using generative AI with Amazon Q Developer . To get started, open the Amazon Q chat panel in the AWS Management Console and ask a question about pricing.",
+      "published_ts": 1759931100,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://cloud.google.com/bigquery/docs/release-notes#October_08_2025",
+      "title": "October 08, 2025",
+      "summary": "Breaking The default limit of QueryUsagePerDay for\non-demand pricing has changed. The default limit of all new projects is now 200\nTiB. For existing projects, the default limit has been set based on your\nproject's usage over the last 30 days. Projects that have custom cost\ncontrols configured or that use reservations aren't affected.\nIf the new limit might affect your workload, create a custom cost\ncontrol based on your workload needs. Feature You can set labels on reservations. These labels\ncan be used to organize your reservations and for billing analysis. This feature\nis generally\navailable (GA). Feature You can specify which reservation a query uses at\nruntime , and set IAM\npolicies directly on\nreservations . This\nprovides more flexibility and fine-grained control over resource management.\nThis feature is generally\navailable (GA).",
+      "published_ts": 1759906800,
+      "source_name": "BigQuery Release Notes",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-ec2-c8gd-instances-regions/",
+      "title": "Amazon EC2 C8gd instances are now available in additional AWS Regions",
+      "summary": "Amazon Elastic Compute Cloud (Amazon EC2) C8gd instances with up to 11.4 TB of local NVMe-based SSD block-level storage are now available in Europe (Ireland) and Asia Pacific (Sydney, Malaysia) AWS Regions. These instances are powered by AWS Graviton4 processors, delivering up to 30% better performance over Graviton3-based instances. They have up to 40% higher performance for I/O intensive database workloads, and up to 20% faster query results for I/O intensive real-time data analytics than comparable AWS Graviton3-based instances. These instances are built on the AWS Nitro System and are a great fit for applications that need access to high-speed, low latency local storage. Each instance is available in 12 different sizes. They provide up to 50 Gbps of network bandwidth and up to 40 Gbps of bandwidth to the Amazon Elastic Block Store (Amazon EBS). Additionally, customers can now adjust the network and Amazon EBS bandwidth on these instances by 25% using EC2 instance bandwidth weighting conﬁguration, providing greater ﬂexibility with the allocation of bandwidth resources to better optimize workloads. These instances offer Elastic Fabric Adapter (EFA) networking on 24xlarge, 48xlarge, metal-24xl, and metal-48xl sizes. To learn more, see Amazon C8gd instances . To explore how to migrate your workloads to Graviton-based instances, see AWS Graviton Fast Start program and Porting Advisor for Graviton . To get started, see the AWS Management Console .",
+      "published_ts": 1759906800,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-ec2-c7gd-instances-additional-aws-regions/",
+      "title": "Amazon EC2 C7gd instances are now available in additional AWS Regions",
+      "summary": "Starting today, Amazon Elastic Compute Cloud (Amazon EC2) C7gd instances with up to 3.8 TB of local NVMe-based SSD block-level storage are available in the Europe (Zurich) Region. These Graviton3-based instances with DDR5 memory are built on the AWS Nitro System and are a great fit for applications that need access to high-speed, low latency local storage, including those that need temporary storage of data for scratch space, temporary files, and caches. They have up to 45% improved real-time NVMe storage performance than comparable Graviton2-based instances. Graviton3-based instances also use up to 60% less energy for the same performance than comparable EC2 instances, enabling you to reduce your carbon footprint in the cloud. To learn more, see Amazon C7gd Instances . To explore how to migrate your workloads to Graviton-based instances, see AWS Graviton Fast Start program and Porting Advisor for Graviton . To get started, see the AWS Management Console .",
+      "published_ts": 1759906800,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-documentdb-mongodb-compatibility-new-regions-asia-pacific-mexico",
+      "title": "Amazon DocumentDB (with MongoDB compatibility) now available in 4 new regions across Asia Pacific and Mexico",
+      "summary": "Amazon DocumentDB (with MongoDB compatibility), a fully managed, native JSON database that makes it simple and cost-effective to operate critical document workloads at virtually any scale without managing infrastructure, is now available in the AWS Asia Pacific (Osaka), Asia Pacific (Thailand), Asia Pacific (Malaysia) and Mexico (Central) Regions. Amazon DocumentDB provides scalability and durability for mission-critical MongoDB workloads, supporting millions of requests per second and can be scaled to 15 low latency read replicas in minutes without application downtime. Storage scales automatically up to 128 TiB without any impact to your application. Amazon DocumentDB also natively integrates with AWS Database Migration Service (DMS), Amazon CloudWatch, AWS CloudTrail, AWS Lambda, AWS Backup and more. To learn more about Amazon DocumentDB, please visit the Amazon DocumentDB product page , and see the AWS Region Table for complete regional availability. You can create a Amazon DocumentDB cluster from the AWS Management console , AWS Command Line Interface (CLI) , or SDK.",
+      "published_ts": 1759867800,
+      "source_name": "AWS What’s New",
+      "llm_score": 80
+    },
+    {
+      "url": "https://cloud.google.com/bigquery/docs/release-notes#October_07_2025",
+      "title": "October 07, 2025",
+      "summary": "Announcement As of February 25, 2025, enhancements to the workload management\nautoscaler that were announced on July\n31, 2024 have rolled out to all users.\nThese enhancements are generally\navailable (GA).",
+      "published_ts": 1759820400,
+      "source_name": "BigQuery Release Notes",
+      "llm_score": 80
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/aws/reimagine-the-way-you-work-with-ai-agents-in-amazon-quick-suite/",
+      "title": "Announcing Amazon Quick Suite: your agentic teammate for answering questions and taking action",
+      "summary": "Amazon has announced Quick Suite, a new AI-powered workspace that combines research, business intelligence, and automation tools to help users analyze data and streamline workflows all in one place.",
+      "published_ts": 1760024524,
+      "source_name": "AWS Blog (global)",
+      "llm_score": 60
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-sagemaker-notebook-instance-amazon-linux-2023/",
+      "title": "Amazon SageMaker notebook instance now supports Amazon Linux 2023",
+      "summary": "Today, we are excited to announce that Amazon SageMaker notebook instance supports Amazon Linux 2023 . You can now choose Amazon Linux 2023 for your new Amazon SageMaker notebook instance to take advantage of the latest innovations, enhanced security features. Amazon SageMaker notebook instances are fully managed Jupyter Notebooks with pre-configured development environments for data science and machine learning. Data scientists and developers can use SageMaker Notebooks to interactively explore, visualize and prepare data, and build and deploy machine learning models on SageMaker. Amazon Linux 2023 (AL2023) is a general-purpose rpm-based Linux distribution and successor to Amazon Linux 2 (AL2). Amazon Linux 2023 simplifies operating system management through its secure, stable, and high-performance runtime environment. This Linux distribution follows a predictable two-year major release cycle with five years of long-term support. The first two years provide standard support with quarterly security patches, bug fixes, and new features, followed by three years of maintenance. Enhanced security features include SELinux support and FIPS 140-3 validation for cryptographic modules. With this you now have the options to launch a notebook instance with AL2023 or AL2. For more details about this launch and instructions on how to get started with AL2023 notebook instances, please refer to the Amazon Linux 2023 documentation .",
+      "published_ts": 1759993200,
+      "source_name": "AWS What’s New",
+      "llm_score": 60
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-location-service-new-admin-boundaries-vietnam/",
+      "title": "Amazon Location Service Updates for Vietnam's New Administrative Boundaries",
+      "summary": "Amazon Location Service has updated its mapping data to reflect Vietnam's recent administrative reorganization, which consolidated the country's provinces from 63 to 34 administrative units. This update enables customers in Vietnam to seamlessly align their operations with the new administrative structure that took effect July 1, 2025. The update includes changes to Vietnam's administrative boundaries, names, and hierarchical structure across all levels. The refresh incorporates the new structure of 34 provincial-level administrative units, consisting of 28 provinces and 6 centrally managed cities, along with consolidated commune-level administrative boundaries from 10,310 to 3,321 units. Place names and administrative components in Points of Interest (POI) have been updated while preserving street-level address accuracy. This update supports use cases across industries such as logistics, e-commerce, and public services where accurate administrative boundary data is essential for operations like delivery zone planning, service area management, and address validation. The updated data is automatically available to customers querying Vietnam address data through Amazon Location Service. Amazon Location Service enables developers to easily and securely add location data and mapping functionalities into applications. Amazon Location Service with GrabMaps service is available in Singapore and Malaysia regions. To learn more, check out our developer guide .",
+      "published_ts": 1759906800,
+      "source_name": "AWS What’s New",
+      "llm_score": 60
+    }
+  ],
+  "python_polars_duckdb": [
+    {
+      "url": "https://pola.rs/posts/case-mobiliere/",
+      "title": "Polars helps coping with black swan events at La Mobilière",
+      "summary": "La Mobilière always keeps its promise. Now, even more promptly, thanks to Polars.",
+      "published_ts": 1759968000,
+      "source_name": "Polars Blog",
+      "llm_score": 80
+    }
+  ],
+  "viz_bi": [
+    {
+      "url": "https://powerbi.microsoft.com/en-us/blog/prep-your-data-for-ai-now-in-the-power-bi-service/",
+      "title": "Prep Your Data for AI — Now in the Power BI Service",
+      "summary": "Until now, preparing your data for AI was only possible in Power BI Desktop. That changes today! As of today, we are rolling out the ability for you to prepare your data for AI directly in the Power BI service. This makes it easier to keep your semantic models Copilot-ready without switching tools — and it … Continue reading “Prep Your Data for AI — Now in the Power BI Service “",
+      "published_ts": 1759827600,
+      "source_name": "Power BI Blog",
+      "llm_score": 95
+    },
+    {
+      "url": "https://powerbi.microsoft.com/en-us/blog/announcing-semantic-model-apis-to-update-culture-and-collation/",
+      "title": "Announcing semantic model APIs to update culture and collation",
+      "summary": "Today, we are excited to introduce new semantic model API enhancements, specifically enabling model authors to update default culture and collation settings for deployed models programmatically. You no longer need to redeploy a semantic model in the Power BI service just to update its default culture, collation, or both.",
+      "published_ts": 1759917689,
+      "source_name": "Power BI Blog",
+      "llm_score": 80
+    },
+    {
+      "url": "https://powerbi.microsoft.com/en-us/blog/deprecation-of-metric-sets-in-power-bi/",
+      "title": "Deprecation of Metric Sets in Power BI",
+      "summary": "The Metric Sets feature in Power BI will be deprecated, with a phased retirement beginning October 25th, 2025. What’s Changing and When Scorecards and all associated datasets or measures will not be impacted by this change. Recommended alternatives If you have relied on Metric Sets, here are recommended approaches to continue managing and tracking your … Continue reading “Deprecation of Metric Sets in Power BI”",
+      "published_ts": 1759741200,
+      "source_name": "Power BI Blog",
+      "llm_score": 80
+    }
+  ]
+}

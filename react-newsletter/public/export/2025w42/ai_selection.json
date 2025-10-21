@@ -1,0 +1,944 @@
+{
+  "cloud": [
+    {
+      "url": "https://aws.amazon.com/blogs/aws/monitor-analyze-and-manage-capacity-usage-from-a-single-interface-with-amazon-ec2-capacity-manager/",
+      "title": "Monitor, analyze, and manage capacity usage from a single interface with Amazon EC2 Capacity Manager",
+      "summary": "Amazon EC2 Capacity Manager is a new centralized solution that consolidates capacity monitoring and management across all AWS accounts and regions, eliminating operational overhead and providing optimization opportunities for EC2 infrastructure at scale.",
+      "published_ts": 1760629692,
+      "source_name": "AWS Blog (global)",
+      "score": 90
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/aws/aws-transfer-family-sftp-connectors-now-support-vpc-based-connectivity/",
+      "title": "AWS Transfer Family SFTP connectors now support VPC-based connectivity",
+      "summary": "AWS Transfer Family SFTP connectors now support VPC-based connectivity, allowing secure file transfers between Amazon S3 and remote SFTP servers through your existing VPC infrastructure without exposing endpoints to the internet.",
+      "published_ts": 1760470051,
+      "source_name": "AWS Blog (global)",
+      "score": 90
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/principal-financial-group-accelerates-build-test-and-deployment-of-amazon-lex-v2-bots-through-automation/",
+      "title": "Principal Financial Group accelerates build, test, and deployment of Amazon Lex V2 bots through automation",
+      "summary": "In the post Principal Financial Group increases Voice Virtual Assistant performance using Genesys, Amazon Lex, and Amazon QuickSight, we discussed the overall Principal Virtual Assistant solution using Genesys Cloud, Amazon Lex V2, multiple AWS services, and a custom reporting and analytics solution using Amazon QuickSight.",
+      "published_ts": 1760717598,
+      "source_name": "AWS ML Blog",
+      "score": 83
+    },
+    {
+      "url": "https://www.lemagit.fr/actualites/366632784/Red-Hat-et-NetApp-sallient-pour-succeder-a-VMware",
+      "title": "Red Hat et NetApp s’allient pour succéder à VMware",
+      "summary": "<p>Le fabricant de stockage NetApp avait précédemment développé un outil appelé Shift Toolkit, qui permet à ses clients de convertir leurs machines virtuelles VMware <a href=\"https://www.lemagit.fr/actualites/366608812/Windows-Server-2025-un-Hyper-V-concu-pour-remplacer-VMware\">au format d’Hyper-V</a>, le système de virtualisation de Microsoft, sans déplacer leurs données de la baie de disques. À l’occasion de son salon NetApp Insight qui se tient cette semaine à Las Vegas, le constructeur a décliné Shift Toolkit pour OpenShift, le système de Red Hat. Grâce à cela, Red Hat se voit propulsé dans le peloton des meilleures alternatives à VMware.</p> \n<p>«&nbsp;Nous avions déjà un outil pour faire cette transformation, mais il fallait copier les données ailleurs, <a href=\"https://www.lemagit.fr/actualites/366627717/Coup-de-tonnerre-dans-le-stockage-Broadcom-abandonne-les-vVols\">changer le format de leur stockage</a>. Là, vous ne déplacez plus rien. Vous passez de plusieurs semaines de travail pour migrer de VMware vers OpenShift à juste quelques minutes&nbsp;», s’enthousiasme un ingénieur de Red Hat qui ne souhaite pas que son nom soit cité dans la presse.</p> \n<p>Précisons que l’outil ne convertit pas les VM en containers, le format natif d’OpenShift. Il les adapte à <a href=\"https://www.lemagit.fr/actualites/366585597/Red-Hat-OpenShift-Virtualization-est-pret-pour-les-clients-de-VMware\">OpenShift Virtualization</a>, la couche de virtualisation qui fonctionne par-dessus OpenShift. Mais qu’importe, au vu des enjeux économiques.</p> \n<section class=\"section main-article-chapter\" data-menu-title=\"L’enjeu de proposer l’alternative la plus complète à VMware\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>L’enjeu de proposer l’alternative la plus complète à VMware</h2>\n <p>Dans un contexte où les tarifs de VMware ont été multipliés par au moins cinq depuis son rachat par Broadcom, les entreprises prétendent en effet vouloir <a href=\"https://www.lemagit.fr/actualites/366618664/2025-sera-t-elle-lannee-de-labandon-de-VMware\">fuir en masse</a> chez la concurrence. Une aubaine colossale pour celle-ci, car VMware, de très loin le numéro&nbsp;1 de la virtualisation en entreprise, facturait avant son rachat 3,4&nbsp;milliards de dollars par trimestre à ses clients.</p>\n <p>Si plusieurs challengers existent, avec des offres qui égalent plus ou moins les fonctionnalités d’origine, il s’avère que les projets de migration peinent à aboutir. La raison principale est la difficulté à migrer les données liées aux machines virtuelles. Non seulement il faut récrire de zéro les règles de stockage utilisées sous VMware, mais il faut aussi le faire sur une nouvelle baie de disques vierge, qui coûte autant de centaines de milliers d’euros que la précédente, alors que cette dernière pourrait encore servir pendant plusieurs années.</p>\n <p>Le premier concurrent de VMware à l’avoir <a href=\"https://www.lemagit.fr/actualites/366587432/Nutanix-se-rapproche-de-Dell-sur-fond-de-concurrence-acharnee-avec-VMware\">douloureusement compris</a> est Nutanix. Alors que celui-ci vantait la prise en charge totale du stockage par sa solution (à partir de serveurs remplis de disques qu’il faut acheter), il a fini par rendre son système compatible avec les baies de disques externes de marques Dell et <a href=\"https://www.lemagit.fr/actualites/366623529/Nutanix-devient-compatible-avec-les-baies-de-Pure-Storage\">Pure Storage</a> que les clients de VMware possédaient déjà. Nutanix ne l’a en revanche pas encore fait avec les baies de disques de NetApp, qui complètent le trio de tête des solutions de stockage pour VMware.</p>\n <p>Le fait que NetApp implémente la même possibilité, pour que ses clients conservent ses baies de stockage quand ils migrent vers OpenShift, remet donc ce dernier au niveau fonctionnel de Nutanix.</p>\n <p>Les prétendants à la succession de VMware comprennent aussi des solutions comme le très Open source Proxmox, le très mono-marque Microsoft Hyper-V, ou encore le très français <a href=\"https://www.lemagit.fr/actualites/366619483/Vates-VMS-lautre-alternative-Open-source-a-VMware\">Vates VM</a>. Dans le lot, les spécialistes considèrent généralement que seuls Nutanix et Red Hat OpenShift ont la capacité de proposer aux entreprises un accompagnement aussi riche que celui de VMware.</p>\n <p>Par ailleurs, les efforts de Nutanix pour supporter des baies de disques externes n’en sont qu’au début. La seule migration aujourd’hui disponible commercialement est celle qui conserve les baies PowerFlex de Dell, un modèle peu vendu en Europe. Le support des baies FlashArray de Pure Storage sera officiel dans quelques semaines. La conservation des baies NetApp dans une migration vers OpenShift est en revanche disponible dès aujourd’hui.</p>\n</section>       \n<section class=\"section main-article-chapter\" data-menu-title=\"Confier à NetApp la gestion des données et du cloud hybride\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Confier à NetApp la gestion des données et du cloud hybride</h2>\n <p>«&nbsp;Le stockage n’est pas notre métier, nous n’aurions jamais pu adapter nous-mêmes des baies de disques déjà configurées pour VMware en baies de disques configurées pour OpenShift. Nous sommes donc très contents que NetApp l’ait fait pour nous&nbsp;», dit l’ingénieur de Red Hat.</p>\n <blockquote class=\"main-article-pullquote\">\n  <div class=\"main-article-pullquote-inner\">\n   <figure>\n    «&nbsp;Dans notre approche, vous faites exécuter toutes les fonctions de gestion de stockage et de sécurité des accès par la baie de disques, ce qui économise des ressources sur vos serveurs de calcul.&nbsp;»\n   </figure>\n   <figcaption>\n    <strong>Sandeep Singh</strong>Directeur général des produits de stockage, NetApp\n   </figcaption>\n   <i class=\"icon\" data-icon=\"z\"></i>\n  </div>\n </blockquote>\n <p>Sandeep Singh, le directeur général des produits de stockage chez NetApp, avance même que sa solution de réintégration des baies existantes est plus complète que ce que propose Nutanix avec ses concurrents. «&nbsp;Dans notre approche, vous faites exécuter toutes les fonctions de gestion de stockage et de sécurité des accès par la baie de disques, ce qui économise des ressources sur vos serveurs de calcul. De plus, notre granularité est meilleure, dans le sens où vous pouvez réaliser des sauvegardes et des restaurations par VM et non pas sur la globalité du stockage&nbsp;», dit-il.</p>\n <p>«&nbsp;Un autre point qui nous avantage est que NetApp est sans doute le <a href=\"https://www.lemagit.fr/actualites/252508624/NetApp-muscle-plus-encore-ses-solutions-de-cloud-hybride\">fournisseur de stockage qui s’interconnecte le mieux avec les grands hyperscalers</a>. Ce qui nous donne une dimension de cloud hybride à 100&nbsp;%. C’est-à-dire que dès lors que vous avez des applications ayant besoin d’un stockage persistant et que celui-ci est fourni par NetApp, alors nous pouvons vous dire que vos applications déployées sur site seront utilisables telles quelles si vous les transférez vers Azure, AWS, ou GCP.&nbsp;», ajoute l’ingénieur de Red Hat.</p>\n</section>     \n<section class=\"section main-article-chapter\" data-menu-title=\"Une intégration idéale pour l’IA aussi\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Une intégration idéale pour l’IA aussi</h2>\n <p>Simultanément au lancement de Shift Toolkit afin de migrer vers OpenShift, Red Hat confirme que sa plateforme clés en main pour exécuter des IA génératives en entreprise, appelée <a href=\"https://www.lemagit.fr/actualites/366584028/Red-Hat-adapte-OpenShiftAI-pour-RHEL-AI\">OpenShift AI</a>, est d’ores et déjà validée pour fonctionner avec <a href=\"https://www.lemagit.fr/actualites/366632628/AFX-la-nouvelle-baie-de-NetApp-prepare-elle-meme-les-donnees-pour-lIA\">la nouvelle baie AFX</a> de NetApp. Évoquée hier par LeMagIT, cette baie a le mérite d’intégrer un module de calcul qui prépare tout seul les données à leur utilisation dans une application d’IA.</p>\n <p>«&nbsp;Nous avons vocation à proposer la plateforme la plus complète pour à la fois exécuter des <a href=\"https://www.lemagit.fr/actualites/366628166/Linference-distribuee-lavenir-de-Red-Hat-AI\">IA génératives, mais aussi les administrer</a>, notamment grâce aux outils que nous avons rachetés à <a href=\"https://www.lemagit.fr/actualites/366615700/Red-Hat-acquiert-Neural-Magic-pour-mieux-apprehender-le-LLMOps\">Neural Magic</a> l’année dernière. Pour autant, nous reposons sur des solutions tierces pour la vectorisation des documents en vue de l’exploitation de leurs contenus dans une IA&nbsp;», explique l’ingénieur de Red Hat.</p>\n <blockquote class=\"main-article-pullquote\">\n  <div class=\"main-article-pullquote-inner\">\n   <figure>\n    «&nbsp;Avec NetApp, qui propose des pilotes adaptés à chacun de ces cas d’usage, il est possible d’utiliser le même cluster OpenShift avec la même baie de disques pour tous ces traitements.&nbsp;»\n   </figure>\n   <figcaption>\n    <strong>Un ingénieur de Red Hat</strong>\n   </figcaption>\n   <i class=\"icon\" data-icon=\"z\"></i>\n  </div>\n </blockquote>\n <p>«&nbsp;Jusqu’à présent nous utilisions une base de données vectorielle de Google. Mais confier cette vectorisation à l’AFX nous permet encore une fois de dire à nos clients que toutes les applications d’IA qui fonctionnent sur OpenShift IA en local, avec du stockage NetApp, fonctionneront automatiquement dans tous les clouds publics où il existe des services de stockage NetApp. D’autant plus que vous n’avez pas besoin de redéployer OpenShift AI en cloud. Nos outils de gestion d’IA sont utilisables sur les services Kubernetes natifs des hyperscalers&nbsp;», ajoute-t-il.</p>\n <p>«&nbsp;Plus clairement, OpenShift est une plateforme qui sert à exécuter trois types de traitements très différents&nbsp;: des applications en containers, des applications en machines virtuelles et des applications d’IA. Chacun a besoin d’un stockage particulier. Avec NetApp, qui propose des pilotes adaptés à chacun de ces cas d’usage, il est possible d’utiliser le même cluster OpenShift avec la même baie de disques pour tous ces traitements&nbsp;», conclut-il.</p>\n</section>",
+      "published_ts": 1760605380,
+      "source_name": "LeMagIT",
+      "score": 70
+    }
+  ],
+  "dataprep_orchestration_etl": [
+    {
+      "url": "https://dagster.io/blog/designing-user-friendly-dagster-components",
+      "title": "Building Dagster Components Your Users Will Love",
+      "summary": "Learn how to build maintainable, user-focused Dagster components with these 6 proven best practices. From interface design to testing strategies, discover how to create reusable data platform tools your teams will actually want to use.",
+      "published_ts": 1760535056,
+      "source_name": "Dagster Blog",
+      "score": 100
+    },
+    {
+      "url": "https://www.prefect.io/blog/accelerating-ai-with-fastmcp-cloud",
+      "title": "AIAIAccelerating AI with FastMCP CloudAugust 26, 2025",
+      "summary": "If FastMCP Cloud was any easier, I wouldn't have a job.\n- Tobin South, VP AI Agents @ WorkOS\nToday, the Prefect team is thrilled to announce the public beta of\nFastMCP Cloud\n.\nOver the last few months, our open-source\nFastMCP\nproject has become the de facto standard for building MCP servers. FastMCP",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 100
+    },
+    {
+      "url": "https://www.prefect.io/blog/how-snorkel-ai-executes-thousands-of-daily-workflows-with-prefect-open-source",
+      "title": "Case StudiesHow Snorkel AI Reliably Executes Thousands of Daily Workflows with Prefect Open SourceSeptember 2025",
+      "summary": "Snorkel AI replaced their homegrown orchestration system with Prefect Open Source, eliminating custom infrastructure for caching, telemetry, orchestration and queueing while achieving significant performance improvements. Now running thousands of workflows daily, they chose Prefect for its increment",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 100
+    },
+    {
+      "url": "https://www.prefect.io/blog/how-climate-policy-radar-processes-25-000-policy-documents-with-prefect",
+      "title": "Case StudiesHow Climate Policy Radar Processes 25,000 Policy Documents with PrefectSeptember 2025",
+      "summary": "Industry:\nClimate Policy Research & Data\nUse Case:\nLarge-scale document processing and AI pipeline orchestration\nKey Outcomes:\nProcessed tens of millions of synthetic Q&A pairs for Google AI research project: \"We absolutely could not have done [the Google research project] without Prefect. That was ",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 100
+    },
+    {
+      "url": "https://www.prefect.io/blog/airflow-local-development",
+      "title": "Prefect ProductAirflow Local Development SucksJuly 2025",
+      "summary": "How to solve Airflow local development problems, testing challenges, and complex setup requirements with a simpler alternative\nSetting up Apache Airflow 3 for local development requires at least 4 separate services, a minimum of 4GB RAM (8GB recommended), and setup times that can stretch from hours ",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 100
+    },
+    {
+      "url": "https://www.prefect.io/blog/introducing-assets-from-task-to-materialize",
+      "title": "Prefect ProductIntroducing Assets: From @task to @materializeJune 2025",
+      "summary": "TL;DR:\nWe’re Prefect, we orchestrate a thousand years of Python runtime every month. We built a cool feature called assets. Assets let you track decision and data lineage for your agents or workflows by showing you what they produce and how they relate. Check out the\ndocumentation\nor scroll to the b",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 100
+    },
+    {
+      "url": "https://www.prefect.io/blog/how-to-roll-back-deployments-in-prefect-with-deployment-versioning",
+      "title": "Prefect ProductHow to Roll Back Deployments in Prefect with Deployment VersioningMay 2025",
+      "summary": "Watch the deployment versioning walkthrough video to learn how rollbacks works in the UI.\nToday we're introducing deployment versioning in Prefect, a smarter way to manage changes, track performance, and recover quickly when something goes wrong.\nIf you've ever wished you could just \"undo\" a deploym",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 100
+    },
+    {
+      "url": "https://dagster.io/blog/bridging-high-code-and-low-code",
+      "title": "Bridging High-Code and Low-Code: How Dagster Components End the Trade-Off",
+      "summary": "High-code drowns teams in boilerplate. Low-code hits a ceiling fast. DSLs fail in between. Dagster Components bridges both approaches so newcomers and experts can build together without compromise.",
+      "published_ts": 1760372687,
+      "source_name": "Dagster Blog",
+      "score": 100
+    },
+    {
+      "url": "https://dagster.io/blog/building-a-better-lakehouse-from-airflow-to-dagster",
+      "title": "Modern Lakehouse Orchestration: Dagster vs Airflow Guide",
+      "summary": "Compare Airflow and Dagster for lakehouse orchestration. Discover event-driven processing, asset checks, and pure SQL patterns for MinIO, Trino, and Iceberg.",
+      "published_ts": 1760367335,
+      "source_name": "Dagster Blog",
+      "score": 100
+    },
+    {
+      "url": "https://dagster.io/blog/python-factory-patterns",
+      "title": "Factory Design Patterns in Python",
+      "summary": "Factory patterns help create reusable components in data engineering. Learn how to apply them in Python using Dagster.",
+      "published_ts": 1760366189,
+      "source_name": "Dagster Blog",
+      "score": 100
+    },
+    {
+      "url": "https://www.prefect.io/blog/why-prefect-chose-workos-for-enterprise-auth",
+      "title": "Prefect ProductThe Build vs. Buy Debate: Why Prefect Chose WorkOS for Enterprise AuthSeptember 2025",
+      "summary": "Back in the summer of 2022 when you could buy a dozen eggs for less than $8.00, the Prefect team was deeply entrenched in re-platforming our SaaS product, Prefect Cloud. With nearly every other architecture and tooling decision made, one crucial choice remained:\nwhat to do for enterprise auth\n. Fast",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 98
+    },
+    {
+      "url": "https://www.prefect.io/blog/change-data-capture-tutorial-real-time-event-workflows-with-debezium-and-prefect",
+      "title": "Workflow OrchestrationChange Data Capture Tutorial: Real-Time Event Workflows with Debezium and PrefectAugust 2025",
+      "summary": "The move from batch schedules to real-time, event-driven systems is transforming how organizations work with data. While cron jobs and scheduled processes still have their place, modern businesses increasingly demand instant insights and immediate action.\nUnfortunately, legacy systems that were buil",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 98
+    },
+    {
+      "url": "https://www.prefect.io/blog/how-japan-s-leading-bnpl-company-paidy-transformed-their-data-operations-with-prefect",
+      "title": "Case StudiesHow Japan's Leading BNPL Company, Paidy, Transformed Their Data Operations with PrefectAugust 2025",
+      "summary": "Paidy is Japan's leading \"Buy Now, Pay Later\" (BNPL) service that allows consumers to make online purchases without needing a credit card or pre-registration. Instead, users can pay with just their smartphones. Purchases are consolidated and billed monthly, with options to pay via convenience store,",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 98
+    },
+    {
+      "url": "https://www.prefect.io/blog/turn-your-dbt-project-into-a-production-pipeline-in-minutes",
+      "title": "Prefect ProductTurn Your dbt Project Into a Production Pipeline in MinutesJuly 2025",
+      "summary": "tldr\nGet realtime logs, a live execution graph, and data lineage for your dbt projects\nfor free\nin\nseconds\n.\nTo see it work,\ncreate a Prefect Cloud account\n,\ninstall uv\n, and run\nuvx prefect-cloud deploy flow.py:dbt_flow \\\\\n--name dbt_deployment \\\\\n--from PrefectHQ/jaffle_shop_duckdb_prefect/tree/du",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 98
+    },
+    {
+      "url": "https://www.prefect.io/blog/how-foundry-cut-workflow-deployment-time-by-80-using-prefect",
+      "title": "Case StudiesHow Foundry Cut Workflow Deployment Time by 80% Using PrefectJuly 2025",
+      "summary": "Customer:\nFoundry\nIndustry:\nCryptocurrency infrastructure\nUse Case:\nData pipeline orchestration\nKey Outcomes:\nEngineers migrated pipelines from GitLab CI to Prefect within a single sprint\nDetection time for failures dropped by 95-99 percent, from up to 5 days to under 15 minutes\nMonthly pipeline dow",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 98
+    },
+    {
+      "url": "https://www.prefect.io/blog/kraft-analytics-group-platform-evolution-with-prefect",
+      "title": "Case StudiesKraft Analytics Group Platform Evolution with Prefect May 2025",
+      "summary": "Summary\nCustomer\n: Kraft Analytics Group (KAGR)\nIndustry\n: Sports & Entertainment\nUse Case\n: KAGR underwent a process to evolve their platform’s tech stack to meet massive client growth and shifts in the industry’s use of data. They selected Prefect to solve for secure & scalable data orchestration.",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 98
+    },
+    {
+      "url": "https://www.getdbt.com/blog/announcing-state-aware-orchestration",
+      "title": "State-aware orchestration now in Preview for Fusion projects",
+      "summary": "Intelligent pipelines that save time and money—state-aware orchestration now in Preview for dbt Fusion projects.",
+      "published_ts": 1760441220,
+      "source_name": "dbt Blog",
+      "score": 94
+    },
+    {
+      "url": "https://www.prefect.io/customer-stories",
+      "title": "Customers",
+      "summary": "LiveEO\nmigrated from Airflow to Prefect\nin order to scale operations, streamline workflows, and maintain cost efficiency. With Prefect, they have reduced AWS costs by 63% while also tripling their development speed. This has enabled them to expand their geospatial data analysis capabilities, driving",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 93
+    },
+    {
+      "url": "https://www.getdbt.com/blog/dbt-labs-affirms-commitment-to-open-semantic-interchange-by-open-sourcing-metricflow",
+      "title": "dbt Labs Affirms Commitment to Open Semantic Interchange by Open Sourcing MetricFlow",
+      "summary": "dbt Labs is open-sourcing MetricFlow with an Apache 2.0 license, a significant step towards advancing trustworthy AI.",
+      "published_ts": 1760459400,
+      "source_name": "dbt Blog",
+      "score": 90
+    },
+    {
+      "url": "https://www.getdbt.com/blog/dbt-labs-cost-optimization-agentic-ai-product-announcements",
+      "title": "dbt Labs Delivers Significant Cost Optimization Results and Agentic AI Features, Powered by Fusion",
+      "summary": "Double-digit compute spend reductions and a new suite of goverened AI agents among new features announced at Coalesce 2025",
+      "published_ts": 1760459400,
+      "source_name": "dbt Blog",
+      "score": 90
+    },
+    {
+      "url": "https://www.getdbt.com/blog/dbt-agents-remote-dbt-mcp-server-trusted-ai-for-analytics",
+      "title": "Announcing dbt Agents and the remote dbt MCP Server: Trusted AI for analytics",
+      "summary": "Introducing new AI agent capabilities to speed up your analytics lifecycle.",
+      "published_ts": 1760453580,
+      "source_name": "dbt Blog",
+      "score": 90
+    },
+    {
+      "url": "https://www.getdbt.com/blog/dbt-labs-and-fivetran-sign-definitive-agreement-to-merge",
+      "title": "Fivetran and dbt Labs Unite to Set the Standard for Open Data Infrastructure",
+      "summary": "Together, Fivetran and dbt are simplifying enterprise data management with a unified foundation.",
+      "published_ts": 1760371200,
+      "source_name": "dbt Blog",
+      "score": 90
+    },
+    {
+      "url": "https://www.getdbt.com/blog/dbt-labs-and-fivetran-product-vision",
+      "title": "The era of open data infrastructure",
+      "summary": "Why the dbt + Fivetran merger is the inflection point for AI, Iceberg, and the enterprise",
+      "published_ts": 1760371200,
+      "source_name": "dbt Blog",
+      "score": 90
+    },
+    {
+      "url": "https://airbyte.com/v2",
+      "title": "Hybrid DeploymentNew! Check out Airbyte 2.0",
+      "summary": "Enterprise Flex: Have your data cake and eat it too\nVIDEO\n‍\nWe built Enterprise Flex from the ground up to address a glaring gap we saw in the market: the biggest tension in enterprise data has always been control vs. flexibility. Companies want the ease of cloud deployment, but they need to keep se",
+      "published_ts": 1760464513,
+      "source_name": "Airbyte Blog",
+      "score": 85
+    },
+    {
+      "url": "https://airbyte.com/solutions/analytics",
+      "title": "Analytics & BIUnlock insights with fresh, reliable data",
+      "summary": "Self-serve analytics chatbots reduce data team workloads\nAfter integrating data with Airbyte, businesses build LLM-powered chatbots that can answer business questions with insights and metrics, saving data teams from ad-hoc requests and analyses.",
+      "published_ts": 1760464513,
+      "source_name": "Airbyte Blog",
+      "score": 85
+    },
+    {
+      "url": "https://www.prefect.io/blog/highly-regulated-organizations-choose-prefect-cloud",
+      "title": "Workflow OrchestrationWhy Highly Regulated Organizations Choose Prefect CloudSeptember 2025",
+      "summary": "Learn why engineers at financial, healthcare, and government organizations are able to sail through Architecture/Security review.\nBut what about compliance?\nHere's where precision matters.\nSecurity and compliance are different things.\nWhile Prefect's architecture delivers the isolation that regulate",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 83
+    },
+    {
+      "url": "https://dagster.io/blog/python-environment-variables",
+      "title": "Best Practices for Python Env Variables",
+      "summary": "Learn to manage Python environment variables safely and cleanly as part of our ongoing series on data engineering with Dagster.",
+      "published_ts": 1760366189,
+      "source_name": "Dagster Blog",
+      "score": 82
+    },
+    {
+      "url": "https://www.prefect.io/blog/prefect-s-open-source-sponsorship-2025-update",
+      "title": "OSSPrefect's Open Source Sponsorship Initiative: 2025 UpdateSeptember 2025",
+      "summary": "At Prefect, open source has always been at the core of who we are. As\nwe continue our participation in the Open Source Sponsorship Initiative\n, we're excited to share updates on our ongoing commitment to the open source community.\nOur Continued Investment\nThis year, we're contributing\n$30,000\nto sup",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 73
+    },
+    {
+      "url": "https://dagster.io/blog/dagster-plus-now-available-in-the-eu",
+      "title": "https://dagster.io/blog/dagster-plus-now-available-in-the-eu",
+      "summary": "We're thrilled to announce that Dagster+ has arrived in Europe! After hearing from so many organizations who need their Dagster control plane within EU boundaries for compliance and data residency requirements, we’re excited make Dagster+ EU available! With this launch, your control plane, metadata,",
+      "published_ts": 1760535056,
+      "source_name": "Dagster Blog",
+      "score": 72
+    },
+    {
+      "url": "https://dagster.io/platform-overview/data-orchestration",
+      "title": "Data Orchestration",
+      "summary": "Orchestration without limits\nFrom ingestion to transformation, modeling to delivery—Dagster makes it easy to build reliable workflows at every layer of the stack.",
+      "published_ts": 1760464513,
+      "source_name": "Dagster Blog",
+      "score": 72
+    },
+    {
+      "url": "https://dagster.io/platform-overview/data-quality",
+      "title": "Data Quality",
+      "summary": "Data quality shouldn’t be a separate workflow.\nDagster lets you define and run data quality checks where your data lives—alongside your pipelines. No separate tools, no disconnected alerting.",
+      "published_ts": 1760464513,
+      "source_name": "Dagster Blog",
+      "score": 72
+    },
+    {
+      "url": "https://dagster.io/solutions/data-modernization",
+      "title": "Data Modernization",
+      "summary": "Designing User-Friendly Dagster Components\nThe difference between components that thrive and components that collect digital dust? User experience design.",
+      "published_ts": 1760464513,
+      "source_name": "Dagster Blog",
+      "score": 72
+    },
+    {
+      "url": "https://dagster.io/blog/data-engineering-in-python",
+      "title": "Move from Python Scripts to Dagster",
+      "summary": "Move from ad hoc scripts to reliable pipelines by converting your Python data projects into orchestrated Dagster workflows.",
+      "published_ts": 1760366189,
+      "source_name": "Dagster Blog",
+      "score": 72
+    },
+    {
+      "url": "https://dagster.io/solutions/data-products",
+      "title": "Data Products",
+      "summary": "Designing User-Friendly Dagster Components\nThe difference between components that thrive and components that collect digital dust? User experience design.",
+      "published_ts": 1760464513,
+      "source_name": "Dagster Blog",
+      "score": 67
+    },
+    {
+      "url": "https://www.getdbt.com/blog/dbt-labs-and-fivetran-merge-announcement",
+      "title": "dbt Labs + Fivetran: Open data infrastructure for analytics and AI",
+      "summary": "Why we’re joining forces with Fivetran to build the future",
+      "published_ts": 1760371500,
+      "source_name": "dbt Blog",
+      "score": 65
+    },
+    {
+      "url": "https://airbyte.com/blog/future-of-data-movement",
+      "title": "Setting the Agenda: The Future of Data Movement | Airbyte",
+      "summary": "Discover Airbyte’s vision for the future of data movement—how open source, automation, and innovation are redefining how organizations move and manage data.",
+      "published_ts": 1760313600,
+      "source_name": "Airbyte Blog",
+      "score": 65
+    },
+    {
+      "url": "https://dagster.io/platform-overview/cost-insights",
+      "title": "Cost Insights",
+      "summary": "Costs are now accessible to anyone\nDagster sits at the center of all your recurring data processes—from ingestion to transformation to visualization. As the orchestrator, it becomes the natural place to track and manage costs across tools.\nWith visibility across pipelines, teams, and tags, you can a",
+      "published_ts": 1760464513,
+      "source_name": "Dagster Blog",
+      "score": 62
+    }
+  ],
+  "db_sql_olap": [
+    {
+      "url": "https://www.databricks.com/blog/how-build-and-scale-multimodal-ai-systems-databricks",
+      "title": "How to Build and Scale Multimodal AI Systems on Databricks",
+      "summary": "Why Multimodal Matters for Enterprise AIThe real world is multimodal—and your AI should be too. ...",
+      "published_ts": 1760371200,
+      "source_name": "Databricks Blog",
+      "score": 100
+    },
+    {
+      "url": "https://duckdb.org/2025/10/13/duckdb-streaming-patterns.html",
+      "title": "Streaming Patterns with DuckDB",
+      "summary": "DuckDB used for streaming analytics? This post will show you some patterns in which you can use DuckDB to refresh your data at near real-time speed.",
+      "published_ts": 1760313600,
+      "source_name": "DuckDB Blog",
+      "score": 93
+    },
+    {
+      "url": "https://azure.microsoft.com/en-us/blog/oracle-databaseazure-offers-new-features-regions-and-programs-to-unlock-data-and-ai-innovation/",
+      "title": "Oracle Database@Azure offers new features, regions, and programs to unlock data and AI innovation",
+      "summary": "Oracle Database@Azure adds new AI-ready features, expands to 33 regions, and launches new partner and migration programs The post Oracle Database@Azure offers new features, regions, and programs to unlock data and AI innovation appeared first on Microsoft Azure Blog .",
+      "published_ts": 1760464800,
+      "source_name": "Azure Blog",
+      "score": 90
+    },
+    {
+      "url": "https://www.lemagit.fr/actualites/366632811/Avec-son-moteur-Fusion-dbt-Labs-fait-la-chasse-aux-couts",
+      "title": "Avec son moteur Fusion, dbt Labs fait la chasse aux coûts",
+      "summary": "<p>Dbt Labs a dévoilé mardi une version mise à jour de son moteur Fusion, un remplaçant de dbt Core, dans son produit commercial.</p> \n<p>En outre, le fournisseur a dévoilé dbt Agents, un ensemble de fonctionnalités basées sur l’IA, intégrée à la plateforme dbt Labs. Elles doivent aider les utilisateurs à effectuer des tâches telles que la découverte et la surveillance de la qualité des données.</p> \n<p>La mise à jour Fusion et les agents dbt ont été dévoilés lors de Coalesce, la conférence annuelle des utilisateurs de dbt Labs à Las Vegas.</p> \n<p>Fusion, lancé en mai, est actuellement en phase de préversion pour les charges de travail sur Amazon Redshift, Databricks, Google BigQuery et Snowflake.</p> \n<p>Dbt&nbsp;Fusion est un moteur propriétaire dont le rôle est d’exécuter des charges de travail de transformation des données. <a href=\"https://www.lemagit.fr/conseil/Rust-vs-C-les-differences-et-cas-dusage-cles\">Il est écrit en Rust</a> et non plus <a href=\"https://www.lemagit.fr/conseil/Developper-des-microservices-en-Python-est-ce-viable\">en Python</a>, contrairement à dbt Core.</p> \n<p>Fusion permet désormais aux utilisateurs de créer des pipelines optimisés qui créent et gèrent des tables Apache Iceberg dans Databricks et Snowflake. Il exécute des charges de travail sur site et dans des clouds privés, pour un contrôle accru par rapport aux clouds publics. Par ailleurs, il intègre des définitions sémantiques et la traçabilité des données en vue d’améliorer la qualité des données.</p> \n<section class=\"section main-article-chapter\" data-menu-title=\"Jusqu’à 30 % d’économie avec le moteur Fusion\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Jusqu’à 30&nbsp;% d’économie avec le moteur Fusion</h2>\n <p>Autre point notable, la mise à jour de dbt Fusion ajoute une orchestration sensible à l’état. Elle doit réduire les coûts de calcul inutiles en garantissant que les pipelines de données n’exécutent que les modèles ayant changé lors de l’entraînement et de la mise à jour des applications.</p>\n <p>Plus précisément, dbt Fusion ne recrée pas les modèles de données des tables cibles (transformées) au sein de son DAG (graphe acyclique dirigé). Au lieu de ça, il ne traite pas ceux qui n’ont pas besoin d’être changés. Cela permettrait d’économiser 10&nbsp;% des coûts, selon les tests effectués avec la cohorte de bêta-testeurs.</p>\n <p>Le moteur permet aux équipes data d’affiner les pipelines de données, en définissant des exigences de fraîcheur des données que l’orchestration sensible à l’état respecte, tout en déterminant le chemin d’exécution des tâches optimal. La cohorte de testeurs aurait obtenu un gain annuel supplémentaire minimum de 15&nbsp;%. L’amélioration des tests agrégés sensibles aux colonnes et de la CI permettrait encore de «&nbsp;gratter&nbsp;» 4&nbsp;% des coûts, pour un total «&nbsp;potentiel&nbsp;» de 29&nbsp;%.</p>\n <p>« Le moteur Fusion est né du constat que nous avions atteint les limites de ce que nous pouvions faire avec le code source original de dbt Core », explique Tristan Handy, fondateur et CEO de dbt labs.</p>\n <p>Les commentaires des clients ont également joué un rôle dans la décision initiale de dbt Labs de développer un nouveau moteur, poursuit-il. Le dirigeant assure que les utilisateurs recherchent toujours des performances plus rapides et des coûts plus bas. Mais la principale motivation pour créer dbt Fusion part du constat que l’architecture d’origine du fournisseur, construite en 2016, ne répondait plus aux besoins des charges de travail de 2025. L’écriture du moteur en Rust permettrait de parser 30&nbsp;fois plus rapidement les données que dbt Core.</p>\n <p>«&nbsp;Notre véritable motivation était de reconnaître que nous ne pouvions pas simplement nous contenter d’itérer afin d’aller vers l’avenir, surtout compte tenu de la rapidité avec laquelle les choses évoluent pour l’IA et les normes ouvertes comme Iceberg&nbsp;», affirme Tristan&nbsp;Handy.</p>\n <p>Comme Fusion ajoute désormais des fonctionnalités qui aident les clients à contrôler leurs coûts, il présente un intérêt réel pour les clients, remarque Donald&nbsp;Farmer, fondateur et directeur de TreeHive Strategy.</p>\n <blockquote class=\"main-article-pullquote\">\n  <div class=\"main-article-pullquote-inner\">\n   <figure>\n    «&nbsp;Cette annonce arrive donc à point nommé, d’autant plus que dbt a été critiqué par les utilisateurs pour la lenteur de l’exécution des projets de grande envergure.&nbsp;»\n   </figure>\n   <figcaption>\n    <strong>Donald Farmer</strong>Fondateur et directeur, TreeHive Strategy\n   </figcaption>\n   <i class=\"icon\" data-icon=\"z\"></i>\n  </div>\n </blockquote>\n <p>«&nbsp;Les coûts du cloud sont une priorité pour de nombreux DSI, en grande partie en raison de l’augmentation de l’échelle de l’IA, de l’analytique et des charges de travail liées aux données&nbsp;», déclare-t-il. «&nbsp;Cette annonce arrive donc à point nommé, d’autant plus que dbt a été critiqué par les utilisateurs pour la lenteur de l’exécution des projets de grande envergure&nbsp;».</p>\n <p>L’orchestration sensible à l’état, quant à elle, est un moyen logique pour dbt Labs de maîtriser les coûts et d’améliorer les performances, poursuit l’analyste.</p>\n <p>«&nbsp;L’orchestration sensible à l’état est tout à fait logique&nbsp;», considère-t-il. «&nbsp;Auparavant, ce processus nécessitait beaucoup de travail manuel, donc les utilisateurs devraient être satisfaits si cela est bien fait&nbsp;». Les gains semblent pour l’instant dépendre de la stratégie de rafraîchissement de données.</p>\n</section>            \n<section class=\"section main-article-chapter\" data-menu-title=\"Quatre premiers agents IA pour les ingénieurs de données\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Quatre premiers agents IA pour les ingénieurs de données</h2>\n <p>Parallèlement, les quatre premiers agents IA de dbt font leur apparition. Ils sont ou seront accessibles via le serveur distant Model Context Protocol de dbt Labs. Le serveur MCP est en disponibilité générale et intègre des outils liés au moteur Fusion.</p>\n <p>Les agents IA sont les suivants&nbsp;:</p>\n <ul class=\"default-list\"> \n  <li>Developer&nbsp;Agent&nbsp;: un assistant bientôt disponible pour expliquer les modèles de données et les valider avant un merge.</li> \n  <li>Un futur agent d’observabilité pour surveiller la qualité des données, identifier les causes profondes des erreurs et des changements, et proposer des corrections dans les pipelines de données.</li> \n  <li>Un agent de découverte, en bêta permettant de trouver les jeux de données appropriés à partir d’une requête en langage naturel. &nbsp;</li> \n  <li>Un agent analyste (en bêta également) pour répondre aux questions sur les modèles, les tâches et les métriques.</li> \n </ul>\n <p>De nombreux fournisseurs ajoutent désormais des agents à leurs plateformes, DBT Labs n’est pas le premier, rappelle Donald&nbsp;Farmer<a href=\"https://www.lemagit.fr/actualites/366585552/La-couche-de-gouvernance-de-DBT-Labs-convainc-davantage-que-son-assistant-IA\">. Et il n’était pas en avance l’année dernière</a>. Cependant, comme la transformation des données implique plus de tâches routinières que certains autres processus de gestion des données, les agents sont les bienvenus.</p>\n <p>&nbsp;«&nbsp;Ce sont exactement les tâches que les agents devraient prendre en charge&nbsp;», avance Donald&nbsp;Farmer.</p>\n <p>William&nbsp;McKnight, analyste et dirigeant du cabinet McKnight Consulting Group, souligne que les agents Developer et Observability seront peut-être les plus importants pour les utilisateurs.</p>\n <p>«&nbsp;L’agent Developer se distinguera en automatisant des tâches telles que la création, la refonte et la validation de code, ce qui permet d’accélérer le processus tout en maintenant la qualité et la confiance&nbsp;», explique-t-il. «&nbsp;L’agent Observability est important, car il automatisera l’identification des problèmes et la proposition de solutions, ce qui réduit le travail de correction manuel et prend en charge l’IA régulée et une infrastructure de données fiable.&nbsp;»</p>\n <p>Pour autant, l’ensemble de ces fonctionnalités ne sont pas disponibles ou en préversion. Quoi qu’en dise dbt, qui prétend que des milliers d’équipes sont en train d’adopter son nouveau moteur.</p>\n</section>         \n<section class=\"section main-article-chapter\" data-menu-title=\"Une autre fusion attendue\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Une autre fusion attendue</h2>\n <p>Aussi, il faut rappeler <a href=\"https://www.lemagit.fr/actualites/366632564/ELT-Fivetran-et-dbt-Labs-confirment-leur-fusion\">la fusion en cours entre DBT Labs et Fivetran</a>. Annoncée la veille de Coalesce, elle s’inscrit dans le cadre d’une consolidation continue dans le domaine de la gestion et de l’analyse des données.</p>\n <blockquote class=\"main-article-pullquote\">\n  <div class=\"main-article-pullquote-inner\">\n   <figure>\n    «&nbsp;Lorsque l’accord sera conclu et que nos entreprises uniront leurs forces, nous pourrons devenir une solution [d’extraction, de transformation et de chargement] de bout en bout à grande échelle.&nbsp;»\n   </figure>\n   <figcaption>\n    <strong>Tristan Handy</strong>Fondateur et CEO, dbt labs\n   </figcaption>\n   <i class=\"icon\" data-icon=\"z\"></i>\n  </div>\n </blockquote>\n <p>Databricks et Snowflake ont racheté des <a href=\"https://www.lemagit.fr/actualites/366625496/Openflow-Snowflake-veut-unifier-lingestion-des-donnees-structurees-et-non-structurees\">spécialistes afin d’étendre leurs capacités</a>. De même, Qlik et Fivetran se sont récemment développés en acquérant des éditeurs plus modestes <a href=\"https://www.lemagit.fr/tribune/Boris-Jabes-Census-et-Fivetran-creent-une-forme-diPaaS-centre-sur-les-donnees\">pour se doter de fonctionnalités ETL/ELT modernes</a>. Parallèlement, Informatica, spécialiste indépendant de longue date dans le domaine de la gestion des données, a conclu un accord en vue de son rachat par Salesforce.</p>\n <p>Selon Tristan&nbsp;Handy, l’union avec Fivetran vise à combiner des capacités complémentaires afin de fournir aux clients une plateforme plus complète.</p>\n <p>«&nbsp;Lorsque l’accord sera conclu et que nos entreprises uniront leurs forces, nous pourrons devenir une solution [d’extraction, de transformation et de chargement] de bout en bout à grande échelle&nbsp;», promet-il. «&nbsp;Nous avons déjà des milliers de clients communs… qui font confiance à Fivetran et DBT comme étant la meilleure combinaison possible. Notre objectif est de réunir tout cela dans une solution unifiée.&nbsp;»</p>\n <p>Par ailleurs, dbt Labs prévoit d’affiner Fusion, à mesure que de plus en plus de développeurs adoptent le nouveau moteur et continuent d’étendre son écosystème grâce à des intégrations, ajoute Tristan&nbsp;Handy.</p>\n <p>Concernant la nature open source de dbt Core, l’éditeur a promis de le maintenir le projet «&nbsp;indéfiniment&nbsp;». Il a aussi annoncé MetricFlow. Cette librairie sous licence Apache&nbsp;2.0 lancée avec Snowflake et Salesforce doit permettre de s’assurer que des métriques ou des indicateurs clés sont consistants entre les tableaux de bord, les notebooks des équipes data et les agents IA.&nbsp;</p>\n <p>«&nbsp;Dbt pourrait améliorer sa plateforme en améliorant la visualisation de la traçabilité des données et en prenant en charge davantage de sources de données&nbsp;», recommande pour sa part William&nbsp;McKnight. «&nbsp;En outre, il pourrait approfondir les capacités de ses agents IA, en les intégrant plus étroitement à Dbt Insights afin d’accélérer la génération d’informations et élargir l’utilisation du serveur dbt MCP. Cela garantirait un contexte fiable et contrôlé pour les systèmes IA externes.&nbsp;»</p>\n</section>",
+      "published_ts": 1760709300,
+      "source_name": "LeMagIT",
+      "score": 89
+    },
+    {
+      "url": "https://cloud.google.com/bigquery",
+      "title": "BigQuery",
+      "summary": "How BigQuery pricing works\nBigQuery pricing is based on compute (analysis), storage, additional services, and data ingestion and extraction. Loading and exporting data are free.\nServices and usage\nSubscription type\nPrice (USD)\nThe\nBigQuery free tier\ngives customers 10 GiB storage, up to 1 TiB querie",
+      "published_ts": 1760464513,
+      "source_name": "Looker Blog",
+      "score": 85
+    },
+    {
+      "url": "https://cloud.google.com/blog/topics/maps-geospatial",
+      "title": "Maps & Geospatial",
+      "summary": "Data Analytics\nOptimizing BigQuery for astronomy datasets using HealPix Index\nBy Marcos Aurelio Poles de Souza • 10-minute read",
+      "published_ts": 1760464513,
+      "source_name": "Google Cloud Blog",
+      "score": 83
+    },
+    {
+      "url": "https://powerbi.microsoft.com/en-us/blog/announcing-a-new-fabric-rest-api-for-connection-binding-of-semantic-models/",
+      "title": "Announcing a new Fabric REST API for connection binding of semantic models",
+      "summary": "We are thrilled to announce the release of a new Fabric REST API for configuring connection bindings for semantic models. A connection binding defines what data connection a semantic model will use to connect to an underlying data source.",
+      "published_ts": 1760623360,
+      "source_name": "Power BI Blog",
+      "score": 73
+    },
+    {
+      "url": "https://www.databricks.com/blog/future-banks-and-insurers-open-ecosystems-ai-and-curiosity",
+      "title": "The Future of Banks and Insurers: Open Ecosystems, AI and Curiosity",
+      "summary": "As host of a recent Databricks banking and insurance webinar, I brought together...",
+      "published_ts": 1760433386,
+      "source_name": "Databricks Blog",
+      "score": 73
+    },
+    {
+      "url": "https://cloud.google.com/bigquery/docs/data-prep-introduction",
+      "title": "data preparation",
+      "summary": "Introduction to BigQuery data preparation\nThis document describes AI-augmented data preparation in BigQuery. Data\npreparations are\nBigQuery\nresources, which use Gemini in BigQuery to analyze your\ndata and provide intelligent suggestions for cleaning, transforming, and\nenriching it. You can significa",
+      "published_ts": 1760464513,
+      "source_name": "Dataform Blog",
+      "score": 70
+    }
+  ],
+  "ml_ai": [
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/building-smarter-ai-agents-agentcore-long-term-memory-deep-dive/",
+      "title": "Building smarter AI agents: AgentCore long-term memory deep dive",
+      "summary": "In this post, we explore how Amazon Bedrock AgentCore Memory transforms raw conversational data into persistent, actionable knowledge through sophisticated extraction, consolidation, and retrieval mechanisms that mirror human cognitive processes. The system tackles the complex challenge of building AI agents that don't just store conversations but extract meaningful insights, merge related information across time, and maintain coherent memory stores that enable truly context-aware interactions.",
+      "published_ts": 1760552577,
+      "source_name": "AWS ML Blog",
+      "score": 100
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/configure-and-verify-a-distributed-training-cluster-with-aws-deep-learning-containers-on-amazon-eks/",
+      "title": "Configure and verify a distributed training cluster with AWS Deep Learning Containers on Amazon EKS",
+      "summary": "Misconfiguration issues in distributed training with Amazon EKS can be prevented following a systematic approach to launch required components and verify their proper configuration. This post walks through the steps to set up and verify an EKS cluster for training large models using DLCs.",
+      "published_ts": 1760546359,
+      "source_name": "AWS ML Blog",
+      "score": 100
+    },
+    {
+      "url": "https://www.databricks.com/blog/powering-future-data-and-ai-action-across-energy-industry",
+      "title": "Powering the Future: Data and AI in Action Across the Energy Industry",
+      "summary": "As global energy demand increases and operations become more complex, energy companies...",
+      "published_ts": 1760392800,
+      "source_name": "Databricks Blog",
+      "score": 100
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-tp-icap-transformed-crm-data-into-real-time-insights-with-amazon-bedrock/",
+      "title": "How TP ICAP transformed CRM data into real-time insights with Amazon Bedrock",
+      "summary": "This post shows how TP ICAP used Amazon Bedrock Knowledge Bases and Amazon Bedrock Evaluations to build ClientIQ, an enterprise-grade solution with enhanced security features for extracting CRM insights using AI, delivering immediate business value.",
+      "published_ts": 1760717725,
+      "source_name": "AWS ML Blog",
+      "score": 98
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/splash-music-transforms-music-generation-using-aws-trainium-and-amazon-sagemaker-hyperpod/",
+      "title": "Splash Music transforms music generation using AWS Trainium and Amazon SageMaker HyperPod",
+      "summary": "In this post, we show how Splash Music is setting a new standard for AI-powered music creation by using its advanced HummingLM model with AWS Trainium on Amazon SageMaker HyperPod. As a selected startup in the 2024 AWS Generative AI Accelerator, Splash Music collaborated closely with AWS Startups and the AWS Generative AI Innovation Center (GenAIIC) to fast-track innovation and accelerate their music generation FM development lifecycle.",
+      "published_ts": 1760717161,
+      "source_name": "AWS ML Blog",
+      "score": 98
+    },
+    {
+      "url": "https://blog.dataiku.com/moving-past-genai-pilots",
+      "title": "MIT Says 95% of GenAI Pilots Fail: Here’s How to Beat the Odds",
+      "summary": "If you’ve ever launched a GenAI pilot only to see it stall, you’re not alone. MIT reports that GenAI pilots fall short, not due to technology, but because organizations can’t adapt or integrate AI into real processes. Let's explore why 95% fail, how the other 5% succeed, and the best practices for turning fragile experiments into scalable, enterprise-ready AI.",
+      "published_ts": 1760706480,
+      "source_name": "Dataiku Blog",
+      "score": 98
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/iterative-fine-tuning-on-amazon-bedrock-for-strategic-model-improvement/",
+      "title": "Iterative fine-tuning on Amazon Bedrock for strategic model improvement",
+      "summary": "Organizations often face challenges when implementing single-shot fine-tuning approaches for their generative AI models. The single-shot fine-tuning method involves selecting training data, configuring hyperparameters, and hoping the results meet expectations without the ability to make incremental adjustments. Single-shot fine-tuning frequently leads to suboptimal results and requires starting the entire process from scratch when improvements are […]",
+      "published_ts": 1760656288,
+      "source_name": "AWS ML Blog",
+      "score": 98
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/voice-ai-powered-drive-thru-ordering-with-amazon-nova-sonic-and-dynamic-menu-displays/",
+      "title": "Voice AI-powered drive-thru ordering with Amazon Nova Sonic and dynamic menu displays",
+      "summary": "In this post, we'll demonstrate how to implement a Quick Service Restaurants (QSRs) drive-thru solution using Amazon Nova Sonic and AWS services. We'll walk through building an intelligent system that combines voice AI with interactive menu displays, providing technical insights and implementation guidance to help restaurants modernize their drive-thru operations.",
+      "published_ts": 1760639788,
+      "source_name": "AWS ML Blog",
+      "score": 98
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/optimizing-document-ai-and-structured-outputs-by-fine-tuning-amazon-nova-models-and-on-demand-inference/",
+      "title": "Optimizing document AI and structured outputs by fine-tuning Amazon Nova Models and on-demand inference",
+      "summary": "This post provides a comprehensive hands-on guide to fine-tune Amazon Nova Lite for document processing tasks, with a focus on tax form data extraction. Using our open-source GitHub repository code sample, we demonstrate the complete workflow from data preparation to model deployment.",
+      "published_ts": 1760639575,
+      "source_name": "AWS ML Blog",
+      "score": 98
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/transforming-enterprise-operations-four-high-impact-use-cases-with-amazon-nova/",
+      "title": "Transforming enterprise operations: Four high-impact use cases with Amazon Nova",
+      "summary": "In this post, we share four high-impact, widely adopted use cases built with Nova in Amazon Bedrock, supported by real-world customers deployments, offerings available from AWS partners, and experiences. These examples are ideal for organizations researching their own AI adoption strategies and use cases across industries.",
+      "published_ts": 1760552770,
+      "source_name": "AWS ML Blog",
+      "score": 98
+    },
+    {
+      "url": "https://www.prefect.io/blog/how-to-cut-data-pipeline-costs-by-75-with-kubernetes-spot-instances",
+      "title": "Workflow OrchestrationHow to Cut Data Pipeline Costs by 75% with Kubernetes Spot InstancesJune 2025",
+      "summary": "Data teams have embraced Kubernetes for many reasons. It provides dynamic resource allocation for workloads that swing from lightweight data ingestion to GPU-hungry ML training. Its native support for auto-scaling matches infrastructure to demand. Declarative configuration codifies requirements alon",
+      "published_ts": 1760464513,
+      "source_name": "Prefect Blog",
+      "score": 98
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-amazon-bedrock-custom-model-import-streamlined-llm-deployment-for-salesforce/",
+      "title": "How Amazon Bedrock Custom Model Import streamlined LLM deployment for Salesforce",
+      "summary": "This post shows how Salesforce integrated Amazon Bedrock Custom Model Import into their machine learning operations (MLOps) workflow, reused existing endpoints without application changes, and benchmarked scalability. We share key metrics on operational efficiency and cost optimization gains, and offer practical insights for simplifying your deployment strategy.",
+      "published_ts": 1760459637,
+      "source_name": "AWS ML Blog",
+      "score": 98
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/transforming-the-physical-world-with-ai-the-next-frontier-in-intelligent-automation/",
+      "title": "Transforming the physical world with AI: the next frontier in intelligent automation",
+      "summary": "In this post, we explore how Physical AI represents the next frontier in intelligent automation, where artificial intelligence transcends digital boundaries to perceive, understand, and manipulate the tangible world around us.",
+      "published_ts": 1760394086,
+      "source_name": "AWS ML Blog",
+      "score": 98
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/medical-reports-analysis-dashboard-using-amazon-bedrock-langchain-and-streamlit/",
+      "title": "Medical reports analysis dashboard using Amazon Bedrock, LangChain, and Streamlit",
+      "summary": "In this post, we demonstrate the development of a conceptual Medical Reports Analysis Dashboard that combines Amazon Bedrock AI capabilities, LangChain's document processing, and Streamlit's interactive visualization features. The solution transforms complex medical data into accessible insights through a context-aware chat system powered by large language models available through Amazon Bedrock and dynamic visualizations of health parameters.",
+      "published_ts": 1760388974,
+      "source_name": "AWS ML Blog",
+      "score": 98
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/kitsa-transforms-clinical-trial-site-selection-with-amazon-quick-automate/",
+      "title": "Kitsa transforms clinical trial site selection with Amazon Quick Automate",
+      "summary": "In this post, we'll show how Kitsa, a health-tech company specializing in AI-driven clinical trial recruitment and site selection, used Amazon Quick Automate to transform their clinical trial site selection solution. Amazon Quick Automate, a capability of Amazon Quick Suite, enables enterprises to build, deploy and maintain resilient workflow automations at scale.",
+      "published_ts": 1760376365,
+      "source_name": "AWS ML Blog",
+      "score": 98
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/connect-amazon-quick-suite-to-enterprise-apps-and-agents-with-mcp/",
+      "title": "Connect Amazon Quick Suite to enterprise apps and agents with MCP",
+      "summary": "In this post, we explore how Amazon Quick Suite's Model Context Protocol (MCP) client enables secure, standardized connections to enterprise applications and AI agents, eliminating the need for complex custom integrations. You'll discover how to set up MCP Actions integrations with popular enterprise tools like Atlassian Jira and Confluence, AWS Knowledge MCP Server, and Amazon Bedrock AgentCore Gateway to create a collaborative environment where people and AI agents can seamlessly work together across your organization's data and applications.",
+      "published_ts": 1760376062,
+      "source_name": "AWS ML Blog",
+      "score": 98
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/machine-learning/amazon-bedrock-agentcore-is-now-generally-available/",
+      "title": "Make agents a reality with Amazon Bedrock AgentCore: Now generally available",
+      "summary": "Learn why customers choose AgentCore to build secure, reliable AI solutions using their choice of frameworks and models for production workloads.",
+      "published_ts": 1760364644,
+      "source_name": "AWS ML Blog",
+      "score": 98
+    },
+    {
+      "url": "https://dagster.io/use-case/software-technology",
+      "title": "Software & Technology",
+      "summary": "Big Cartel Brought Fragmented Data into a Unified Control Plane with Dagster\nWithin six months, Big Cartel went from \"waiting for dashboards to break\" to proactive monitoring through their custom \"Data Firehose,\" eliminated inconsistent business metrics that varied \"depending on the day you asked,\" ",
+      "published_ts": 1760464513,
+      "source_name": "Dagster Blog",
+      "score": 97
+    },
+    {
+      "url": "https://siecledigital.fr/2025/10/17/x-veut-afficher-lorigine-et-lhistorique-des-comptes-pour-lutter-contre-les-faux-profils/",
+      "title": "X veut afficher l’origine et l’historique des comptes pour lutter contre les faux profils",
+      "summary": "Alors que les IA ont prouvé qu’elles pouvaient déjà intervenir sur les réseaux sociaux, X s’apprête à tester une fonctionnalité pour renforcer la confiance sur sa plateforme. Pour faire suite à une précédente opération menée cet été par Meta, le réseau social d’Elon Musk veut s’attaquer aux faux comptes et afficher davantage d’informations sur les […]",
+      "published_ts": 1760698109,
+      "source_name": "Siècle Digital",
+      "score": 90
+    },
+    {
+      "url": "https://dlthub.com/blog/improving_generation_baseline",
+      "title": "The feature we were afraid to talk about",
+      "summary": "This is the story of how we made our LLM generation workflow superior to starting from raw docs.",
+      "published_ts": 1760486400,
+      "source_name": "dlt Blog",
+      "score": 90
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/aws/introducing-amazon-ebs-volume-clones-create-instant-copies-of-your-ebs-volumes/",
+      "title": "Introducing Amazon EBS Volume Clones: Create instant copies of your EBS volumes",
+      "summary": "AWS launched Amazon EBS Volume Clones, a new capability that allows users to create instant point-in-time copies of EBS volumes within the same Availability Zone with a single API call, eliminating the previous multi-step process of taking snapshots and creating volumes from them.",
+      "published_ts": 1760477705,
+      "source_name": "AWS Blog (global)",
+      "score": 90
+    },
+    {
+      "url": "https://www.getdbt.com/blog/open-source-metricflow-governed-metrics",
+      "title": "Announcing open source MetricFlow: Governed metrics to power trustworthy AI and agents",
+      "summary": "Open source MetricFlow delivers governed, portable metrics to power accurate AI, analytics, and agent workflows.",
+      "published_ts": 1760453580,
+      "source_name": "dbt Blog",
+      "score": 90
+    },
+    {
+      "url": "https://siecledigital.fr/2025/10/17/arnaques-par-sms-android-sequipe-dun-blocage-intelligent-pour-proteger-les-utilisateurs/",
+      "title": "Arnaques par SMS : Android s’équipe d’un blocage intelligent pour protéger les utilisateurs",
+      "summary": "Les arnaques par SMS se font de plus en plus sophistiquées, étant dopées à l’intelligence artificielle et à des techniques d’usurpation crédibles, si bien que 61% des français tombent encore dans des pièges selon une récente étude. Pour aider les utilisateurs à s’en protéger, Google vient de communiquer sur une série de nouveautés sur Android, […]",
+      "published_ts": 1760696747,
+      "source_name": "Siècle Digital",
+      "score": 89
+    },
+    {
+      "url": "https://www.zdnet.fr/actualites/anthropic-lance-un-modele-gratuit-plus-rapide-que-sonnet-4-483542.htm#xtor=RSS-1",
+      "title": "Anthropic lance un modèle gratuit, plus rapide que Sonnet 4",
+      "summary": "Voici ce qu'offre Haiku 4.5 aux utilisateurs et aux développeurs.",
+      "published_ts": 1760605850,
+      "source_name": "ZDNet France",
+      "score": 89
+    },
+    {
+      "url": "https://siecledigital.fr/2025/10/17/lia-dalibaba-booste-ses-ventes-en-ligne-et-atteint-la-rentabilite-plus-vite-que-prevu/",
+      "title": "L’IA d’Alibaba booste ses ventes en ligne et atteint la rentabilité plus vite que prévu",
+      "summary": "Alors que de nombreuses entreprises et startups se posent des questions quant à la rentabilité de leurs investissements en IA, Alibaba semble vouloir prouver que cette stratégie peut déjà porter ses fruits. Après avoir fait trembler les marchés au début de l’année, l’entreprise fondée par Jack Ma assure que l’intégration de l’IA dans son écosystème […]",
+      "published_ts": 1760698057,
+      "source_name": "Siècle Digital",
+      "score": 85
+    },
+    {
+      "url": "https://siecledigital.fr/2025/10/17/google-riposte-a-openai-avec-une-ia-video-encore-plus-realiste/",
+      "title": "Google riposte à OpenAI avec une IA vidéo encore plus réaliste",
+      "summary": "Alors qu’OpenAI venait tout juste de dévoiler Sora 2, Google ne veut pas s’avouer vaincu. En effet, sur son site The Keyword, Google vient d’annoncer Veo 3.1, une version revue et enrichie de son modèle de génération de vidéos. Cette mise à jour s’accompagne d’évolutions majeures dans Flow, l’outil de création vidéo de la firme, […]",
+      "published_ts": 1760696921,
+      "source_name": "Siècle Digital",
+      "score": 85
+    },
+    {
+      "url": "https://www.zdnet.fr/actualites/une-startup-americaine-soutenue-par-nvidia-pose-les-fondations-dun-centre-de-donnees-ia-plus-econome-483587.htm#xtor=RSS-1",
+      "title": "Une startup américaine soutenue par NVIDIA pose les fondations d'un centre de données IA plus économe",
+      "summary": "La startup Poolside, appuyée par NVIDIA, s’allie à CoreWeave pour ériger un complexe de centres de données de 2 GW dans l’ouest du Texas.",
+      "published_ts": 1760695816,
+      "source_name": "ZDNet France",
+      "score": 85
+    },
+    {
+      "url": "https://www.journaldunet.com/intelligence-artificielle/1545337-vibe-coding-comment-evaluer-les-gains-de-l-ia-et-comment-les-ameliorer/",
+      "title": "Vibe coding : comment évaluer les gains de l'IA… et comment les améliorer",
+      "summary": "Au-delà de la rapidité d'exécution, d'autres indicateurs doivent être pris en compte pour évaluer l'impact de l'IA générative dans le développement logiciel. Voici un panorama des métriques et des bonnes pratiques à retenir.",
+      "published_ts": 1760680926,
+      "source_name": "Journal du Net",
+      "score": 85
+    },
+    {
+      "url": "https://www.zdnet.fr/actualites/face-aux-attaques-clickfix-en-plein-essor-microsoft-alerte-sur-limportance-de-la-vigilance-personnelle-483599.htm#xtor=RSS-1",
+      "title": "Face aux attaques ClickFix en plein essor, Microsoft alerte sur l'importance de la vigilance personnelle",
+      "summary": "Ces tactiques d'ingénierie sociale vous incitent à vous escroquer, et les méthodes anti-hameçonnage traditionnelles ne vous protégeront pas. Voici comment faire face.",
+      "published_ts": 1760667046,
+      "source_name": "ZDNet France",
+      "score": 85
+    },
+    {
+      "url": "https://www.zdnet.fr/actualites/comment-google-veo-3-1-utilise-lia-pour-transformer-des-images-separees-en-une-video-coherente-483531.htm#xtor=RSS-1",
+      "title": "Comment Google Veo 3.1 utilise l'IA pour transformer des images séparées en une vidéo cohérente",
+      "summary": "Visuels surréalistes, extensions de scènes, fonctionnalités de remplissage : voici tout ce que le nouveau Veo peut faire.",
+      "published_ts": 1760602247,
+      "source_name": "ZDNet France",
+      "score": 85
+    },
+    {
+      "url": "https://www.zdnet.fr/actualites/vous-pouvez-des-maintenant-tester-le-nouveau-modele-de-generateur-dimages-ia-interne-de-microsoft-483503.htm#xtor=RSS-1",
+      "title": "Vous pouvez dès maintenant tester le nouveau modèle de générateur d'images IA interne de Microsoft",
+      "summary": "Il figure déjà parmi les dix premiers du classement IA LMArena.",
+      "published_ts": 1760526616,
+      "source_name": "ZDNet France",
+      "score": 85
+    },
+    {
+      "url": "https://dagster.io/blog/dagster-components-ga",
+      "title": "https://dagster.io/blog/dagster-components-ga",
+      "summary": "With Dagster 1.11, we introduced a new foundation for building data pipelines: Components and the dg CLI. After months of preview releases, community feedback, and refinements, we’re excited to announce that\nComponents are now generally available\n.\nThis update introduces a new YAML-based DSL for def",
+      "published_ts": 1760535056,
+      "source_name": "Dagster Blog",
+      "score": 77
+    },
+    {
+      "url": "https://blog.zenika.com/2025/10/17/alignai-et-si-lia-vous-permettait-de-voir-les-dependances-avant-quelles-ne-vous-bloquent/",
+      "title": "AlignAI : et si l’IA vous permettait de voir les dépendances avant qu’elles ne vous bloquent ?",
+      "summary": "Rien de dramatique, pensait-on. \nJusqu’à ce que toutes ces micro-dépendances se croisent.",
+      "published_ts": 1760688000,
+      "source_name": "Zenika Tech Blog",
+      "score": 75
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-elasticache-vector-search/",
+      "title": "Announcing vector search for Amazon ElastiCache",
+      "summary": "Vector search for Amazon ElastiCache is now generally available. Customers can now use ElastiCache to index, search, and update billions of high-dimensional vector embeddings from popular providers like Amazon Bedrock , Amazon SageMaker , Anthropic , and OpenAI with latency as low as microseconds and up to 99% recall. Key use cases include semantic caching for large language models (LLMs) and multi-turn conversational agents, which significantly reduce latency and cost by caching semantically similar queries. Vector search for ElastiCache also powers agentic AI systems with Retrieval Augmented Generation (RAG) to ensure highly relevant results and consistently low latency across multiple retrieval steps. Additional use cases include recommendation engines, anomaly detection, and other applications that require efficient search across multiple data modalities. Vector search for ElastiCache is available with Valkey version 8.2 on node-based clusters in all AWS Regions at no additional cost. To get started, create a Valkey 8.2 cluster using the AWS Management Console , AWS Software Development Kit (SDK), or AWS Command Line Interface (CLI). You can also use vector search on your existing clusters by upgrading from any version of Valkey or Redis OSS to Valkey 8.2 in a few clicks with no downtime . To learn more about vector search for ElastiCache for Valkey read this blog and for a list of supported commands see the ElastiCache documentation .",
+      "published_ts": 1760338800,
+      "source_name": "AWS What’s New",
+      "score": 74
+    },
+    {
+      "url": "https://www.journaldunet.com/cybersecurite/1545279-prelevements-frauduleux-sepa-la-faille-structurelle-qui-coute-cher-aux-banques/",
+      "title": "Prélèvements frauduleux SEPA : la faille structurelle qui coûte cher aux banques",
+      "summary": "La fraude au prélèvement automatique est un sujet dont on parle peu, mais qui prend de l'ampleur dans le paysage financier français. Quelles sont les limites des dispositifs bancaires actuels ?",
+      "published_ts": 1760713029,
+      "source_name": "Journal du Net",
+      "score": 70
+    },
+    {
+      "url": "https://www.zdnet.fr/actualites/lia-genere-desormais-plus-de-50-des-nouveaux-contenus-en-ligne-selon-cette-etude-483575.htm#xtor=RSS-1",
+      "title": "L'IA génère désormais plus de 50% des nouveaux contenus en ligne, selon cette étude",
+      "summary": "Une nouvelle étude met en lumière la domination croissante de l'IA sur Internet.",
+      "published_ts": 1760688614,
+      "source_name": "ZDNet France",
+      "score": 70
+    },
+    {
+      "url": "https://www.zdnet.fr/guide-achat/nouvel-ipad-pro-sa-puce-m5-nest-pas-sa-meilleure-amelioration-483539.htm#xtor=RSS-1",
+      "title": "Nouvel iPad Pro : sa puce M5 n’est pas sa meilleure amélioration",
+      "summary": "Si le nouveau processeur de la tablette haut de gamme d’Apple atteindrait des performances jusqu'à 5,6 fois supérieures à celles du M1, il y a une fonctionnalité plus importante à voir en premier.",
+      "published_ts": 1760609400,
+      "source_name": "ZDNet France",
+      "score": 70
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-bedrock-agentcore-available/",
+      "title": "Amazon Bedrock AgentCore is now generally available",
+      "summary": "Amazon Bedrock AgentCore is an agentic platform to build, deploy and operate highly capable agents securely at scale using any framework, model, or protocol. AgentCore lets you build agents faster, enable agents to take actions across tools and data, run agents securely with low-latency and extended runtimes, and monitor agents in production - all without any infrastructure management. With general availability, all AgentCore services now have support for Virtual Private Cloud (VPC), AWS PrivateLink, AWS CloudFormation, and resource tagging, enabling developers to deploy AI agents with enhanced enterprise security and infrastructure automation capabilities. AgentCore Runtime builds on its preview capabilities of industry-leading eight-hour execution windows and complete session isolation by adding support for the Agent-to-Agent (A2A) protocol, with broader A2A support coming soon across all AgentCore services. AgentCore Memory now offers a self-managed strategy that gives you complete control over your memory extraction and consolidation pipelines. AgentCore Gateway now connects to existing Model Context Protocol (MCP) servers in addition to transforming APIs and Lambda functions into agent-compatible tools. It also supports Identity and Access Management (IAM) authorization enabling customers to leverage IAM in additional to OAuth for secure agent to tool interactions over MCP, and acts as a single, secure endpoint for agents to discover and use tools without the need for custom integrations. AgentCore Identity now offers identity-aware authorization, secure vault storage for refresh tokens, and native integration with additional OAuth-enabled services so agents can securely act on behalf of users or by themselves with enhanced access controls. AgentCore Observability now delivers complete visibility into end-to-end agent execution and operational metrics across all AgentCore services through dashboards powered by Amazon CloudWatch, and it is OTEL compatible, offering seamless integration with Amazon CloudWatch and external observability providers like Dynatrace, Datadog, Arize Phoenix, LangSmith, and Langfuse. AgentCore works with any open source framework (CrewAI, LangGraph, LlamaIndex, Google ADK, OpenAI Agents SDK) and any model in or outside Amazon Bedrock, giving you freedom to use your preferred frameworks and models, and innovate with confidence. Amazon Bedrock AgentCore is available in nine AWS Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Asia Pacific (Mumbai), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe (Frankfurt), and Europe (Ireland). Learn more about AgentCore through the blog , deep dive using the AgentCore resources , and get started with the AgentCore Starter Toolkit . AgentCore offers consumption-based pricing with no upfront costs.",
+      "published_ts": 1760360400,
+      "source_name": "AWS What’s New",
+      "score": 70
+    },
+    {
+      "url": "https://www.getdbt.com/blog/coalesce-2025-rewriting-the-future",
+      "title": "Coalesce 2025: Rewriting the future of data, analytics, and AI",
+      "summary": "Coalesce 2025 highlights how Fusion, AI, and state-aware orchestration are rewriting data workflows for speed, trust, and savings.",
+      "published_ts": 1760463000,
+      "source_name": "dbt Blog",
+      "score": 69
+    },
+    {
+      "url": "https://www.journaldunet.com/cybersecurite/1545291-quishing-quand-les-qr-codes-deviennent-des-armes-de-plus-en-plus-complexes/",
+      "title": "Quishing : quand les QR codes deviennent des armes de plus en plus complexes",
+      "summary": "Toujours plus populaire, le quishing est devenu au fil des années une arme redoutable pour les cybercriminels. Pourtant, plusieurs leviers permettent aujourd'hui de s'en prémunir.",
+      "published_ts": 1760713129,
+      "source_name": "Journal du Net",
+      "score": 65
+    },
+    {
+      "url": "https://azure.microsoft.com/en-us/blog/from-queries-to-conversations-unlock-insights-about-your-data-using-azure-storage-discovery-now-generally-available/",
+      "title": "From queries to conversations: Unlock insights about your data using Azure Storage Discovery—now generally available",
+      "summary": "We are excited to announce the general availability of Azure Storage Discovery. The post From queries to conversations: Unlock insights about your data using Azure Storage Discovery—now generally available appeared first on Microsoft Azure Blog .",
+      "published_ts": 1760626800,
+      "source_name": "Azure Blog",
+      "score": 65
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-ec2-m7i-instances-milan-region/",
+      "title": "Amazon EC2 M7i instances are now available in the Europe (Milan) Region",
+      "summary": "Starting today, Amazon Elastic Compute Cloud (Amazon EC2) M7i instances powered by custom 4th Gen Intel Xeon Scalable processors (code-named Sapphire Rapids) are available in the Europe (Milan) region. These custom processors, available only on AWS, offer up to 15% better performance over comparable x86-based Intel processors utilized by other cloud providers. M7i deliver up to 15% better price-performance compared to M6i. M7i instances are a great choice for workloads that need the largest instance sizes or continuous high CPU usage, such as gaming servers, CPU-based machine learning (ML), and video-streaming. M7i offer larger instance sizes, up to 48xlarge, and two bare metal sizes (metal-24xl, metal-48xl). These bare-metal sizes support built-in Intel accelerators: Data Streaming Accelerator, In-Memory Analytics Accelerator, and QuickAssist Technology that are used to facilitate efficient offload and acceleration of data operations and optimize performance for workloads. To learn more, visit Amazon EC2 M7i Instances . To get started, see the AWS Management Console .",
+      "published_ts": 1760457600,
+      "source_name": "AWS What’s New",
+      "score": 65
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-ec2-m8g-instances-additional-regions/",
+      "title": "Amazon EC2 M8g instances now available in additional regions",
+      "summary": "Starting today, Amazon Elastic Compute Cloud (Amazon EC2) M8g instances are available in AWS Europe (Paris), Asia Pacific (Osaka), AWS Canada (Central), and AWS Middle East (Bahrain) regions. These instances are powered by AWS Graviton4 processors and deliver up to 30% better performance compared to AWS Graviton3-based instances. Amazon EC2 M8g instances are built for general-purpose workloads, such as application servers, microservices, gaming servers, midsize data stores, and caching fleets. These instances are built on the AWS Nitro System , which oﬄoads CPU virtualization, storage, and networking functions to dedicated hardware and software to enhance the performance and security of your workloads. AWS Graviton4-based Amazon EC2 instances deliver the best performance and energy efficiency for a broad range of workloads running on Amazon EC2. These instances offer larger instance sizes with up to 3x more vCPUs and memory compared to Graviton3-based Amazon M7g instances. AWS Graviton4 processors are up to 40% faster for databases, 30% faster for web applications, and 45% faster for large Java applications than AWS Graviton3 processors. M8g instances are available in 12 different instance sizes, including two bare metal sizes. They offer up to 50 Gbps enhanced networking bandwidth and up to 40 Gbps of bandwidth to the Amazon Elastic Block Store (Amazon EBS). To learn more, see Amazon EC2 M8g Instances . To explore how to migrate your workloads to Graviton-based instances, see AWS Graviton Fast Start program and Porting Advisor for Graviton . To get started, see the AWS Management Console .",
+      "published_ts": 1760425200,
+      "source_name": "AWS What’s New",
+      "score": 65
+    },
+    {
+      "url": "https://dlthub.com/blog/ai-dq",
+      "title": "Surviving the AI code Deluge: Data quality in the Spotlight",
+      "summary": "This is, we’re told, the great democratization of data engineering. The tedious work is gone. The barrier to entry is gone. Everyone can now be a data engineer.",
+      "published_ts": 1760400000,
+      "source_name": "dlt Blog",
+      "score": 65
+    },
+    {
+      "url": "https://www.getdbt.com/blog/what-is-open-data-infrastructure",
+      "title": "What is open data infrastructure? How is it different from the modern data stack?",
+      "summary": "And why we think it’s the right evolution for our industry in the age of Iceberg and AI",
+      "published_ts": 1760371200,
+      "source_name": "dbt Blog",
+      "score": 65
+    },
+    {
+      "url": "https://www.microsoft.com/en-us/microsoft-cloud/blog/2025/10/13/fyai-why-developers-will-lead-ai-transformation-across-the-enterprise/",
+      "title": "FYAI: Why developers will lead AI transformation across the enterprise",
+      "summary": "Discover how developers are unlocking AI's full potential by using copilots and agents to reshape customer experiences and streamline operations. The post FYAI: Why developers will lead AI transformation across the enterprise appeared first on Microsoft Azure Blog .",
+      "published_ts": 1760368200,
+      "source_name": "Azure Blog",
+      "score": 65
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-sagemaker-ai-projects-custom-template-s3-provisioning",
+      "title": "Amazon SageMaker AI Projects now supports custom template S3 provisioning",
+      "summary": "Amazon SageMaker AI Projects now supports provisioning custom machine learning (ML) project templates from Amazon S3. Administrators can now manage ML templates in SageMaker AI studio so data scientists can create standardized ML projects to meet their organizational needs. Data scientists can use Amazon SageMaker AI Projects to create standardized ML projects that meet organizational requirements and automate ML development workflows. Administrators define standardized ML project templates that include end-to-end development patterns. By provisioning custom templates from Amazon S3, administrators can define standardized project templates and provide access to these templates directly in the SageMaker AI studio for data scientists, ensuring all ML projects follow organizational standards. SageMaker AI Projects custom template S3 provisioning is available in all AWS Regions where SageMaker AI Projects is available. To learn more, visit SageMaker AI Projects documentation , and SageMaker AI Studio .",
+      "published_ts": 1760364000,
+      "source_name": "AWS What’s New",
+      "score": 65
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2025/10/generative-ai-observability-amazon-cloudwatch/",
+      "title": "Generative AI observability now generally available for Amazon CloudWatch",
+      "summary": "Amazon CloudWatch announces the general availability of generative AI observability, helping you monitor all components of AI applications and workloads, including agents deployed and operated with Amazon Bedrock AgentCore. This release expands beyond runtime monitoring to include complete observability across AgentCore's Built-in Tools, Gateways, Memory, and Identity capabilities. DevOps teams and developers can now get an out-of-the-box view into latency, token usage, errors, and performance across all components of their AI workloads, from model invocations to agent operations. This feature is compatible with popular generative AI orchestration frameworks such as Strands Agents , LangChain, and LangGraph, offering flexibility with your choice of framework. With this new feature, CloudWatch enables developers to analyzes telemetry data across components of a generative AI application. Customers can monitor code execution patterns in Built-in Tools, track API transformation success rates through Gateways, analyze memory storage and retrieval patterns, and ensure secure agent behavior through Identity observability. The connected view helps developers quickly identify issues - from gaps in VectorDB to authentication failures - using end-to-end prompt tracing, curated metrics, and logs. Developers can monitor their entire agent fleet through the \"AgentCore\" section in the CloudWatch console, which integrates seamlessly with other CloudWatch capabilities including Application Signals, Alarms, Sensitive Data Protection, and Logs Insights. This feature is now available in US East (N. Virginia), US East (Ohio), US West (Oregon), Europe (Frankfurt), Europe (Ireland), Asia Pacific (Mumbai), Asia Pacific (Tokyo), Asia Pacific (Singapore), and Asia Pacific (Sydney). To learn more, visit documentation . There is no additional pricing for Gen AI Observability, existing CloudWatch pricing for underlying telemetry data applies.",
+      "published_ts": 1760338800,
+      "source_name": "AWS What’s New",
+      "score": 65
+    },
+    {
+      "url": "https://www.journaldunet.com/cybersecurite/1545315-vibe-coding-quand-l-ia-fait-passer-le-code-qui-marche-avant-le-code-qu-on-comprend/",
+      "title": "Vibe coding : quand l'IA crée des vulnérabilités",
+      "summary": "Le vibe coding mise sur l'interaction intuitive avec l'IA pour générer des logiciels. Mais il génère aussi un risque. Une compréhension limitée du code généré peut en effet créer des vulnérabilités.",
+      "published_ts": 1760713501,
+      "source_name": "Journal du Net",
+      "score": 64
+    }
+  ],
+  "news_general": [
+    {
+      "url": "https://blog.octo.com/la-gouvernance-augmentee--l'ia-generative-au-service-des-catalogues-de-donnees",
+      "title": "La gouvernance augmentée : L'IA générative au service des catalogues de données",
+      "summary": "L’IA générative révolutionne la gouvernance de données : en automatisant la documentation des catalogues (glossaire, définitions, règles), elle libère les data stewards des tâches fastidieuses et accélère la mise à disposition de données fiables et gouvernées.",
+      "published_ts": 1760607610,
+      "source_name": "OCTO Talks!",
+      "score": 98
+    },
+    {
+      "url": "https://blog.ovhcloud.com/fr-webhosting-ssl-qrng/",
+      "title": "OVHcloud renforce la sécurité des connexions web grâce à l’informatique quantique : une première mondiale",
+      "summary": "Vous voyez ce petit cadenas à côté de l’adresse du site que vous êtes en train de consulter ? Ce symbole indique que la connexion entre votre appareil (ordinateur, smartphone, etc.) et le site que vous visitez est sécurisée. Et chez OVHcloud, nous venons de renforcer cette sécurité en intégrant, pour la première fois au […]",
+      "published_ts": 1760338800,
+      "source_name": "OVHcloud Blog",
+      "score": 98
+    },
+    {
+      "url": "https://blog.cloudflare.com/load-balancing-monitor-groups-multi-service-health-checks-for-resilient/",
+      "title": "Load Balancing Monitor Groups: Multi-Service Health Checks for Resilient Applications",
+      "summary": "Cloudflare Load Balancing now supports Monitor Groups, allowing you to combine multiple health monitors into a single, logical assessment.",
+      "published_ts": 1760680800,
+      "source_name": "Cloudflare Engineering Blog",
+      "score": 90
+    },
+    {
+      "url": "https://huggingface.co/blog/gpt-oss-on-intel-xeon",
+      "title": "Google Cloud C4 Brings a 70% TCO improvement on GPT OSS with Intel and Hugging Face",
+      "summary": "Google Cloud C4 Brings a 70% TCO improvement on GPT OSS with Intel and Hugging Face\nIntel and Hugging Face collaborated to demonstrate the real-world value of upgrading to Google’s latest\nC4\nVirtual Machine (VM) running on Intel® Xeon® 6 processors (codenamed Granite Rapids (GNR)). We specifically w",
+      "published_ts": 1760572800,
+      "source_name": "Hugging Face Blog",
+      "score": 90
+    },
+    {
+      "url": "https://blog.cloudflare.com/unpacking-cloudflare-workers-cpu-performance-benchmarks/",
+      "title": "Unpacking Cloudflare Workers CPU Performance Benchmarks",
+      "summary": "Cloudflare investigated CPU performance benchmark results for Workers, uncovering and fixing issues in infrastructure, V8 garbage collection, and OpenNext optimizations.",
+      "published_ts": 1760472025,
+      "source_name": "Cloudflare Engineering Blog",
+      "score": 90
+    },
+    {
+      "url": "https://www.lemagit.fr/actualites/366632843/Monetisation-des-agents-IA-Oracle-devoile-ses-cartes",
+      "title": "Monétisation des agents IA : Oracle dévoile ses cartes",
+      "summary": "<p>Le catalogue Oracle Fusion rassemblerait plus de 600&nbsp;assistants et agents IA sur étagère, selon l’éditeur. D’après Steve&nbsp;Miranda, vice-président directeur Fusion Applications Development chez Oracle, 400&nbsp;agents sont destinés aux applications Fusion, et 200 aux apps entreprises. Tous accomplissent des tâches liées à l’ERP, le SCM, l’HCM ou <a href=\"https://www.lemagit.fr/actualites/366632735/Oracle-integre-des-agents-dIA-dans-sa-suite-Fusion-CX\">encore la CX</a>.</p> \n<p>Jusqu’alors, l’éditeur avait fait le choix d’inclure les agents IA dans ses licences Fusion Apps. Pour les modèles de Meta, de Cohere et bientôt les LLM GPT-oss d’OpenAI hébergés sur OCI (Oracle Cloud&nbsp;Infrastructure), Oracle ne facture pas les tokens consommés et il n’y a pas de limites affichées.</p> \n<p>«&nbsp;Nous voulons favoriser l’adoption des agents IA dans les entreprises et auprès des métiers. Nous voulons abaisser les barrières à l’entrée&nbsp;», affirme Kaushal Kurapati, directeur de la plateforme agentique chez Oracle. Il intervenait lors d’un point avec la presse européenne <a href=\"https://www.lemagit.fr/actualites/366632762/AI-World-Oracle-finalise-non-pas-un-mais-deux-lakehouse\">lors de l’AI World&nbsp;2025, à Las Vegas</a>. Jusqu’en décembre&nbsp;2024, il exerçait un rôle similaire chez Salesforce depuis deux ans.</p> \n<section class=\"section main-article-chapter\" data-menu-title=\"AI Agent Studio gagne en profondeur\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>AI Agent Studio gagne en profondeur</h2>\n <p>En mars&nbsp;2025, Oracle a présenté AI Agent Studio. Il permet aux entreprises de développer leurs propres agents dans les applications Oracle Fusion. Lors de son salon AI World, il a dévoilé des templates à partir desquels les entreprises peuvent <a href=\"https://www.lemagit.fr/actualites/366632855/Oracle-pare-sa-base-de-donnees-pour-lIA-agentique\">développer des agents adaptés à leurs processus</a>.</p>\n <blockquote class=\"main-article-pullquote\">\n  <div class=\"main-article-pullquote-inner\">\n   <figure>\n     «&nbsp;Le superviseur raisonne sur la tâche pour la découper, il décide quels agents sont nécessaires et il peut leur déléguer les sous-tâches.&nbsp;»\n   </figure>\n   <figcaption>\n    <strong>Kaushal Kurapati</strong>Directeur de la plateforme agentique, Oracle\n   </figcaption>\n   <i class=\"icon\" data-icon=\"z\"></i>\n  </div>\n </blockquote>\n <p>Le fournisseur a, en outre, ajouté la prise en charge des mécanismes <a href=\"https://www.lemagit.fr/actualites/366628232/OpenRAG-Meritis-veut-faciliter-le-test-des-architectes-RAG\">RAG multimodaux</a> et vers des sources externes, dont SharePoint.</p>\n <p>En sus du modèle chatbot et de l’assistant IA, il intègre depuis peu deux patterns de conception. Il y a d’un côté l’orchestration multiagent. «&nbsp;Nous avons mis au point un modèle d’architecture où un modèle superviseur orchestre un ou plusieurs modèles travailleurs&nbsp;(workers)&nbsp;», décrit Kaushal Kurapati. «&nbsp;Le superviseur raisonne sur la tâche pour la découper, il décide quels agents sont nécessaires et il peut leur déléguer les sous-tâches&nbsp;».</p>\n <p>De l’autre, un ensemble de patterns de flux de travail doit permettre d’exécuter des tâches de manière séquentielle, d’insérer des agents dans un flux déterministe. Cela se configure visuellement, à partir de nœuds qui représentent les objets interagissant avec le LLM et le modèle de langage lui-même.</p>\n <p>Le studio bâti au départ pour servir les besoins d’Oracle a gagné récemment la prise en charge des <a href=\"https://www.lemagit.fr/conseil/Tutoriel-Comment-creer-et-gerer-des-serveurs-MCP\">protocoles MCP</a> et A2A. Pour mémoire, le premier permet à un grand modèle de langage de manipuler des outils et des systèmes dans l’entreprise. Le second favorise la communication inter-agent.</p>\n <p>Jusque-là, Oracle s’est appuyé sur les appels de fonction qui permettent aux LLM d’appeler des API.</p>\n</section>        \n<section class=\"section main-article-chapter\" data-menu-title=\"Les agents IA inclus dans les apps Fusion, des chevaux de Troie ?\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Les agents IA inclus dans les apps Fusion, des chevaux de Troie&nbsp;?</h2>\n <blockquote class=\"main-article-pullquote\">\n  <div class=\"main-article-pullquote-inner\">\n   <figure>\n    «&nbsp;Si vous créez vos agents personnalisés à partir d’Agent Studio, alors vous souscrivez à un SKU dédié.&nbsp;»\n   </figure>\n   <figcaption>\n    <strong>Kaushal Kurapati</strong>Directeur de la plateforme agentique, Oracle\n   </figcaption>\n   <i class=\"icon\" data-icon=\"z\"></i>\n  </div>\n </blockquote>\n <p>Les templates évoqués plus haut sont directement issus des agents et assistants IA déjà développés par l’éditeur. Ce n’est qu’en cas de modification d’un agent IA ou d’un agent créé de toutes pièces qu’Oracle entend faire payer des suppléments à ses clients. À Las Vegas, les différents porte-parole n’ont pas détaillé le seuil de tolérance de ces modifications. En revanche, ils ont précisé que de telles applications modifiées seront facturées au nombre d’usagers disposant d’un accès.</p>\n <p>«&nbsp;Si vous créez vos agents personnalisés à partir d’Agent Studio, alors vous souscrivez à un SKU dédié&nbsp;», indique Kaushal Kurapati. «&nbsp;Voici comment cela fonctionne&nbsp;: supposons que vous soyez un utilisateur unique au sein de l’organisation et que, dans le cadre d’un accès basé sur les rôles, vous ayez accès à cinq agents, ce qui correspond à cinq accès. Vous achetez donc en fait cinq licences à ce stade. Nous facturons donc un certain montant fixe par mois et par siège pour cet accès&nbsp;».</p>\n <p>Les modifications minimes sont tolérées, par exemple pour traiter davantage de documents ou pour ajuster les instructions de l’agent IA sur étagère. L’ajout de l’humain dans la boucle, si cela ne dénature pas l’agent proposé par Oracle, n’est pas non plus facturé.</p>\n</section>     \n<section class=\"section main-article-chapter\" data-menu-title=\"Un modèle économique à double tranchant\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Un modèle économique à double tranchant</h2>\n <p>En revanche, la documentation contractuelle d’Oracle fait la lumière sur ce qu’est précisément un agent IA personnalisé.</p>\n <p>«&nbsp;Les agents IA personnalisés peuvent résulter de modifications telles que l’ajout d’un outil, l’accès à un service externe, l’accès à des outils externes via des serveurs MCP (Model Context Protocol), l’utilisation de votre propre modèle de langage (BYOLLM), des capacités multimodales (par exemple, génération d’images, voix, vidéo) ou toutes autres modifications de la portée et de l’objectif prévus des agents inclus dans Oracle&nbsp;», peut-on lire dans le <a href=\"https://www.oracle.com/contracts/docs/oracle-fusion-cloud-service-desc-1843611.pdf\">document</a> daté du 9&nbsp;octobre&nbsp;2025.</p>\n <p>Dans Fusion, un agent IA peut donc très rapidement être considéré comme personnalisé. À moins qu’une entreprise ait adopté de la tête au pied les solutions Oracle Fusion, l’intégration de ces systèmes d’IA composites dans le SI nécessite l’ajout d’outils externes ou de serveurs MCP. Et chaque agent dédié à un domaine (HCM, ERP, CX, etc.) a le droit à un SKU une fois qu’il entre dans la catégorie «&nbsp;custom&nbsp;».</p>\n <p>Qui plus est, le recours à un modèle n’appartenant pas aux collections citées plus haut est payant. C’est le cas pour les modèles d’OpenAI, d’Anthropic, de Google et de xAI. En matière d’IA agentique, les modèles de raisonnement&nbsp;GPT-5, Claude&nbsp;4 et Gemini&nbsp;2.5 ont fait leurs preuves. Les modèles de Meta et <a href=\"https://www.lemagit.fr/actualites/366628324/Gpt-oss-six-ans-apres-GPT-2-OpenAI-degaine-ses-modeles-open-weight\">GPT-oss</a> sont encore en retrait.</p>\n <p>En ce sens, le SKU peut par exemple inclure 1&nbsp;million de tokens par mois pour utiliser ces LLM plus performants. À noter qu’Oracle fait aussi la différence entre les métiers et les usagers autorisés suivant la nature de l’application.</p>\n <p>Malgré tout, ce modèle économique, moins favorable pour les entreprises sur le papier, ne freine pas les usages. Plus de 32&nbsp;000&nbsp;personnes auraient obtenu la certification pour AI Agent Studio.</p>\n <p>L’usage de l’AI Agent Studio aurait décollé. Des milliards de tokens sont traités par les LLM mis à disposition par Oracle dans son AI Agent Studio.</p>\n <p>Les agents IA dédiés aux applications Fusion et développés par Oracle, ceux inclus dans les licences, gagneraient en intérêt auprès des clients, selon les porte-parole de la firme.</p>\n</section>         \n<section class=\"section main-article-chapter\" data-menu-title=\"Une place de marché pour retrouver les agents IA des partenaires\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Une place de marché pour retrouver les agents IA des partenaires</h2>\n <p>Dans un même temps,&nbsp;à la demande des partenaires et des clients, Oracle a profité d’AI World pour lancer une place de marché où les entreprises peuvent retrouver les agents et les services des intégrateurs. Une vingtaine de partenaires sont présents au lancement de ce service. L’on y retrouve Accenture, Deloitte, IBM, Infosys, PwC, Wipro ou encore KPMG. Quelques éditeurs sont également de la partie, dont Stripe et Box. Plus de 100&nbsp;agents IA sont déjà disponibles.</p>\n <p>Par exemple, IBM a développé un assistant pour diminuer les erreurs dans l’enregistrement des ordres de vente. Infosys, lui a développé un agent pour gérer les processus du recrutement à la retraite.</p>\n <p>«&nbsp;La place de marché dédiée aux partenaires nous permet d’avoir la plus grande diversité d’agents IA possible&nbsp;», déclare Kaushal Kurapati. «&nbsp;Les clients ont parfois des besoins qui vont au-delà de ce que nous avons déjà livré. Ils travaillent probablement avec des intégrateurs depuis plusieurs années et ceux-là connaissent bien les processus des entreprises&nbsp;».</p>\n <p>Les partenaires auraient réclamé de faire partie de l’écosystème d’Oracle et les clients auraient soutenu cette demande.</p>\n <p>Les porte-parole ont bien conscience que certains flux de travail traversent les applications d’éditeurs tiers concurrents, dont les «&nbsp;usual suspects&nbsp;» ServiceNow, SAP, Salesforce et Workday.</p>\n <blockquote class=\"main-article-pullquote\">\n  <div class=\"main-article-pullquote-inner\">\n   <figure>\n    «&nbsp;Nous certifions les agents IA proposés par les partenaires. Nous les testons comme si nous les mettions nous-mêmes sur le marché. Nous avons une “check list”&nbsp;pour ce faire.&nbsp;»\n   </figure>\n   <figcaption>\n    <strong> Kaushal Kurapati</strong>Directeur de la plateforme agentique, Oracle\n   </figcaption>\n   <i class=\"icon\" data-icon=\"z\"></i>\n  </div>\n </blockquote>\n <p>Dans ce cas-là, l’éditeur laissera ses partenaires intégrateurs et ses clients les développer en s’appuyant sur les serveurs MCP distants ou A2A.</p>\n <p>«&nbsp;Nous certifions les agents IA proposés par les partenaires. Nous les testons comme si nous les mettions nous-mêmes sur le marché. Nous avons une “check list”&nbsp;pour ce faire&nbsp;», indique-t-il.</p>\n <p>Et de préciser qu’Oracle a rejeté certains agents IA, car ils ne répondaient pas à ses critères de qualité. Il n’y a toutefois pas eu de précision concernant le modèle de tarification de ces agents développés par des partenaires.</p>\n <p>Ces vérifications font de pair avec l’introduction de frameworks d’évaluation et de tests accessibles depuis AI Agent Studio. «&nbsp;Le créateur de l’agent devrait avoir un jeu de questions ou des scénarios et les réponses attendues. Cela peut être un résumé, la production d’un contenu dans un format structuré&nbsp;», décrit Kaushal Kurapati. «&nbsp;Vous pouvez évaluer un agent ou de multiples versions d’un agent afin de les comparer&nbsp;».</p>\n <p>Un LLM as-a-Judge propulse en partie cette fonctionnalité qui peut être reprise en main par un humain. «&nbsp;Nous attendons de bons résultats en matière de précision et de sûreté&nbsp;», assure-t-il.</p>\n <p>À cela s’ajoute un <a href=\"https://www.lemagit.fr/actualites/366621180/LLMOps-les-SRE-en-terre-inconnue\">aspect LLMOps</a>. Il est possible de surveiller la consommation de tokens, l’efficience des tâches exécutées, la latence et le temps d’exécution.</p>\n <p>Enfin, la firme de Larry&nbsp;Ellison s’assure d’intégrer ses agents et ceux de ses clients dans Teams et bientôt Slack. Ask Oracle, l’UI mise en place par le fournisseur, ne disparaît pas pour autant. Elle était au cœur des démonstrations effectuées lors d’AI World.</p>\n</section>",
+      "published_ts": 1760705160,
+      "source_name": "LeMagIT",
+      "score": 85
+    },
+    {
+      "url": "https://www.lemagit.fr/actualites/366632901/Jamespot-met-de-lIA-souveraine-dans-sa-Digital-Workplace",
+      "title": "Jamespot met de l’IA souveraine (et bretonne) dans sa Digital Workplace",
+      "summary": "<p>Jamespot vient d’annoncer le rachat de SafeBrain, une start-up fondée en 2023 spécialisée dans les modèles d’<a href=\"https://www.lemagit.fr/conseil/IA-machine-learning-deep-learning-IA-generative-quelles-differences\">intelligence artificielle</a> sécurisés. Cette acquisition devrait permettre à <a href=\"https://www.lemagit.fr/actualites/252488682/Jamespot-se-positionne-aussi-en-alternative-francaise-a-Office-365\">l’éditeur de Digital Workplace</a> «&nbsp;d’infuser&nbsp;» ses différents produits avec une approche qui garantit la souveraineté technologique –&nbsp;pour laquelle il milite activement depuis plusieurs années.</p> \n<p>En deux ans d’existence, SafeBrain a convaincu une cinquantaine de clients avec ses agents conversationnels, dont Casino ou la Gendarmerie nationale séduits par son approche «&nbsp;d’IA responsable&nbsp;», mélange de sécurité, d’anonymisation et, donc, de souveraineté des données.</p> \n<p>De son côté, et face à la dépendance aux géants extra-européens, Jamespot voulait pouvoir proposer une alternative locale.</p> \n<p>«&nbsp;Avec SafeBrain, nous franchissons une nouvelle étape dans notre vision&nbsp;: proposer à nos clients une plateforme collaborative véritablement complète […] enrichie désormais d’une IA souveraine, puissante et protectrice de leurs données&nbsp;», se félicite Alain&nbsp;Garnier, CEO et cofondateur de Jamespot.</p> \n<section class=\"section main-article-chapter\" data-menu-title=\"Un dispatcher d’IA\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Un dispatcher d’IA</h2>\n <p>Concrètement, SafeBrain est plus un «&nbsp;dispatcher&nbsp;» qu’une IA en tant que telle. Sa technologie «&nbsp;permet d’utiliser tous les modèles existants en toute sécurité, sans risque de fuite de données&nbsp;», en s’appuyant sur un cadre maîtrisé d’anonymisation et de filtrage des requêtes.</p>\n <p>«&nbsp;Dans le cas d’un modèle déjà souverain –&nbsp;par exemple Mistral sur SecNumCloud&nbsp;– en effet, la sécurité des données est by design. Dans le cas d’un OpenAI ou d’un Claude, SafeBrain utilise d’une part des technologies d’anonymisation, avec un <a href=\"https://www.lemagit.fr/conseil/Comment-choisir-le-LLM-qui-vous-convient-le-mieux\">LMM [N.D.R.&nbsp;: grand modèle multimodal]</a> souverain ad hoc, et d’autre part une mitigation et une mutualisation des clés d’API qui permet de ne pas de savoir qui demande quoi&nbsp;», précise au MagIT Alain&nbsp;Garnier, président et fondateur de Jamespot.</p>\n <p>Ce «&nbsp;LMM souverain ad hoc&nbsp;» est un modèle «&nbsp;compact et rapide&nbsp;» adapté à cette tâche, ajoute le dirigeant. Le modèle peut, par exemple, parcourir un document confidentiel et effacer tous les éléments sensibles avant de l’envoyer à un service d’IA générative.</p>\n <p>Jamespot évoque des applications pour la gestion des connaissances, la relation client ou encore l’innovation interne, toujours dans une logique de respect des données et de confiance utilisateur.</p>\n <p>L’ensemble des équipes de SafeBrain rejoindra celles de Jamespot, qui compte aujourd’hui une cinquantaine de collaborateurs.</p>\n <p>Les offres de la start-up seront intégrées au catalogue produit de l’éditeur de Digital Worplace, avec un dispositif commercial dédié.</p>\n</section>",
+      "published_ts": 1760693580,
+      "source_name": "LeMagIT",
+      "score": 85
+    },
+    {
+      "url": "https://www.lemagit.fr/actualites/366632891/IA-souveraine-T-Systems-achete-10000-GPU-a-NVIDIA-pour-un-cloud-europeen",
+      "title": "IA souveraine : T-Systems achète 10 000 GPU à NVIDIA pour un cloud européen",
+      "summary": "<p>T-Systems et NVIDIA l’ont officialisé ce 16&nbsp;octobre&nbsp;2025 : les deux acteurs vont co-construire une infrastructure européenne dédiée à l’intelligence artificielle industrielle.</p> \n<p>Concrètement, ce «&nbsp;cloud&nbsp;» reposera sur 10&nbsp;000&nbsp;processeurs NVIDIA –&nbsp;dont <a href=\"https://www.lemagit.fr/conseil/IA-et-stockage-les-conseils-de-Nvidia\">des systèmes DGX</a>&nbsp;B200 et des serveurs RTX Pro. Il sera hébergé dans des data centers allemands.</p> \n<p>L’objectif affiché par T-Systems est de permettre aux entreprises européennes de concevoir, de simuler et de produire «&nbsp;à la vitesse de l’IA&nbsp;», de manière souveraine et dans un cadre conforme au RGPD.</p> \n<p>La mise en service complète de ce «&nbsp;cloud&nbsp;» est annoncée pour 2026.</p> \n<section class=\"section main-article-chapter\" data-menu-title=\"Une infrastructure souveraine pour les usages critiques\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Une infrastructure souveraine pour les usages critiques</h2>\n <p>La plateforme ciblera en particulier les besoins d’industries qui ont des projets de jumeaux numériques, de robots intelligents, de chatbots à base <a href=\"https://www.lemagit.fr/conseil/LIA-generative-nest-pas-lIntelligence-Artificielle-Generale-et-autres-confusions-sur-la-Gen-AI\">d’IA générative</a> ou de conception assistée par IA –&nbsp;liste le cloudiste allemand.</p>\n <p>Toutes les données seront traitées localement.</p>\n <p>Le tout reposera sur l’environnement Open Telekom Cloud, la plateforme de cloud public opérée par T-Systems qui repose sur OpenStack. Ce IaaS, concurrent souverain d’AWS, de GCP ou d’Azure, donnera accès aux frameworks open source de NVIDIA.</p>\n <p>«&nbsp;L’intelligence artificielle est le moteur de la transformation numérique. Mais elle ne peut exister sans souveraineté&nbsp;», justifie déclare Ferri Abolhassan, CEO de T-Systems et membre du conseil d’administration de Deutsche Telekom AG. «&nbsp;C’est une question de sécurité, d’indépendance économique et de respect de nos valeurs&nbsp;», tranche-t-il.</p>\n</section>     \n<section class=\"section main-article-chapter\" data-menu-title=\"Des cas d’usage concrets déjà présentés\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Des cas d’usage concrets déjà présentés</h2>\n <p>Lors de l’événement NVIDIA GTC Paris, T-Systems a présenté plusieurs usages possibles de cette future infrastructure, comme des outils d’IA pour les centres de contact, ou des solutions pour l’éducation et les services publics.</p>\n <p>Au-delà de la puissance de calcul, le partenariat prévoit un accompagnement global des entreprises sur la chaîne de valeur de l’IA, par exemple dans la cybersécurité, dans l’intégration des solutions NVIDIA ou dans la gestion du changement.</p>\n</section>   \n<section class=\"section main-article-chapter\" data-menu-title=\"Un nouvel accord pour NVIDIA\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Un nouvel accord pour NVIDIA</h2>\n <p>«&nbsp;À l’ère de l’IA, chaque industriel a besoin de deux usines&nbsp;: l’une pour fabriquer des produits, et l’autre pour développer l’intelligence qui les fait fonctionner&nbsp;», vante pour sa part Jensen Huang, fondateur et PDG de NVIDIA qui a trouvé un nouveau client.</p>\n <p>Il y a moins d’un mois, NVIDIA a passé <a href=\"https://www.lemagit.fr/actualites/366631560/Nvidia-letrange-investissement-de-100-milliards-a-la-faveur-dOpenAI\">un autre partenariat, d’une ampleur pharaonique, avec OpenAI</a> pour un montant de 100&nbsp;milliards de dollars et des millions de GPU qui représenteront au moins 10&nbsp;Gigawatts de puissance électrique.</p>\n <p>Contacté par LeMagIT, T-Systems n’avait pas précisé, au moment de la parution de l’article, la répartition des achats entre les serveurs DGX (plus adaptés à l’entraînement des modèles) et les serveurs RTX (<a href=\"https://www.lemagit.fr/actualites/366629887/Nvidia-commercialise-son-GPU-Blackwell-pour-PME\">plus adaptés pour l’inférence</a>), ni la puissance engagée par l’accord du jour.</p>\n</section>",
+      "published_ts": 1760689560,
+      "source_name": "LeMagIT",
+      "score": 85
+    },
+    {
+      "url": "https://www.zdnet.fr/actualites/veolia-se-dote-dun-jumeau-numerique-ia-en-ile-de-france-483594.htm#xtor=RSS-1",
+      "title": "Veolia se dote d’un jumeau numérique IA en Ile-de-France",
+      "summary": "Pour optimiser l’exploitation des installations du SEDIF (réseau d’eau de 4 millions d’usagers), Veolia va numériser les infrastructures avec la deeptech Samp. Le jumeau numérique généré par l’IA deviendra la plateforme BIM d’exploitation du plus grand réseau d’eau potable public de France.",
+      "published_ts": 1760663420,
+      "source_name": "ZDNet France",
+      "score": 85
+    },
+    {
+      "url": "https://www.lemagit.fr/actualites/366632862/Oracle-adapte-son-reseau-pour-gerer-des-HPC-de-plus-de-130000-GPU",
+      "title": "Oracle adapte son réseau pour gérer des HPC de plus de 130 000 GPU",
+      "summary": "<p>Lors de sa conférence AI World, Oracle a déroulé ses annonces en matière d’IA en se concentrant sur sa base de données et ses applications. Mais ses porte-parole sont également revenus sur les améliorations de son infrastructure.</p> \n<p>Il y a d’abord la poursuite de deux partenariats d’envergure avec AMD et Nvidia.</p> \n<p>Oracle a présenté Zettascale10, il sera le plus gros HPC IA dans le cloud. Ce supercluster devrait développer jusqu’à 16&nbsp;zettaFLOPS de puissance de calcul et 800&nbsp;000&nbsp;GPU Nvidia. La livraison prévue est lors de la deuxième moitié de l’année&nbsp;2026. Les commandes sont déjà ouvertes. Bien évidemment, l’on parle bien là d’une évolution du même data center installé à Abilene, au Texas. La base du <a href=\"https://www.lemagit.fr/actualites/366618445/Infrastructures-le-megaprojet-Stargate-entretient-les-mysteres\">fameux projet Stargate</a> codéveloppé avec OpenAI. Ce campus s’étalant sur un rayon de 2&nbsp;kilomètres atteindrait déjà 1,2&nbsp;gigawatt de puissance et fournirait déjà 500&nbsp;000&nbsp;GPU Nvidia. Sur le site, quatre turbines à gaz servent à générer une partie de l’électricité nécessaire au fonctionnement de ce mastodonte.</p> \n<section class=\"section main-article-chapter\" data-menu-title=\"Toujours plus de GPU AMD et Nvidia\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Toujours plus de GPU AMD et Nvidia</h2>\n <div class=\"imagecaption alignLeft\">\n  <img src=\"https://cdn.ttgtmedia.com/visuals/LeMagIT/amdinstinct355x.jpg\" alt=\"Photo d'une plateforme AMD Instinct 355X\" width=\"292\" height=\"355\">Une plateforme AMD Instinct&nbsp;355X\n </div>\n <p>Il vient aussi d’annoncer la disponibilité générale des instances Bare Metal incluant les GPU AMD Instinct&nbsp;MI355X. <a href=\"https://www.lemagit.fr/actualites/366626252/Le-cloud-OCI-achete-deja-130-000-exemplaires-du-dernier-GPU-dAMD\">131&nbsp;072 GPU (64 cartes&nbsp;MI355X par rack) propulseront un supercluster dédié</a>. Avec AMD, Oracle fournira un supercluster de 50&nbsp;000&nbsp;GPU de la série Instinct&nbsp;MI450 au troisième trimestre&nbsp;2026, qu’il agrandira en 2027 «&nbsp;et au-delà&nbsp;».</p>\n <p>Oracle mise sur deux fournisseurs principaux en la matière. Il ne prévoit toutefois pas de développer ses propres puces, contrairement à ses concurrents. &nbsp;</p>\n <p>«&nbsp;Notre rôle consiste à nous assurer que les clients disposent de ce dont ils ont besoin en matière de GPU&nbsp;», affirme Karan Batta, vice-président senior Oracle Infrastructure Cloud.</p>\n <p>Il répond là à une question du MagIT concernant la manière dont Oracle gère le manque de GPU disponible sur le marché.</p>\n <p>«&nbsp;C’est un sujet beaucoup plus complexe qu’il n’y paraît. Tout le monde se concentre actuellement sur les GPU, mais tous les autres éléments sont importants&nbsp;», ajoute-t-il. «&nbsp;Vous pouvez avoir plus de GPU que nécessaire, mais vous risquez alors de manquer d’espace et d’alimentation électrique. Vous pourriez ne pas avoir suffisamment d’optiques ou de câbles. Vous pourriez déployer un centre de données au milieu de nulle part. Mais vous avez besoin d’une connectivité réseau, vous avez besoin de stockage&nbsp;», liste-t-il.</p>\n</section>       \n<section class=\"section main-article-chapter\" data-menu-title=\"Acceleron : un Network Fabric pour former un méta-cluster de GPU\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Acceleron&nbsp;: un Network Fabric pour former un méta-cluster de GPU</h2>\n <p>En ce sens,&nbsp;le fournisseur présente Acceleron, une architecture réseau RoCe (<a href=\"https://www.lemagit.fr/conseil/Pourquoi-la-norme-RoCE-sest-dabord-imposee-dans-le-stockage-NVMe-oF\">RDMA over Ethernet</a>) spécifique à Oracle.</p>\n <p>Acceleron est «&nbsp;une combinaison de nos logiciels et de notre architecture pour sécuriser et accélérer l’ensemble de nos entrées-sorties (I/O)&nbsp;», affirme Clay Magouyrk, co-CEO d’Oracle. «&nbsp;Elle comprend un réseau Fabric dédié, des cartes d’interfaçage réseau (NIC) convergées, un routage de paquets zéro confiance au niveau de l’hôte et une conception multiplanaire pour améliorer les performances et la disponibilité&nbsp;».</p>\n <p>Dans les HPC, Acceleron doit en premier lieu surmonter les limites <a href=\"https://www.lemagit.fr/conseil/Reseau-quelle-infrastructure-de-communication-pour-lIA\">des réseaux Clos à trois étages</a>. Cette terminologie décrit une architecture où une colonne de switch centrale est à la fois reliée aux sources de données et aux destinations. Cette topologie doit réduire le nombre d’interconnexions, améliorer la parallélisation des traitements GPU, ainsi que l’efficacité du transfert des données entre le GPU et l’espace de stockage. Selon les ingénieurs d’Oracle, cette topologie supporte bien les superclusters de 130&nbsp;000&nbsp;GPU que le fournisseur a déjà déployés.</p>\n <p>Or, l’architecture de réseau Clos à 3&nbsp;étages présente des limites en matière de consommation énergétique et de robustesse du réseau. Plus particulièrement, elle implique de multiplier les switchs, de faire courir des kilomètres de câbles et augmente la latence.</p>\n <p>Le réseau Clos à 3&nbsp;étages mis en place par Oracle interconnecte l’ensemble des NICs clients. Pour aller au-delà des 130&nbsp;000&nbsp;GPU, le fournisseur déploie des Network Fabrics «&nbsp;disjoints&nbsp;» –&nbsp;les fameux plans. Chaque plan isolé se connecte à un seul NIC client. «&nbsp;Il y a un petit commutateur dans les NIC les plus récents qui permet à un serveur de faire sortir des données à travers le NIC qui les redistribue vers quatre switchs différents&nbsp;», explique David&nbsp;Becker, expert réseau chez Oracle, dans une vidéo publiée en marge d’Oracle AI World. À l’inverse, chaque NIC client peut être connecté à quatre plans de ce réseau multiplanaire.</p>\n <p>Chaque plan est lui-même architecturé comme un réseau Clos à deux étages. La carte réseau devient un des étages.</p>\n <blockquote class=\"main-article-pullquote\">\n  <div class=\"main-article-pullquote-inner\">\n   <figure>\n    «&nbsp;Nous avons dû proposer une solution de câblage inventive pour connecter les breakouts des switchs et des NIC. Nous l’appelons “shuffle cables”.&nbsp;»\n   </figure>\n   <figcaption>\n    <strong>David Becker</strong>Expert réseau, Oracle\n   </figcaption>\n   <i class=\"icon\" data-icon=\"z\"></i>\n  </div>\n </blockquote>\n <p>Et en ajoutant des plans, la mise à l’échelle est plus aisée. De plus, chaque plan a son propre control plane et data plane. En cas de panne qui affecterait un plan, les autres ne seraient pas affectés. Le trafic peut être automatiquement rerouté à un plan par le firmware du NIC et/ou d’autres éléments logiciels.</p>\n <p>Comme ce nombre de ports sur un switch peut limiter la mise à l’échelle, les ingénieurs d’Oracle augmentent le «&nbsp;radix&nbsp;», le degré de connectivité du commutateur (switch) et des NIC. Pour cela, Oracle utilise des breakouts, c’est-à-dire des adaptateurs qui permettent de subdiviser <a href=\"https://www.lemagit.fr/actualites/366613443/Reseau-vers-du-800-Gbit-s-longue-distance-moins-cher\">un port Ethernet&nbsp;400&nbsp;G ou 800&nbsp;G</a> en plusieurs <a href=\"https://www.lemagit.fr/definition/SFP\">ports plus petits</a>, tout en divisant la bande passante équitablement par port. Physiquement, une telle approche réclame bien plus de fibre optique en plus de gérer la complexité du câblage. «&nbsp;Nous avons dû proposer une solution de câblage inventive pour connecter les breakouts des switchs et des NIC. Nous l’appelons “shuffle cables”&nbsp;», décrit David&nbsp;Becker. Les brins de fibre nécessaires aux interconnexions entre les deux types d’équipements sont réunis entre les breakouts pour réduire le nombre de câbles. In fine, un seul câble rassemble quatre breakouts à chaque extrémité.</p>\n <p>Les DSP, censés réduire les interférences entre les switchs et les NIC sont supprimés. Leurs capacités de stabilisation et de nettoyage du signal de la fibre optique sont désormais prises en charge par les logiciels des «&nbsp;<a href=\"https://www.lemagit.fr/conseil/SmartNICs-et-FACs-ces-cartes-reseau-qui-accelereront-les-datacenters\">Smart NIC&nbsp;</a>». Cette approche nommée Linear Pluggable Optics (LPO) permet d’éliminer les ASICs qui propulsent les DSP et leurs ventilateurs. Cela réduirait d’environ 30&nbsp;% la consommation du lien fibré. Ces gains ainsi que ceux obtenus en supprimant certains switchs permettraient d’allouer davantage de puissance aux GPU.</p>\n <p>«&nbsp;Ce concept s’appelle la désintermédiation&nbsp;», affirme Clay Magouyrk. «&nbsp;C’est en réalité assez difficile à mettre en œuvre. Pour cela, il faut disposer d’une architecture logicielle très flexible qui permette de déplacer de manière transparente les fonctions réseau d’un endroit à un autre&nbsp;», poursuit-il lors de son keynote. «&nbsp;Nous y travaillons depuis des années et cette technologie est déjà déployée sur bon nombre de nos différents systèmes réseau. Le résultat net est une réduction significative des coûts&nbsp;».</p>\n <p>Le revers de la médaille de l’approche LPO, c’est qu’elle réintroduit de la latence. Ce n’est pas le plus important avec les GPU, le principal est de fournir des transferts de données très haut débit, selon Karan Batta.</p>\n <blockquote class=\"main-article-pullquote\">\n  <div class=\"main-article-pullquote-inner\">\n   <figure>\n    «&nbsp;Finalement, tout le monde achète les mêmes GPU. Ce qui va vraiment faire la différence, c’est l’échelle, mais aussi la disponibilité et le fonctionnement.&nbsp;»\n   </figure>\n   <figcaption>\n    <strong>Karan Batta</strong>V-P senior Oracle Infrastructure Cloud\n   </figcaption>\n   <i class=\"icon\" data-icon=\"z\"></i>\n  </div>\n </blockquote>\n <p>« Nous sommes désormais en mesure de disposer de clusters GPU répartis dans plusieurs bâtiments différents et de les connecter entre eux comme s’il s’agissait d’un seul et même cluster », traduit-il, lors d’un briefing presse. « Ainsi, des clients tels qu’OpenAI ou d’autres peuvent exécuter une seule tâche d’entraînement qui s’étend non seulement aux GPU, disons dans cette salle, mais aussi à un autre bâtiment ».&nbsp;«&nbsp;Finalement, tout le monde achète les mêmes GPU. Ce qui va vraiment faire la différence, c’est l’échelle, mais aussi la disponibilité et le fonctionnement&nbsp;», poursuit-il.</p>\n <p>Un effort apprécié par OpenAI. «&nbsp;Vous nous aider à pousser des acteurs plus traditionnels à être plus flexible, vous co-développez avec nous, vous faites des compromis tels que le système multiplanaire&nbsp;», liste Peter&nbsp;Hoeschle, vice-président stratégie et opérations d’infrastructure chez OpenAI, lors d’un keynote.</p>\n <p>Les NIC clients sont indifféremment ceux proposés par Nvidia <a href=\"https://www.lemagit.fr/actualites/366618802/Infrastructure-IA-Nvidia-adapte-son-reseau-rapide-Spectrum-X-au-stockage\">(Spectrum-X, par exemple</a>) et AMD (<a href=\"https://www.lemagit.fr/actualites/252515728/Reseau-AMD-rachete-Pensando-pour-se-lancer-dans-les-DPUs\">Pensando Pollara 400 AI)</a>. «&nbsp;Nous prenons en charge la plupart des NIC clients du marché. Notre architecture est interopérable&nbsp;», affirme Karan Batta.</p>\n</section>                 \n<section class=\"section main-article-chapter\" data-menu-title=\"Améliorer la sécurité et les performances du stockage NVMe\">\n <h2 class=\"section-title\"><i class=\"icon\" data-icon=\"1\"></i>Améliorer la sécurité et les performances du stockage NVMe</h2>\n <p>Mais Acceleron ne profitera pas qu’à OpenAI. Ses capacités sont adaptées pour d’autres usages, selon Oracle.</p>\n <p>Avec Acceleron, le NIC hôte, le plane client et le control plane cloud sont physiquement sur la même puce, mais sont partitionnés en dur, isolés. Une interface Ethernet sous la forme d’un canal léger «&nbsp;on die&nbsp;» permet les échanges entre les deux pôles. Contrairement au système majoritairement déployé par Oracle avec son infrastructure&nbsp;Gen2, la gestion des paquets à travers MAC/PHY ne dépend pas d’équipements séparés. Le tout se fait à même le Smart NIC.</p>\n <p>«&nbsp;La carte réseau convergée Oracle Acceleron permet également une configuration automatique et sécurisée pour la présentation native des périphériques <a href=\"https://www.lemagit.fr/definition/NVMe\">NVMe</a> aux volumes en bloc OCI, ce qui profite directement aux charges de travail des clients dans les environnements à forte intensité I/O&nbsp;», assure un porte-parole d’Oracle.</p>\n <p>Cela doit aussi améliorer Zero Trust Packet Routing (ZPR). C’est un moyen pour protéger les accès réseau non autorisés à travers des attributs –&nbsp;des règles&nbsp;– spécifiques. ZPR complète les groupes de sécurité réseau et les listes de contrôle de sécurité avec des règles exprimées à l’aide d’un DSL (ZPL) dont les attributs sont très simples à comprendre et décrits en langage naturel. Un moteur de règles compile ces intentions dans les règles qui protègent les accès à une application et au service Exadata sous-jacent (par exemple). Outre de nouvelles fonctionnalités pour&nbsp;mieux inspecter les paquets, protéger les déploiements multi-VCN, les MySQL et Oracle Database, l’ajout de politique de refus d’accès au niveau du IAM, les règles exprimées à travers le DSL sont désormais appliquées au niveau du NIC hôte.</p>\n <p>La disponibilité des technologies Acceleron est progressive. Certaines d’entre elles sont déjà disponibles, d’autres seront déployées au fil de l’eau dès 2025, indique Karan Batta.</p>\n</section>",
+      "published_ts": 1760627340,
+      "source_name": "LeMagIT",
+      "score": 85
+    },
+    {
+      "url": "https://dagster.io/blog/python-ci-cd-automation",
+      "title": "CI/CD for Data Pipelines with Git",
+      "summary": "Learn how to automate data pipeline deployment using CI/CD practices integrated with Git.",
+      "published_ts": 1760366189,
+      "source_name": "Dagster Blog",
+      "score": 77
+    },
+    {
+      "url": "https://www.zdnet.fr/actualites/la-competitivite-industrielle-repose-desormais-sur-des-logiciels-specialises-lia-et-le-cloud-redessinent-le-paysage-483548.htm#xtor=RSS-1",
+      "title": "La compétitivité industrielle repose désormais sur des logiciels spécialisés : l’IA et le cloud redessinent le paysage",
+      "summary": "D’un simple outil d’accompagnement à un levier stratégique de croissance, le logiciel industriel devient un atout de compétitivité.",
+      "published_ts": 1760609417,
+      "source_name": "ZDNet France",
+      "score": 70
+    }
+  ],
+  "python_polars_duckdb": [
+    {
+      "url": "https://dagster.io/blog/python-packages-primer-1",
+      "title": "Python Packages Primer for Data People 1/2",
+      "summary": "Start mastering Python project structure with this guide to modules, imports, and package organization for data practitioners.",
+      "published_ts": 1760361705,
+      "source_name": "Dagster Blog",
+      "score": 77
+    }
+  ],
+  "viz_bi": [
+    {
+      "url": "https://powerbi.microsoft.com/en-us/blog/power-bi-report-server-september-2025-feature-summary/",
+      "title": "Power BI Report Server September 2025 Feature Summary",
+      "summary": "PBIRS September 2025 Feature Summary",
+      "published_ts": 1760526000,
+      "source_name": "Power BI Blog",
+      "score": 93
+    },
+    {
+      "url": "https://cloud.google.com/blog/products/data-analytics/introducing-gemini-in-looker-at-next24",
+      "title": "AI assistant that helps accelerate analytical workflows",
+      "summary": "With Conversational Analytics, everyone can uncover patterns and trends in data, as if you were speaking to your in-house data expert - and while the answers come in seconds, Looker shows you the data behind the insights, so you know the foundation is accurate and the method is true.\nSmart and simpl",
+      "published_ts": 1760464513,
+      "source_name": "Looker Blog",
+      "score": 90
+    },
+    {
+      "url": "https://cloud.google.com/solutions/looker-google-cloud",
+      "title": "Looker on Google Cloud",
+      "summary": "Enterprise-grade security\nPrivate networking\n-\nLooker on Google Cloud gives you the flexibility to choose from public IP networking, private IP networking, or a hybrid (public/private) network\nPSC and PSA support\n- Within private IP networks, customers can choose between Private Service Connect (PSC",
+      "published_ts": 1760464513,
+      "source_name": "Looker Blog",
+      "score": 85
+    },
+    {
+      "url": "https://cloud.google.com/looker-modeling",
+      "title": "trusted modeling",
+      "summary": "In the generative AI era, a universal semantic layer is the foundation for intelligent decision-making and is key to the success and accuracy of any data project—both now and in the future. Looker's semantic layer translates your raw data into a language that both downstream users and LLMs can under",
+      "published_ts": 1760464513,
+      "source_name": "Looker Blog",
+      "score": 70
+    }
+  ]
+}

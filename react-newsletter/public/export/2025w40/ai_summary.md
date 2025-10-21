@@ -1,0 +1,65 @@
+## 🏆 Top 3 de la semaine
+
+- **1.** [Accelerate development with the Amazon Bedrock AgentCore MCP server](https://aws.amazon.com/blogs/machine-learning/accelerate-development-with-the-amazon-bedrock-agentcore-mcpserver/) — AWS ML Blog · 2025-10-02 · **95/100**
+- **2.** [Rox accelerates sales productivity with AI agents powered by Amazon Bedrock](https://aws.amazon.com/blogs/machine-learning/rox-accelerates-sales-productivity-with-ai-agents-powered-by-amazon-bedrock/) — AWS ML Blog · 2025-10-01 · **95/100**
+- **3.** [Modernize fraud prevention: GraphStorm v0.5 for real-time inference](https://aws.amazon.com/blogs/machine-learning/modernize-fraud-prevention-graphstorm-v0-5-for-real-time-inference/) — AWS ML Blog · 2025-09-30 · **95/100**
+
+## 🟦 Aperçu général de la semaine
+
+🟦 Aperçu général de la semaine
+
+Cette semaine, nous avons vu une concentration d'articles liés à l'intelligence artificielle (IA) et à la machine learning (ML) sur Amazon Bedrock. Les entreprises comme Rox et Grok ont annoncé des partenariats avec Amazon pour accélérer la productivité et la prévention des fraude. De plus, nous avons vu des annonces de nouvelles fonctionnalités sur AWS, telles que l'intégration de stockage tiers avec AWS Outposts.
+
+- Les articles de cette semaine mettent en avant l'importance de l'IA et du ML dans les entreprises.
+- Les partenariats entre les entreprises et Amazon Bedrock montrent la croissance de l'utilisation de l'IA dans les secteurs commerciaux.
+- Les nouvelles fonctionnalités sur AWS, telles que l'intégration de stockage tiers, montrent la volonté de l'entreprise de continuer à innover et à améliorer ses services.
+
+## 🔢 Bases de données & OLAP
+
+🔢 Bases de données & OLAP
+
+- [October 02, 2025](https://cloud.google.com/bigquery/docs/release-notes#October_02_2025) — BigQuery Release Notes · 2025-10-02 · **80/100**
+
+## 👨‍🔧 Data Prep & Orchestration (ELT/ETL)
+
+👨‍🔧 Data Prep & Orchestration (ELT/ETL)
+
+- Aucun article pertinent trouvé pour cette semaine.
+
+## 🐍 Python, Polars, DuckDB
+
+🐍 Python, Polars, DuckDB
+
+- Aucun article pertinent trouvé pour cette semaine.
+
+## 📊 Data Viz & BI
+
+📊 Data Viz & BI
+
+- Aucun article pertinent trouvé pour cette semaine.
+
+## 🔬 IA / ML
+
+🔬 IA / ML
+
+- [Accelerate development with the Amazon Bedrock AgentCore MCP server](https://aws.amazon.com/blogs/machine-learning/accelerate-development-with-the-amazon-bedrock-agentcore-mcpserver/) — AWS ML Blog · 2025-10-02 · **95/100**
+- [Rox accelerates sales productivity with AI agents powered by Amazon Bedrock](https://aws.amazon.com/blogs/machine-learning/rox-accelerates-sales-productivity-with-ai-agents-powered-by-amazon-bedrock/) — AWS ML Blog · 2025-10-01 · **95/100**
+- [Modernize fraud prevention: GraphStorm v0.5 for real-time inference](https://aws.amazon.com/blogs/machine-learning/modernize-fraud-prevention-graphstorm-v0-5-for-real-time-inference/) — AWS ML Blog · 2025-09-30 · **95/100**
+- [Announcing Amazon ECS Managed Instances for containerized applications](https://aws.amazon.com/blogs/aws/announcing-amazon-ecs-managed-instances-for-containerized-applications/) — AWS Blog (global) · 2025-09-30 · **95/100**
+- [The hidden tax on analysts](https://www.getdbt.com/blog/the-hidden-tax-on-analysts) — dbt Blog · 2025-10-03 · **85/100**
+
+## 🏛️ Cloud (AWS/GCP/Azure/OVH)
+
+🏛️ Cloud (AWS/GCP/Azure/OVH)
+
+- [Announcing AWS Outposts third-party storage integration with Dell and HPE](https://aws.amazon.com/blogs/aws/announcing-aws-outposts-third-party-storage-integration-with-dell-and-hpe/) — AWS Blog (global) · 2025-09-30 · **80/100**
+- [Unlock global AI inference scalability using new global cross-Region inference on Amazon Bedrock  with Anthropic’s Claude Sonnet 4.5](https://aws.amazon.com/blogs/machine-learning/unlock-global-ai-inference-scalability-using-new-global-cross-region-inference-on-amazon-bedrock-with-anthropics-claude-sonnet-4-5/) — AWS ML Blog · 2025-10-03 · **80/100**
+- [Secure ingress connectivity to Amazon Bedrock AgentCore Gateway using interface VPC endpoints](https://aws.amazon.com/blogs/machine-learning/secure-ingress-connectivity-to-amazon-bedrock-agentcore-gateway-using-interface-vpc-endpoints/) — AWS ML Blog · 2025-10-03 · **85/100**
+- [Enhance agentic workflows with enterprise search using Kore.ai and Amazon Q Business](https://aws.amazon.com/blogs/machine-learning/enhance-agentic-workflows-with-enterprise-search-using-kore-ai-and-amazon-q-business/) — AWS ML Blog · 2025-10-02 · **85/100**
+
+**À creuser :**
+**
+- [Accelerate development with the Amazon Bedrock AgentCore MCP server](https://aws.amazon.com/blogs/machine-learning/accelerate-development-with-the-amazon-bedrock-agentcore-mcpserver/)
+- [Unlock global AI inference scalability using new global cross-Region inference on Amazon Bedrock  with Anthropic’s Claude Sonnet 4.5](https://aws.amazon.com/blogs/machine-learning/unlock-global-ai-inference-scalability-using-new-global-cross-region-inference-on-amazon-bedrock-with-anthropics-claude-sonnet-4-5/)
+- [Secure ingress connectivity to Amazon Bedrock AgentCore Gateway using interface VPC endpoints](https://aws.amazon.com/blogs/machine-learning/secure-ingress-connectivity-to-amazon-bedrock-agentcore-gateway-using-interface-vpc-endpoints/)
+- [Enhance agentic workflows with enterprise search using Kore.ai and Amazon Q Business](https://aws.amazon.com/blogs/machine-learning/enhance-agentic-workflows-with-enterprise-search-using-kore-ai-and-amazon-q-business/)

@@ -443,7 +443,7 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
 
     # Fenêtre semaine (Europe/Paris)
     week_offset = int(os.getenv("WEEK_OFFSET", "0"))
-    week_start_ts, week_end_ts, week_label, _, _ = week_bounds("Europe/Paris", week_offset=week_offset)
+    week_start_ts, week_end_ts, week_label, week_start_h, week_end_h = week_bounds("Europe/Paris", week_offset=week_offset)
 
     # Items à scorer
     items = fetch_items_to_score(db_path, week_start_ts, week_end_ts, limit=limit)
@@ -563,6 +563,44 @@ async def main(config_path: str = "config.yaml", limit: Optional[int] = None):
         latest.symlink_to(week_dir, target_is_directory=True)
     except Exception:
         pass
+        # Écrire un range lisible pour la semaine (ex: "13 Oct 2025 → 19 Oct 2025")
+    range_path = week_dir / "range.txt"
+    range_path.write_text(f"{week_start_h} → {week_end_h}\n", encoding="utf-8")
+
+    # Générer/mettre à jour l’index global des semaines
+    write_weeks_index(out_root)
+
+def write_weeks_index(out_root: Path):
+    """
+    Génère export/weeks.json listant toutes les semaines (YYYYwWW),
+    avec les chemins vers summary/top3/selection et la plage de dates si dispo.
+    """
+    weeks = []
+    for p in out_root.iterdir():
+        if p.is_dir() and re.fullmatch(r"\d{4}w\d{2}", p.name):
+            weeks.append(p.name)
+    weeks.sort(reverse=True)  # plus récentes d'abord
+
+    meta = []
+    for w in weeks:
+        week_dir = out_root / w
+        range_txt = ""
+        rp = week_dir / "range.txt"
+        if rp.exists():
+            range_txt = rp.read_text(encoding="utf-8").strip()
+
+        meta.append({
+            "week": w,
+            "range": range_txt,
+            "summary_md": f"export/{w}/ai_summary.md",
+            "top3_md": f"export/{w}/top3.md",
+            "selection_json": f"export/{w}/ai_selection.json",
+        })
+
+    (out_root / "weeks.json").write_text(
+        json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    print(f"[done] Index des semaines: {out_root / 'weeks.json'}")
 
 # -----------------------
 # CLI
