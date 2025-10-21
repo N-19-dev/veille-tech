@@ -67,11 +67,28 @@ jobs:
         run: npm ci
 
       # Copie export/ dans le public du front (en suivant les symlinks)
-      - name: Copy exports into public
+      - name: Copy exports into public (dereference symlinks)
         run: |
           mkdir -p react-newsletter/public/export
+          # -R (récursif) -L (déréférence les liens symboliques)
           cp -RL export/. react-newsletter/public/export/ || true
           ls -la react-newsletter/public/export || true
+
+      # S’assure que 'latest' est un VRAI dossier et non un symlink
+      - name: Ensure 'latest' is a real directory
+        run: |
+          set -e
+          if [ -L react-newsletter/public/export/latest ]; then
+            rm -f react-newsletter/public/export/latest
+          fi
+          mkdir -p react-newsletter/public/export/latest
+          # Si rien dedans, copie la semaine la plus récente
+          if [ -z "$(ls -A react-newsletter/public/export/latest 2>/dev/null)" ]; then
+            LATEST_DIR="$(ls -d export/20*w* 2>/dev/null | sort | tail -n 1 || true)"
+            if [ -n "$LATEST_DIR" ]; then
+              cp -a "$LATEST_DIR"/. react-newsletter/public/export/latest/
+            fi
+          fi
 
       # (Optionnel) Affiche vite.config.ts pour vérifier la base
       - name: Show vite.config.ts base
@@ -83,7 +100,12 @@ jobs:
 
       - name: Build React app
         working-directory: react-newsletter
-        run: npm run build
+        run: |
+          npm run build
+          # Empêche Jekyll de transformer l’artefact
+          touch dist/.nojekyll
+          # (Optionnel) Domaine custom : décommente si tu as un CNAME
+          # echo "ton-domaine.example" > dist/CNAME
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
