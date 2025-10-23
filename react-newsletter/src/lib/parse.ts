@@ -50,9 +50,10 @@ function withBase(p: string): string {
 }
 
 async function loadText(path: string): Promise<string> {
-  // IMPORTANT : 'path' doit être relatif (ex: "export/weeks.json")
-  const finalUrl = path.startsWith(BASE) ? path : withBase(path);
-  const res = await fetch(finalUrl, { cache: "no-cache" });
+  // ATTENTION: 'path' doit être RELATIF (ex: "export/weeks.json" ou "export/2025w42/ai_summary.md")
+  const base = (typeof document !== "undefined" ? document.baseURI : "/");
+  const finalUrl = new URL(path, base).toString();   // ← résout toujours sous le bon sous-dossier
+  const res = await fetch(finalUrl, { cache: "no-store" });
   if (!res.ok) throw new Error(`Impossible de charger ${finalUrl} (${res.status})`);
   return new TextDecoder().decode(await res.arrayBuffer());
 }
