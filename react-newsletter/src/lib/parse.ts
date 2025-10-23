@@ -3,7 +3,7 @@
 
 export type WeekMeta = {
   week: string;           // "2025w42" ou "latest"
-  range?: string;         // "13 Oct 2025 → 19 Oct 2025" si présent
+  range?: string;         // "13 Oct 2025 → 19 Oct 2025"
   summary_md?: string;    // chemin du md (optionnel dans weeks.json)
 };
 
@@ -29,59 +29,70 @@ export type SummarySection = {
 
 const TEXT_DECODER = new TextDecoder();
 
+// ----- Gestion sûre du base path Vite -----
+// Vite garantit BASE_URL (ex: "/", ou "/veille-tech/").
+const VITE_BASE: string =
+  (import.meta as any)?.env?.BASE_URL ??
+  (typeof document !== "undefined" ? (document.querySelector("base")?.getAttribute("href") || "/") : "/");
+
+// normalise: toujours commencer et finir par "/"
+function normalizeBase(b: string): string {
+  if (!b) return "/";
+  let s = b;
+  if (!s.startsWith("/")) s = "/" + s;
+  if (!s.endsWith("/")) s = s + "/";
+  return s;
+}
+const BASE = normalizeBase(VITE_BASE);
+
+// Joindre BASE + chemin relatif sans utiliser new URL.
+function withBase(p: string): string {
+  const rel = p.startsWith("/") ? p.slice(1) : p;
+  return BASE + rel;
+}
+
 /** Charge un fichier texte (fetch) et renvoie string. */
 async function loadText(path: string): Promise<string> {
-  const res = await fetch(path, { cache: "no-cache" });
+  // path doit être relatif au site (ex: "export/weeks.json" ou "/export/weeks.json")
+  // on le passe toujours par withBase pour éviter les erreurs d’origine.
+  const finalUrl = path.startsWith(BASE) ? path : withBase(path);
+  const res = await fetch(finalUrl, { cache: "no-cache" });
   if (!res.ok) {
-    throw new Error(`Impossible de charger ${path} (${res.status})`);
+    throw new Error(`Impossible de charger ${finalUrl} (${res.status})`);
   }
   const buf = await res.arrayBuffer();
   return TEXT_DECODER.decode(buf);
 }
 
-/** Lit export/weeks.json ; en secours, retourne un index minimal sur "latest". */
+/** Lit export/weeks.json ; secours: "latest". */
 export async function loadWeeksIndex(): Promise<WeekMeta[]> {
   try {
-    const txt = await loadText("/export/weeks.json");
-    const arr = JSON.parse(txt) as Array<{
-      week: string;
-      range?: string;
-      summary_md?: string;
-    }>;
-    // Tri décroissant au cas où
+    const txt = await loadText("export/weeks.json");
+    const arr = JSON.parse(txt) as Array<{ week: string; range?: string; summary_md?: string }>;
     return (arr || []).sort((a, b) => (a.week < b.week ? 1 : -1));
   } catch {
-    // Secours : si weeks.json n’existe pas, propose juste "latest"
     return [{ week: "latest", range: "" }];
   }
 }
 
 /** Construit le chemin du résumé md pour une semaine donnée. */
 function summaryPath(meta: WeekMeta): string {
-  if (meta.summary_md) return `/${meta.summary_md}`;
-  if (meta.week === "latest") return "/export/latest/ai_summary.md";
-  return `/export/${meta.week}/ai_summary.md`;
+  if (meta.summary_md) return withBase(meta.summary_md.startsWith("/") ? meta.summary_md.slice(1) : meta.summary_md);
+  if (meta.week === "latest") return withBase("export/latest/ai_summary.md");
+  return withBase(`export/${meta.week}/ai_summary.md`);
 }
 
 // --------------------
 // Parsing du Markdown
 // --------------------
 
-/**
- * Extrait le Top 3 depuis le markdown.
- * On vise des lignes du type:
- *  - **1.** [Titre](URL) — Source · 2025-10-14 · **90/100**
- */
 function parseTop3(md: string): TopItem[] {
   const out: TopItem[] = [];
-  // Cherche le bloc commençant par "## 🏆 Top 3" (tolérant aux variations)
   const topHeader = /(^|\n)##\s*🏆?\s*Top\s*3[^\n]*\n([\s\S]*?)(\n##\s|$)/i;
   const m = md.match(topHeader);
   if (!m) return out;
 
   const block = m[2];
-
-  // Ligne d’item
   const itemRe =
     /^\s*[-–•]\s*(?:\*\*\d+\.\*\*\s*)?\[(.+?)\]\((https?:\/\/[^\s)]+)\)\s*—\s*([^·\n]+)?(?:\s*·\s*([\d-]{8,10}))?(?:\s*·\s*\*\*(\d+)\s*\/\s*100\*\*)?/gim;
 
@@ -98,14 +109,8 @@ function parseTop3(md: string): TopItem[] {
   return out;
 }
 
-/**
- * Extrait les sections H2 + leurs listes d’items (liens) depuis le markdown.
- * Ignore l'aperçu général ; transforme les puces en cartes.
- */
 function parseSections(md: string): SummarySection[] {
   const sections: SummarySection[] = [];
-
-  // Sépare par titres H2 ("## Titre")
   const h2Re = /(^|\n)##\s+([^\n]+)\n/gm;
   const indices: Array<{ title: string; start: number; end: number }> = [];
 
@@ -114,23 +119,14 @@ function parseSections(md: string): SummarySection[] {
     const title = match[2].trim();
     const start = match.index + match[0].length;
     indices.push({ title, start, end: md.length });
-    // Mettra l'end au passage suivant
-    if (indices.length > 1) {
-      indices[indices.length - 2].end = match.index;
-    }
+    if (indices.length > 1) indices[indices.length - 2].end = match.index;
   }
 
   for (const seg of indices) {
     const title = seg.title;
     const block = md.slice(seg.start, seg.end).trim();
-
-    // On ignore l'Aperçu général (souvent des paragraphes sans puces)
     if (/aperçu général/i.test(title)) continue;
 
-    // On extrait les items sous forme de puces Markdown avec lien
-    // Formats possibles :
-    //  - [Titre](URL) — Source · date · **score/100**
-    //  - [Titre](URL)
     const lineRe =
       /^\s*[-–•]\s*\[(.+?)\]\((https?:\/\/[^\s)]+)\)\s*(?:—\s*([^·\n]+))?(?:\s*·\s*([\d-]{8,10}))?(?:\s*·\s*\*\*(\d+)\s*\/\s*100\*\*)?/gim;
 
@@ -144,11 +140,7 @@ function parseSections(md: string): SummarySection[] {
         score: lm[5]?.trim(),
       });
     }
-
-    // Si pas d’items extraits, on n’ajoute pas la section (évite des cartes vides)
-    if (items.length) {
-      sections.push({ title, items });
-    }
+    if (items.length) sections.push({ title, items });
   }
 
   return sections;
@@ -158,25 +150,15 @@ function parseSections(md: string): SummarySection[] {
 // API principale
 // --------------------
 
-/** Charge et parse ai_summary.md pour une semaine donnée. */
-export async function loadWeekSummary(meta: WeekMeta): Promise<{
-  top3: TopItem[];
-  sections: SummarySection[];
-}> {
-  const path = summaryPath(meta);
-  const md = await loadText(path);
-
-  const top3 = parseTop3(md);
-  const sections = parseSections(md);
-
-  return { top3, sections };
+export async function loadWeekSummary(meta: WeekMeta): Promise<{ top3: TopItem[]; sections: SummarySection[] }> {
+  const md = await loadText(summaryPath(meta));
+  return { top3: parseTop3(md), sections: parseSections(md) };
 }
 
 // --------------------
-// Utils visuels (favicon / domaine)
+// Utils visuels
 // --------------------
 
-/** Extrait le domaine (ex: "huggingface.co") d'une URL. */
 export function getDomain(url?: string): string | null {
   if (!url) return null;
   try {
@@ -187,10 +169,8 @@ export function getDomain(url?: string): string | null {
   }
 }
 
-/** Construit une URL de favicon (Google ou DuckDuckGo). */
 export function faviconUrl(url?: string, size = 32): string {
   const dom = getDomain(url);
   if (!dom) return `https://via.placeholder.com/${size}`;
-  // Google S2 API : stable, rapide, sans clé
   return `https://www.google.com/s2/favicons?domain=${dom}&sz=${size}`;
 }
