@@ -35,7 +35,6 @@ const VITE_BASE: string =
   (import.meta as any)?.env?.BASE_URL ??
   (typeof document !== "undefined" ? (document.querySelector("base")?.getAttribute("href") || "/") : "/");
 
-// normalise: toujours commencer et finir par "/"
 function normalizeBase(b: string): string {
   if (!b) return "/";
   let s = b;
@@ -45,29 +44,22 @@ function normalizeBase(b: string): string {
 }
 const BASE = normalizeBase(VITE_BASE);
 
-// Joindre BASE + chemin relatif sans utiliser new URL.
 function withBase(p: string): string {
   const rel = p.startsWith("/") ? p.slice(1) : p;
   return BASE + rel;
 }
 
-/** Charge un fichier texte (fetch) et renvoie string. */
 async function loadText(path: string): Promise<string> {
-  // path doit être relatif au site (ex: "export/weeks.json" ou "/export/weeks.json")
-  // on le passe toujours par withBase pour éviter les erreurs d’origine.
+  // IMPORTANT : 'path' doit être relatif (ex: "export/weeks.json")
   const finalUrl = path.startsWith(BASE) ? path : withBase(path);
   const res = await fetch(finalUrl, { cache: "no-cache" });
-  if (!res.ok) {
-    throw new Error(`Impossible de charger ${finalUrl} (${res.status})`);
-  }
-  const buf = await res.arrayBuffer();
-  return TEXT_DECODER.decode(buf);
+  if (!res.ok) throw new Error(`Impossible de charger ${finalUrl} (${res.status})`);
+  return new TextDecoder().decode(await res.arrayBuffer());
 }
 
-/** Lit export/weeks.json ; secours: "latest". */
-export async function loadWeeksIndex(): Promise<WeekMeta[]> {
+export async function loadWeeksIndex() {
   try {
-    const txt = await loadText("export/weeks.json");
+    const txt = await loadText("export/weeks.json"); // ← pas de "/" devant
     const arr = JSON.parse(txt) as Array<{ week: string; range?: string; summary_md?: string }>;
     return (arr || []).sort((a, b) => (a.week < b.week ? 1 : -1));
   } catch {
@@ -75,9 +67,8 @@ export async function loadWeeksIndex(): Promise<WeekMeta[]> {
   }
 }
 
-/** Construit le chemin du résumé md pour une semaine donnée. */
-function summaryPath(meta: WeekMeta): string {
-  if (meta.summary_md) return withBase(meta.summary_md.startsWith("/") ? meta.summary_md.slice(1) : meta.summary_md);
+function summaryPath(meta: { week: string; summary_md?: string }) {
+  if (meta.summary_md) return withBase(meta.summary_md);
   if (meta.week === "latest") return withBase("export/latest/ai_summary.md");
   return withBase(`export/${meta.week}/ai_summary.md`);
 }
