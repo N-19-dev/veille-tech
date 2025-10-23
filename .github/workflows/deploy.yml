@@ -67,12 +67,24 @@ jobs:
         run: npm ci
 
       # Copie export/ dans le public du front (en suivant les symlinks)
-      - name: Copy exports into public (dereference symlinks)
+      - name: Copy exports into public (follow symlinks)
         run: |
+          set -e
           mkdir -p react-newsletter/public/export
-          # -R (récursif) -L (déréférence les liens symboliques)
+          # copie TOUT export/ en résolvant les symlinks
           cp -RL export/. react-newsletter/public/export/ || true
-          ls -la react-newsletter/public/export || true
+
+          # Si latest/ n'existe pas (symlink non suivi), on le recrée depuis la semaine la plus récente
+          if [ ! -e "react-newsletter/public/export/latest/ai_summary.md" ]; then
+            newest=$(ls -1 react-newsletter/public/export | grep -E '^[0-9]{4}w[0-9]{2}$' | sort | tail -n1)
+            if [ -n "$newest" ]; then
+              rm -rf react-newsletter/public/export/latest
+              cp -R "react-newsletter/public/export/$newest" "react-newsletter/public/export/latest"
+            fi
+          fi
+
+          echo "== Dump export in public =="
+          find react-newsletter/public/export -maxdepth 2 -type f | sed 's/^/  - /'
 
       # S’assure que 'latest' est un VRAI dossier et non un symlink
       - name: Ensure 'latest' is a real directory
@@ -100,17 +112,20 @@ jobs:
 
       - name: Build React app
         working-directory: react-newsletter
-        run: |
-          npm run build
-          # Empêche Jekyll de transformer l’artefact
-          touch dist/.nojekyll
-          # (Optionnel) Domaine custom : décommente si tu as un CNAME
-          # echo "ton-domaine.example" > dist/CNAME
+        env:
+          # Optionnel si tu as mis la base en dur dans vite.config.ts
+          VITE_BASE: /veille-tech/
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: react-newsletter/dist
+        
+      - name: Check built export presence
+        run: |
+          echo "== Built dist export =="
+          find react-newsletter/dist/export -maxdepth 2 -type f | sed 's/^/  - /' || true
 
   deploy:
     needs: build
