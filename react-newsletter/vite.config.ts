@@ -1,9 +1,9 @@
-// react-newsletter/vite.config.ts
+// vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: process.env.NODE_ENV === "production" ? "/veille-tech/" : "/",
-  build: { outDir: "dist" }
+  base: "/veille-tech/", // ✅ toujours la même base, même en local
+  build: { outDir: "dist" },
 });
