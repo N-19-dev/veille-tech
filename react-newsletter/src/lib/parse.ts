@@ -27,40 +27,24 @@ export type SummarySection = {
   items: SectionItem[];
 };
 
-const TEXT_DECODER = new TextDecoder();
-
-// ----- Gestion sûre du base path Vite -----
-// Vite garantit BASE_URL (ex: "/", ou "/veille-tech/").
-const VITE_BASE: string =
-  (import.meta as any)?.env?.BASE_URL ??
-  (typeof document !== "undefined" ? (document.querySelector("base")?.getAttribute("href") || "/") : "/");
-
-function normalizeBase(b: string): string {
-  if (!b) return "/";
-  let s = b;
-  if (!s.startsWith("/")) s = "/" + s;
-  if (!s.endsWith("/")) s = s + "/";
-  return s;
-}
-const BASE = normalizeBase(VITE_BASE);
-
-function withBase(p: string): string {
-  const rel = p.startsWith("/") ? p.slice(1) : p;
-  return BASE + rel;
-}
-
-async function loadText(path: string): Promise<string> {
-  // ATTENTION: 'path' doit être RELATIF (ex: "export/weeks.json" ou "export/2025w42/ai_summary.md")
-  const base = (typeof document !== "undefined" ? document.baseURI : "/");
-  const finalUrl = new URL(path, base).toString();   // ← résout toujours sous le bon sous-dossier
+// ✅ Fonction de chargement simplifiée qui utilise document.baseURI
+async function loadText(relativePath: string): Promise<string> {
+  // relativePath doit être SANS "/" au début (ex: "export/weeks.json")
+  const cleanPath = relativePath.startsWith("/") ? relativePath.slice(1) : relativePath;
+  
+  // document.baseURI contient déjà le bon préfixe (ex: https://n-19-dev.github.io/veille-tech/)
+  const base = typeof document !== "undefined" ? document.baseURI : "/";
+  const finalUrl = new URL(cleanPath, base).toString();
+  
   const res = await fetch(finalUrl, { cache: "no-store" });
   if (!res.ok) throw new Error(`Impossible de charger ${finalUrl} (${res.status})`);
+  
   return new TextDecoder().decode(await res.arrayBuffer());
 }
 
 export async function loadWeeksIndex() {
   try {
-    const txt = await loadText("export/weeks.json"); // ← pas de "/" devant
+    const txt = await loadText("export/weeks.json");
     const arr = JSON.parse(txt) as Array<{ week: string; range?: string; summary_md?: string }>;
     return (arr || []).sort((a, b) => (a.week < b.week ? 1 : -1));
   } catch {
@@ -68,10 +52,16 @@ export async function loadWeeksIndex() {
   }
 }
 
-function summaryPath(meta: { week: string; summary_md?: string }) {
-  if (meta.summary_md) return withBase(meta.summary_md);
-  if (meta.week === "latest") return withBase("export/latest/ai_summary.md");
-  return withBase(`export/${meta.week}/ai_summary.md`);
+// ✅ Retourne un chemin RELATIF (sans BASE_URL)
+function summaryPath(meta: { week: string; summary_md?: string }): string {
+  if (meta.summary_md) {
+    // Enlève le préfixe "export/" si présent
+    return meta.summary_md.replace(/^export\//, "export/");
+  }
+  if (meta.week === "latest") {
+    return "export/latest/ai_summary.md";
+  }
+  return `export/${meta.week}/ai_summary.md`;
 }
 
 // --------------------
