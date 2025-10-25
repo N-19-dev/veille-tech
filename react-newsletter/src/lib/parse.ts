@@ -5,6 +5,8 @@ export type WeekMeta = {
   week: string;           // "2025w42" ou "latest"
   range?: string;         // "13 Oct 2025 → 19 Oct 2025"
   summary_md?: string;    // chemin du md (optionnel dans weeks.json)
+  selection_blogs?: string;  // ✅ Nouveau
+  selection_hands?: string;  // ✅ Nouveau
 };
 
 export type TopItem = {
@@ -42,12 +44,13 @@ async function loadText(relativePath: string): Promise<string> {
   return new TextDecoder().decode(await res.arrayBuffer());
 }
 
-export async function loadWeeksIndex() {
+export async function loadWeeksIndex(): Promise<WeekMeta[]> {
   try {
     const txt = await loadText("export/weeks.json");
-    const arr = JSON.parse(txt) as Array<{ week: string; range?: string; summary_md?: string }>;
+    const arr = JSON.parse(txt) as WeekMeta[];
     return (arr || []).sort((a, b) => (a.week < b.week ? 1 : -1));
-  } catch {
+  } catch (e) {
+    console.error("Erreur chargement weeks.json:", e);
     return [{ week: "latest", range: "" }];
   }
 }
@@ -55,7 +58,6 @@ export async function loadWeeksIndex() {
 // ✅ Retourne un chemin RELATIF (sans BASE_URL)
 function summaryPath(meta: { week: string; summary_md?: string }): string {
   if (meta.summary_md) {
-    // Enlève le préfixe "export/" si présent
     return meta.summary_md.replace(/^export\//, "export/");
   }
   if (meta.week === "latest") {
@@ -133,8 +135,42 @@ function parseSections(md: string): SummarySection[] {
 // --------------------
 
 export async function loadWeekSummary(meta: WeekMeta): Promise<{ top3: TopItem[]; sections: SummarySection[] }> {
-  const md = await loadText(summaryPath(meta));
-  return { top3: parseTop3(md), sections: parseSections(md) };
+  try {
+    const md = await loadText(summaryPath(meta));
+    return { top3: parseTop3(md), sections: parseSections(md) };
+  } catch (e) {
+    console.error("Erreur chargement summary:", e);
+    return { top3: [], sections: [] };
+  }
+}
+
+export async function loadWeekSelection(
+  meta: WeekMeta,
+  kind: "blogs" | "hands"
+): Promise<Record<string, Array<{ title: string; url: string; source_name?: string; published_ts?: number; llm_score?: number; score?: number }>>> {
+  const week = meta.week || "latest";
+  
+  // ✅ Utilise les chemins depuis weeks.json si disponibles
+  const metaPath = kind === "blogs"
+    ? meta.selection_blogs
+    : meta.selection_hands;
+  
+  // ✅ Fallback sur le nom de fichier standard
+  const filename = kind === "blogs" 
+    ? "ai_selection_blogs.json" 
+    : "ai_selection_hands.json";
+  
+  const rel = metaPath 
+    ? metaPath.replace(/^\/+/, "")
+    : `export/${week}/${filename}`;
+
+  try {
+    const txt = await loadText(rel);
+    return JSON.parse(txt);
+  } catch (e: any) {
+    console.error(`Erreur chargement ${rel}:`, e.message);
+    return {}; // Retourne vide au lieu de crasher
+  }
 }
 
 // --------------------
